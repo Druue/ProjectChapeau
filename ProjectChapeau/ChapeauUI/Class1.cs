@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectChapeau
+namespace ChapeauUI
 {
-    class elizabethTest
+    public class Class1
     {
     }
 }
