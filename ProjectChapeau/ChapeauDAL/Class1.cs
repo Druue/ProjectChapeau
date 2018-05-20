@@ -33,35 +33,25 @@ namespace ChapeauDAL
             sqlconn.Close();
         }
 
-        public List<ChapeauModel.Tables> DB_getTables()
+        public List<ChapeauModel.TableTop> TableTopDAO()
         {
-            SqlConnection connection = openConnDB();
-            List<ChapeauModel.Tables> studenten_lijst = new List<CheapeauModel.Tables>();
+            SqlConnection conn = openConnDB();
+            List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
 
-            //connection.Open();
 
-            StringBuilder sb = new StringBuilder();
-            // write your query here to ensure a list of students is shown
-            sb.Append("SELECT Id, First_name, Last_name FROM Students");
-
-            /* EXAMPLE QUERY */
-            //sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-            //sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-            //sb.Append("JOIN [SalesLT].[Product] p ");
-            //sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-            /* */
-
+            StringBuilder sb = new StringBuilder();   
+            sb.Append("SELECT TableId, Seats, TableStatus FROM TableTop");
             String sql = sb.ToString();
 
-            SqlCommand command = new SqlCommand(sql, connection);
+            SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                SomerenModel.Student student = new SomerenModel.Student(Int32.Parse(reader["Id"].ToString()), reader["First_name"].ToString(), reader["Last_name"].ToString());
-                studenten_lijst.Add(student);
+                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                table_list.Add(table);
             }
 
-            return studenten_lijst;
+            return table_list;
         }
     }
 }

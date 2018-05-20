@@ -10,8 +10,18 @@ namespace ChapeauModel
     {
     }
 
-    public class Tables
+    public class TableTop
     {
+       
+        int TableId;
+        int Seats;
+        string TableStatus;
 
+        public TableTop(int id, int seats, string status)
+        {
+            this.TableId = id;
+            this.Seats = seats;
+            this.TableStatus = status;
+        }
     }
 }
