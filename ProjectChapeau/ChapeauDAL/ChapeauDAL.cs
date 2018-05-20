@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Chapeau_Model;
 
 
-namespace ChapeauDAL
+namespace Chapeau_DAL
 {
-    public class ChapeauDB
+    public class ChapeauDAL
     {
         private SqlConnection openConnDB() //Made by Machelle
         {
@@ -53,5 +54,7 @@ namespace ChapeauDAL
 
             return table_list;
         }
+
+
     }
 }
