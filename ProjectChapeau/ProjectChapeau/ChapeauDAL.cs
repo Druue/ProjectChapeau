@@ -5,8 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-
-namespace ChapeauDAL
+namespace ProjectChapeau
 {
     public class ChapeauDB
     {
@@ -63,5 +62,8 @@ namespace ChapeauDAL
 
             return studenten_lijst;
         }
+    }
+    class ChapeauDAL
+    {
     }
 }

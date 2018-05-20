@@ -4,14 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace ProjectChapeau
 {
-    public class Class1
+    class ChapeauLogic
     {
-    }
-
-    public class Tables
-    {
-
     }
 }

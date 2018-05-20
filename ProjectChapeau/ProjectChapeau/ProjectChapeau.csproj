@@ -45,6 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChapeauDAL.cs" />
+    <Compile Include="ChapeauLogic.cs" />
+    <Compile Include="ChapeauModel.cs" />
+    <Compile Include="ChapeauUI.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
