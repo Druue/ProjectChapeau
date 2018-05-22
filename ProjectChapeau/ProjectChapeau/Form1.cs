@@ -12,6 +12,9 @@ namespace ProjectChapeau
 {
     public partial class Form1 : Form
     {
+        public int panelWidth = 1400; //please use these sizes for the form
+        public int panelHeight = 600;
+
         public Form1()
         {
             InitializeComponent();
