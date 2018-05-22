@@ -55,6 +55,26 @@ namespace Chapeau_DAL
             return table_list;
         }
 
+        public List<ChapeauModel.Employee> EmployeeDAO()
+        {
+            SqlConnection conn = openConnDB();
+            List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT EmployeeId, Firstname, Lastname, Password, JobRole, Username FROM Employee");
+            String sql = sb.ToString();
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), reader["JobRole"].ToString(), reader["Username"].ToString());
+                employee_list.Add(employee);
+            }
+
+            return employee_list;
+        }
 
     }
 }
