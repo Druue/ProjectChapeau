@@ -68,6 +68,36 @@ namespace Chapeau_Model
                 this.Username = username;
             }
 
+            public int getEmployeeId()
+            {
+                return EmployeeId;
+            }
+
+            public string getFirstname()
+            {
+                return Firstname;
+            }
+
+            public string getLastname()
+            {
+                return Lastname;
+            }
+
+            public string getPassword()
+            {
+                return Password;
+            }
+
+            public string getJobRole()
+            {
+                return JobRole;
+            }
+
+            public string getUsername()
+            {
+                return Username;
+            }
+
         }
     }
 }
