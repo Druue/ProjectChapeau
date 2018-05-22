@@ -19,7 +19,9 @@ namespace ProjectChapeau
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.Text = "Project Chapeau";
+            this.BackColor = Color.Orange;
+            this.MaximizeBox = true;
         }
     }
 }

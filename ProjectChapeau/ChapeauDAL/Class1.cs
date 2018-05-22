@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using Chapeau_Model;
 
 namespace ChapeauDAL
 {
@@ -32,10 +33,10 @@ namespace ChapeauDAL
                 sqlconn.Close();
             }
 
-            public List<ChapeauModel.ChapeauModel.TableTop> TableTopDAO()
+            public List<ChapeauModel.TableTop> TableTopDAO()
             {
                 SqlConnection conn = openConnDB();
-                List<ChapeauModel.ChapeauModel.TableTop> table_list = new List<ChapeauModel.ChapeauModel.TableTop>();
+                List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
 
 
                 StringBuilder sb = new StringBuilder();
@@ -46,7 +47,7 @@ namespace ChapeauDAL
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    ChapeauModel.ChapeauModel.TableTop table = new ChapeauModel.ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                    ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
                     table_list.Add(table);
                 }
 
