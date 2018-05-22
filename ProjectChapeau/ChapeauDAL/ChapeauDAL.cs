@@ -33,7 +33,6 @@ namespace Chapeau_DAL
         {
             sqlconn.Close();
         }
-
         public List<ChapeauModel.TableTop> TableTopDAO()
         {
             SqlConnection conn = openConnDB();
@@ -74,6 +73,55 @@ namespace Chapeau_DAL
             }
 
             return employee_list;
+        }
+
+        public List<ChapeauModel.Order> OrderDAO()
+        {
+            SqlConnection conn = openConnDB();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+            /*
+            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
+            sb.Append("FROM Orders, OrderItems, Menu");
+            sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId;");
+            */
+            String sql = sb.ToString();
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
+            List<string> itemList = new List<string>();
+
+            int lastOrderId = -1;
+            bool firstTime = true;
+            while (reader.Read())
+            {
+                // Only update order details if order number changes or first time
+                if (firstTime || lastOrderId != -1 || lastOrderId != (int)reader["OrderId"])
+                {
+                    ChapeauModel.Order order = new ChapeauModel.Order();
+                    order.orderId = (int)reader["OrderId"];
+                    order.comments = reader["Comments"].ToString();
+                    order.tableId = (int)reader["TableId"];
+                    order.orderTime = (DateTime)reader["OrderTime"];
+                    order.orderId = (int)reader["OrderId"];
+
+                    if (firstTime)
+                    {
+                        orderList.Add(order);
+                    }
+                    
+                    itemList.Clear();
+                    firstTime = false;
+                }
+
+                lastOrderId = (int)reader["OrderId"];
+
+                // Add all items belonging to order
+                itemList.Add(reader["ItemName"].ToString());
+            }
+
+            return orderList;
         }
 
     }

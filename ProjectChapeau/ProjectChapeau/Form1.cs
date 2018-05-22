@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using Chapeau_UI;
 
 namespace ProjectChapeau
 {
-
+    
 
     public partial class Form1 : Form
     {
@@ -23,10 +24,39 @@ namespace ProjectChapeau
             InitializeComponent();
         }
 
+        private void btn_TestOverview_Click(object sender, EventArgs e)
+        {
+            // Test form
+            Form orderForm = new Form();
+            orderForm.Text = "Order review form";
+            orderForm.Location = new Point(50, 10);
+            orderForm.Size = new Size(800, 600);
+            orderForm.Controls.Add(ChapeauUI.showOrders());
+            orderForm.ShowDialog();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            // Test panel
+            Panel panelTest = new Panel();
+            panelTest.Name = "pnlMainDisplay";
+            panelTest.Size = new Size(panelWidth, panelHeight);
+            panelTest.TabIndex = 0;
+            panelTest.Location = new System.Drawing.Point(0, 0);
 
+            // Test button
+            Button testButton = new Button();
+            testButton.Text = "Show order";
+            testButton.Name = "btnOrder";
+            testButton.Click += new EventHandler(btn_TestOverview_Click);
+
+            Controls.Add(testButton);
+            Controls.Add(panelTest);
+
+
+
+
+            /*
             Panel login_panel = new Panel();
             login_panel.Name = "loginPanel";
             login_panel.Size = new Size(panelWidth, panelHeight);
@@ -60,8 +90,9 @@ namespace ProjectChapeau
    
             button_login.Location = new Point((login_panel.Width / 2 - loginButtonWidth), login_panel.Height / 2);
             login_panel.Controls.Add(button_login);
+            */
 
-            
+
         }
 
 
