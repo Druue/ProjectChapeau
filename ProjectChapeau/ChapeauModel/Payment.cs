@@ -12,7 +12,6 @@ namespace ChapeauModel
         bool isPayed;
         double tip;
         double totalPayment;
-        DateTime orderTime;
         PaymentMethod paymentMethod;
     }
 }
