@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    class Payment
+    public class Payment
     {
-         
+        int id;        
+        bool isPayed;
+        double tip;
+        double totalPayment;
+        DateTime orderTime;
+        PaymentMethod paymentMethod;
     }
 }
