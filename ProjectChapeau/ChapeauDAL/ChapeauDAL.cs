@@ -51,10 +51,12 @@ namespace Chapeau_DAL
                 table_list.Add(table);
             }
 
+            closeConnDB(conn);
+
             return table_list;
         }
 
-        public List<ChapeauModel.Employee> EmployeeDAO()
+        public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
             SqlConnection conn = openConnDB();
             List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
@@ -71,6 +73,8 @@ namespace Chapeau_DAL
                 ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), reader["JobRole"].ToString(), reader["Username"].ToString());
                 employee_list.Add(employee);
             }
+
+            closeConnDB(conn);
 
             return employee_list;
         }
