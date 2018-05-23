@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ProjectChapeau
 {
-    public partial class Form1 : Form
+    public partial class managerForm : Form
     {
         
         private void Form1_Load(object sender, EventArgs e)

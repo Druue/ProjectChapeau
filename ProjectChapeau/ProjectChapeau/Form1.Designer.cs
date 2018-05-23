@@ -1,6 +1,6 @@
 ﻿namespace ProjectChapeau
 {
-    partial class Form1
+    partial class managerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -112,7 +112,7 @@
             this.textmanager_label.TabIndex = 6;
             this.textmanager_label.Text = "Select a database";
             // 
-            // Form1
+            // managerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.Employees_button);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "managerForm";
             this.Text = "Chapeau";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

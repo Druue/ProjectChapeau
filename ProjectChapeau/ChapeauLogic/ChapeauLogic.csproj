@@ -40,17 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChapeauDAL\ChapeauDAL.csproj">
+      <Project>{f944ffdb-6bf9-4c26-a41f-def57e306a2c}</Project>
+      <Name>ChapeauDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{68552843-e1cb-4b77-aa28-af6c1ed75513}</Project>
-      <Name>ChapeauUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
