@@ -7,7 +7,7 @@ using Chapeau_Model;
 
 namespace Chapeau_UI
 {
-    public class ChapeauUI
+    public class LoginUI
     {
     }
 }
