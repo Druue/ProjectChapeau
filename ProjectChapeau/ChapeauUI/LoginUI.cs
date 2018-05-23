@@ -9,7 +9,7 @@ using Chapeau_Logic;
 
 namespace Chapeau_UI
 {
-    public class ChapeauUI
+    public class LoginUI
     {
         public class KitchenBarView
         {
