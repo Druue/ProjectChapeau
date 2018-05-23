@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace ProjectChapeau
 {
@@ -31,14 +30,14 @@ namespace ProjectChapeau
             //login_panel.Name = "loginPanel";
             login_panel.Size = new Size(panelWidth, panelHeight);
             login_panel.TabIndex = 0;
-            login_panel.Location = new System.Drawing.Point(0, 0);
+            login_panel.Location = new Point(0, 0);
             login_panel.BackColor = Color.Orange;
 
 
             //this allows the panel to get the size of the Form, even when resized by the user
-            login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+            login_panel.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
             | AnchorStyles.Left)
-            | AnchorStyles.Right)));
+            | AnchorStyles.Right);
             login_panel.AutoSize = true;
 
             //adding the login_panel to the Controls in the Form
@@ -74,18 +73,18 @@ namespace ProjectChapeau
             int loginButtonWidth = 160;
             int loginButtonHeight = 30;
 
-            this.login_panel.Controls.Clear();
+            login_panel.Controls.Clear();
 
-            this.login_panel.BackColor = Color.Beige;
+            login_panel.BackColor = Color.Beige;
 
             //this allows the panel to get the size of the Form, even when resized by the user
-            this.login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
-            | AnchorStyles.Left)
-            | AnchorStyles.Right)));
-            this.login_panel.AutoSize = true;
+            login_panel.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
+                    | AnchorStyles.Left)
+            | AnchorStyles.Right);
+            login_panel.AutoSize = true;
 
             //adding the login_panel to the Controls in the Form
-            Controls.Add(this.login_panel);
+            Controls.Add(login_panel);
 
 
             //-----------------------------------------------------------------------------------------GROUPBOX FOR LOGIN CONTROLS ---------------------------------------------------------------------------------------------------------------------
@@ -95,8 +94,8 @@ namespace ProjectChapeau
             login_controls_grpbox.Size = new Size(login_panel.Width / 3, login_panel.Height / 3);
 
             login_controls_grpbox.AutoSize = true;
-            this.login_panel.Controls.Add(login_controls_grpbox);
-        
+            login_panel.Controls.Add(login_controls_grpbox);
+
 
             //TEXTBOX FOR ENTERING USERNAME
             TextBox txtbox_username = new TextBox();
@@ -139,7 +138,7 @@ namespace ProjectChapeau
 
             button_login.Click += new EventHandler(button_login_Click);
 
-            button_login.Location = new Point((login_controls_grpbox.Width / 2), login_controls_grpbox.Height / 2 );
+            button_login.Location = new Point((login_controls_grpbox.Width / 2), login_controls_grpbox.Height / 2);
             login_controls_grpbox.Controls.Add(button_login);
 
 
@@ -148,7 +147,7 @@ namespace ProjectChapeau
 
         protected void button_login_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

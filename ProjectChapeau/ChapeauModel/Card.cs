@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Chapeau_Model;
 
-namespace Chapeau_UI
+namespace ChapeauModel
 {
-    public class ChapeauUI
+    class Card : Payment
     {
+
     }
 }
