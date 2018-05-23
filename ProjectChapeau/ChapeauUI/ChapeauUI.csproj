@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</ProjectGuid>
+    <ProjectGuid>{D40F339D-A1C4-4146-8CCB-3A93B86D54FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChapeauUI</RootNamespace>
@@ -41,7 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="LoginUI.cs" />
+=======
+    <Compile Include="PaymentUI.cs" />
+>>>>>>> Sophie
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
