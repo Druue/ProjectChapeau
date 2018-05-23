@@ -21,7 +21,10 @@ namespace ProjectChapeau
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { }
+
+        private void InitializeComponent()
+        { 
             Panel login_panel = new Panel();
             login_panel.Name = "loginPanel";
             login_panel.Size = new Size(panelWidth, panelHeight);
@@ -103,6 +106,11 @@ namespace ProjectChapeau
 
             button_menu.Location = new Point((manager_panel.Width / 5 - menuButtonWidth), manager_panel.Height / 3);
             manager_panel.Controls.Add(button_menu);
+        }
+
+        private void login_panel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
