@@ -90,14 +90,12 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
 
             List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
-            List<string> itemList = new List<string>();
 
             int lastOrderId = -1;
-            bool firstTime = true;
             while (reader.Read())
             {
                 // Only update order details if order number changes or first time
-                if (firstTime || lastOrderId != -1 || lastOrderId != (int)reader["OrderId"])
+                if (lastOrderId != (int)reader["OrderId"])
                 {
                     ChapeauModel.Order order = new ChapeauModel.Order();
                     order.orderId = (int)reader["OrderId"];
@@ -106,19 +104,15 @@ namespace Chapeau_DAL
                     order.orderTime = (DateTime)reader["OrderTime"];
                     order.orderId = (int)reader["OrderId"];
 
-                    if (firstTime)
-                    {
-                        orderList.Add(order);
-                    }
-                    
-                    itemList.Clear();
-                    firstTime = false;
+                
+                    orderList.Add(order);
+
                 }
 
                 lastOrderId = (int)reader["OrderId"];
 
                 // Add all items belonging to order
-                itemList.Add(reader["ItemName"].ToString());
+                orderList.Last().items.Add(reader["ItemName"].ToString());
             }
 
             return orderList;

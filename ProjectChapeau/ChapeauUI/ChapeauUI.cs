@@ -11,7 +11,7 @@ namespace Chapeau_UI
 {
     public class ChapeauUI
     {
-        public static Control showOrders()
+        public class KitchenBarView
         {
             // Create listview for drinks
             ListView order = new ListView();
