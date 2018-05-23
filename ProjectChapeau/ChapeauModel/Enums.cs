@@ -20,9 +20,4 @@ namespace ChapeauModel
     {
         Sent, Ready, Served
     }
-
-    public enum Test
-    {
-        thisis, a, test
-    }
 }

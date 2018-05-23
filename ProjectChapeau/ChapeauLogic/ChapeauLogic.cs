@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Chapeau_Model;
+using ChapeauModel;
 
-namespace Chapeau_Logic
+namespace ChapeauLogic
 {
     public class ChapeauLogic
     {
-        public ChapeauModel.Order showOrders()
+        public Order ShowOrders()
         {
-            ChapeauModel.Order order = new ChapeauModel.Order();
+            Order order = new Order();
 
             return order;
         }

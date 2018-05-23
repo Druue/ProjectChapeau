@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class Payment
+    public class Payment //Sophie
     {
-        int id;        
-        bool isPayed;
-        double tip;
-        double totalPayment;
-        PaymentMethod paymentMethod;
+        public int Id { get; private set; }
+        public int Vat { get; set; }
+        public double Tip { get; set; }
+        public double TotalPayment { get; set; }
+        public bool IsPayed { get; set; }
+        public string Comments { get; set; }
+        public PaymentMethod PaymentMethod { get; set; }
+        //public List<MenuItems> MenuItems { get; set; } (DAL STUFF - FIX LATER)
+
+        public Payment(int id, int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod)
+        {
+            Id = id;
+            Vat = vat;
+            Tip = tip;
+            TotalPayment = totalPayment;
+            IsPayed = isPayed;
+            Comments = comments;
+            PaymentMethod = paymentMethod;
+            //MenuItems = menuitems; (DAL STUFF - FIX LATER)
+        }
     }
 }

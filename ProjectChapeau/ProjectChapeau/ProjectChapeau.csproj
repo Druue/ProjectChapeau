@@ -78,11 +78,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</Project>
-      <Name>ChapeauUI</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
