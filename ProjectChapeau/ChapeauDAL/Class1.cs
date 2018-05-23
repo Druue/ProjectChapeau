@@ -32,26 +32,6 @@ namespace ChapeauDAL
             {
                 sqlconn.Close();
             }
-
-            public List<ChapeauModel.TableTop> TableTopDAO()
-            {
-                SqlConnection conn = openConnDB();
-                List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
-
-
-                StringBuilder sb = new StringBuilder();
-                sb.Append("SELECT TableId, Seats, TableStatus FROM TableTop");
-                String sql = sb.ToString();
-
-                SqlCommand command = new SqlCommand(sql, conn);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
-                    table_list.Add(table);
-                }
-
-                return table_list;
-            }
+           
         }
 }
