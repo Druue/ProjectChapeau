@@ -32,6 +32,7 @@ namespace ProjectChapeau
             orderForm.Location = new Point(50, 10);
             orderForm.Size = new Size(800, 600);
             orderForm.Controls.Add(ChapeauUI.showOrders());
+            //orderForm.Controls.Add(ChapeauUI.showOrders());
             orderForm.ShowDialog();
         }
 
