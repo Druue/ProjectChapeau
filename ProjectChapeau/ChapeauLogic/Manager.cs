@@ -8,14 +8,14 @@ using ChapeauDAL;
 
 namespace ChapeauLogic
 {
-    public class ManagerOverview
+    public class EmpolyeeOverview
     {
         private ManagerDAO managerDAO = new ManagerDAO();
 
-        public List<Manager> GetTafels()
+        public List<Employee> GetEmployees()
         {
-            List<Manager> TafelOverzicht = managerDAO.ReadAll();
-            return managerOverview;
+            List<Employee> employeeList = managerDAO.ReadAll();
+            return employeeList;
         }
 
 

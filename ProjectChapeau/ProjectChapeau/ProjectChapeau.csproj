@@ -45,17 +45,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="EmployeeOverview.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="EmployeeOverview.Designer.cs">
+      <DependentUpon>EmployeeOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerOverview.Designer.cs">
+      <DependentUpon>ManagerOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="EmployeeOverview.resx">
+      <DependentUpon>EmployeeOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManagerOverview.resx">
+      <DependentUpon>ManagerOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +86,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChapeauDAL\ChapeauDAL.csproj">
+      <Project>{f944ffdb-6bf9-4c26-a41f-def57e306a2c}</Project>
+      <Name>ChapeauDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
+      <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
+      <Name>ChapeauLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
+      <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
+      <Name>ChapeauModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
+      <Project>{4dd44185-eeb8-42cb-a143-0e2b4c82695a}</Project>
+      <Name>ChapeauUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

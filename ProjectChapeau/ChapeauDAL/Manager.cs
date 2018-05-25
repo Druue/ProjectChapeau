@@ -10,16 +10,25 @@ namespace ChapeauDAL
 {
     public class ManagerDAO
     {
-        public List<Manager> Readall()
+        private SqlConnection openConnectionDB()
         {
-            List<Manager> managerlist = new List<Manager>();
-
-            try
+            string host = "194.171.20.101";
+            string db = "Chapeau_1718_DB01";
+            string user = "projectdbgroupa3";
+            string password = "PTR6gURrRx";
+            
+         try
             {
-                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;Initial Catalog=Chapeau_1718_DB01;User ID=Chapeau_1718_grp01;Password=PTR6gURrRx");
-                sqlconn.Open();
+                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+                builder.DataSource = host;
+                builder.UserID = user;
+                builder.Password = password;
+                builder.InitialCatalog = db;
 
-                return sqlconn;
+                SqlConnection connection = new SqlConnection(builder.ConnectionString);
+
+                connection.Open();
+                return connection;
 
             }
             catch (SqlException e)
@@ -29,8 +38,17 @@ namespace ChapeauDAL
                 return sqlconn;
             }
         }
+        public List<Employee> Readall()
+        {
+            List<Employee> employeeList = new List<Employee>();
 
-        private void closeConnDB(SqlConnection sqlconn) 
+            // connection to data base and do the querys 
+
+            return employeeList;
+
+        }
+
+        private void closeConnDB(SqlConnection sqlconn)
         {
             sqlconn.Close();
         }

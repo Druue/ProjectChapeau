@@ -6,33 +6,29 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-    public class Manager
+    public class Employee
     {
         public int id;
         public int Id { get { return id; } set { id = value; } }
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string FullName
-        {
-            get { return this.FirstName + " " + this.LastName; }
-        }
-        
-        public Manager ()
+               
+        public Employee ()
         {
 
         }
     }
-    public class ManagerOverview
+    public class EmpoleeList
     {
-        List<Manager> sl = new List<Manager>();
+        List<Employee> sl = new List<Employee>();
 
-        public void addList(Manager s)
+        public void addList(Employee s)
         {
             sl.Add(s);
         }
 
-        public List<Manager> getList()
+        public List<Employee> getList()
         {
             return sl;
         }

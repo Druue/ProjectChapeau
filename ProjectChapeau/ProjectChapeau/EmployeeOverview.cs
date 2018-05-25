@@ -8,24 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace ProjectChapeau
 {
-    public partial class managerForm : Form
+    public partial class EmployeeOverview : Form
     {
-        
-        private void Form1_Load(object sender, EventArgs e)
+        public EmployeeOverview()
         {
-            
+            InitializeComponent();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void EmployeeOverview_Load(object sender, EventArgs e)
         {
+
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

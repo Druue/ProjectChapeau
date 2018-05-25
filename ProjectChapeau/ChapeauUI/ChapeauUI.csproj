@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</ProjectGuid>
+    <ProjectGuid>{4DD44185-EEB8-42CB-A143-0E2B4C82695A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChapeauUI</RootNamespace>
@@ -44,6 +44,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
+      <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
+      <Name>ChapeauLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
