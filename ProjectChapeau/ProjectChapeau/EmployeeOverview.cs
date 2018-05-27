@@ -19,11 +19,11 @@ namespace ProjectChapeau
 
         private void EmployeeOverview_Load(object sender, EventArgs e)
         {
-
+            ChapeauUI.Manager.showEmployees();
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Employee_listview_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

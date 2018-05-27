@@ -38,7 +38,7 @@ namespace ChapeauDAL
                 return sqlconn;
             }
         }
-        public List<Employee> Readall()
+        public List<Employee> ReadAll()
         {
             List<Employee> employeeList = new List<Employee>();
 

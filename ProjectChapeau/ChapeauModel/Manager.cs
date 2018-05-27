@@ -10,8 +10,8 @@ namespace ChapeauModel
     {
         public int id;
         public int Id { get { return id; } set { id = value; } }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string firstName { get; set; }
+        public string lastName { get; set; }
 
                
         public Employee ()
