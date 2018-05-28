@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chapeau_1718_DB01DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Chapeau_1718_DB01DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +79,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Chapeau_1718_DB01DataSet.xsc">
+      <DependentUpon>Chapeau_1718_DB01DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Chapeau_1718_DB01DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet.xss">
+      <DependentUpon>Chapeau_1718_DB01DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,10 +115,6 @@
     <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{4dd44185-eeb8-42cb-a143-0e2b4c82695a}</Project>
-      <Name>ChapeauUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

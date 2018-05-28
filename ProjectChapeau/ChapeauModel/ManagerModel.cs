@@ -16,10 +16,10 @@ namespace ChapeauModel
                
         public Employee ()
         {
-
+            
         }
     }
-    public class EmpoleeList
+    public class EmployeeList
     {
         List<Employee> sl = new List<Employee>();
 
@@ -28,7 +28,7 @@ namespace ChapeauModel
             sl.Add(s);
         }
 
-        public List<Employee> getList()
+        public List<Employee> GetList()
         {
             return sl;
         }
