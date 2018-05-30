@@ -37,10 +37,14 @@ namespace ProjectChapeau
 
         private void Employees_button_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
             EmployeeOverview form = new EmployeeOverview();
-            form.ShowDialog();
+            form.ShowDialog();           
 
+        }
+
+        private void textmanager_label_Click(object sender, EventArgs e)
+        {
 
         }
     }

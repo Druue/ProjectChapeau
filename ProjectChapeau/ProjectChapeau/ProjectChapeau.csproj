@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Chapeau_1718_DB01DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Chapeau_1718_DB01DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Chapeau_1718_DB01DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +94,17 @@
     </None>
     <None Include="Chapeau_1718_DB01DataSet.xss">
       <DependentUpon>Chapeau_1718_DB01DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet1.xsc">
+      <DependentUpon>Chapeau_1718_DB01DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Chapeau_1718_DB01DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet1.xss">
+      <DependentUpon>Chapeau_1718_DB01DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

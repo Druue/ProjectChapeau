@@ -14,7 +14,7 @@ namespace ProjectChapeau
     {
         public EmployeeOverview()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
 
         public void Employee_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -29,9 +29,11 @@ namespace ProjectChapeau
 
         }
 
-        public void backButtonEmployeeOverview_Clicked (object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            managerForm form = new managerForm();
+            form.ShowDialog();
         }
     }
 }
