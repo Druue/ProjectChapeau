@@ -39,7 +39,7 @@ namespace ProjectChapeau
         {
             this.Hide();
             EmployeeOverview form = new EmployeeOverview();
-            form.ShowDialog();           
+            form.ShowDialog();
 
         }
 
@@ -47,10 +47,26 @@ namespace ProjectChapeau
         {
 
         }
+
+        private void stock_button_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            StockOverview form = new StockOverview();
+            form.ShowDialog();
+
+        }
+
+        private void orders_button_Click(object sender, EventArgs e)
+        {
+            //needs to go to ordersform instead of employees
+            this.Hide();
+            EmployeeOverview form = new EmployeeOverview();
+            form.ShowDialog();
+        }
     }
     public class LoginForm : Form
     {
-
 
     }
 }

@@ -32,7 +32,7 @@
             this.back_button = new System.Windows.Forms.Button();
             this.management_label = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.Employees_button = new System.Windows.Forms.Button();
             this.stock_button = new System.Windows.Forms.Button();
             this.orders_button = new System.Windows.Forms.Button();
@@ -43,12 +43,13 @@
             // back_button
             // 
             this.back_button.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.back_button.Location = new System.Drawing.Point(132, 463);
+            this.back_button.Location = new System.Drawing.Point(134, 466);
+            this.back_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.back_button.Name = "back_button";
             this.back_button.Size = new System.Drawing.Size(129, 43);
             this.back_button.TabIndex = 3;
             this.back_button.Text = "Back";
-            this.back_button.UseVisualStyleBackColor = true;
+            this.back_button.UseVisualStyleBackColor = false;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
             // management_label
@@ -69,19 +70,19 @@
             this.menuStrip.BackColor = System.Drawing.Color.DarkOrange;
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.menuButton});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(667, 28);
             this.menuStrip.TabIndex = 5;
             this.menuStrip.Text = "menuStrip1";
             // 
-            // toolStripMenuItem1
+            // menuButton
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(33, 24);
-            this.toolStripMenuItem1.Text = "|||";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            this.menuButton.Name = "menuButton";
+            this.menuButton.Size = new System.Drawing.Size(33, 24);
+            this.menuButton.Text = "|||";
+            this.menuButton.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // Employees_button
             // 
@@ -111,6 +112,7 @@
             this.stock_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.stock_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.stock_button.UseVisualStyleBackColor = false;
+            this.stock_button.Click += new System.EventHandler(this.stock_button_Click);
             // 
             // orders_button
             // 
@@ -125,6 +127,7 @@
             this.orders_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.orders_button.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.orders_button.UseVisualStyleBackColor = false;
+            this.orders_button.Click += new System.EventHandler(this.orders_button_Click);
             // 
             // textmanager_label
             // 
@@ -167,7 +170,7 @@
         private System.Windows.Forms.Button back_button;
         private System.Windows.Forms.Label management_label;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem menuButton;
         private System.Windows.Forms.Button Employees_button;
         private System.Windows.Forms.Button stock_button;
         private System.Windows.Forms.Button orders_button;
