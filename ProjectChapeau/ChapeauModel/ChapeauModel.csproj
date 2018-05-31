@@ -45,11 +45,5 @@
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ChapeauDAL\ChapeauDAL.csproj">
-      <Project>{f944ffdb-6bf9-4c26-a41f-def57e306a2c}</Project>
-      <Name>ChapeauDAL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

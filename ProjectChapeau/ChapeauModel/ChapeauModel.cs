@@ -50,7 +50,7 @@ namespace Chapeau_Model
             string Firstname;
             string Lastname;
             string Password;
-            string JobRole;
+            JobRole Role;
             string Username;
 
             public Employee()
@@ -58,16 +58,16 @@ namespace Chapeau_Model
                 //an empty constructor is nessecary to use an empty object (NULL)
             }
 
-            public Employee(int id, string firstname, string lastname, string password, string jobRole, string username)
+            public Employee(int id, string firstname, string lastname, string password, JobRole Role, string username)
             {
                 this.EmployeeId = id;
                 this.Firstname = firstname;
                 this.Lastname = lastname;
                 this.Password = password;
-                this.JobRole = jobRole;
+                this.Role = Role;
                 this.Username = username;
             }
-        }
+
 
             public int getEmployeeId()
             {
@@ -89,9 +89,9 @@ namespace Chapeau_Model
                 return Password;
             }
 
-            public string getJobRole()
+            public JobRole getJobRole()
             {
-                return JobRole;
+                return Role;
             }
 
             public string getUsername()
@@ -99,6 +99,7 @@ namespace Chapeau_Model
                 return Username;
             }
 
+        }
         public class Order // Made by elizabeth
         {
             public List<string> items;
@@ -140,35 +141,7 @@ namespace Chapeau_Model
                 //= DB.OrderDAO();
                 return this;
             }
-            public int getEmployeeId()
-            {
-                return EmployeeId;
-            }
-
-            public string getFirstname()
-            {
-                return Firstname;
-            }
-
-            public string getLastname()
-            {
-                return Lastname;
-            }
-
-            public string getPassword()
-            {
-                return Password;
-            }
-
-            public string getJobRole()
-            {
-                return JobRole;
-            }
-
-            public string getUsername()
-            {
-                return Username;
-            }
+            
 
         }
     }
