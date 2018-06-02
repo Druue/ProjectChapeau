@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</ProjectGuid>
+    <ProjectGuid>{B7DB8C99-E57E-4830-B032-A83AA333C7DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChapeauUI</RootNamespace>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,17 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapeauDAL\ChapeauDAL.csproj">
-      <Project>{F944FFDB-6BF9-4C26-A41F-DEF57E306A2C}</Project>
-      <Name>ChapeauDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
-      <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
-      <Name>ChapeauLogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
-      <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
-      <Name>ChapeauModel</Name>
+    <ProjectReference Include="..\ProjectChapeau\ProjectChapeau.csproj">
+      <Project>{39229c09-b170-4f60-af10-32665f3e76a1}</Project>
+      <Name>ProjectChapeau</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

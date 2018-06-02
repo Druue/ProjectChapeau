@@ -15,5 +15,15 @@ namespace Chapeau_Logic
 
             return order;
         }
+
+        public ChapeauModel.Employee LoginLogic()
+        {
+            ChapeauModel.Employee login = new ChapeauModel.Employee();
+
+
+            return login;
+        }
+
+
     }
 }

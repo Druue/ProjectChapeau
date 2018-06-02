@@ -79,9 +79,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</Project>
-      <Name>ChapeauUI</Name>
+    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
+      <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
+      <Name>ChapeauLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
+      <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
+      <Name>ChapeauModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

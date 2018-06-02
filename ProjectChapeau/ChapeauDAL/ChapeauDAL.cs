@@ -56,8 +56,45 @@ namespace Chapeau_DAL
             return table_list;
         }
 
+        public ChapeauModel.Employee LoginTry (string username, string password) // HIER WAS JE GEBLEVEN!
+        {
+            ChapeauModel.Employee loginTry = null;
+
+            SqlConnection conn = openConnDB();
+
+            string query = $"SELECT EmployeeId, Username, Password, JobRole" +
+              $"FROM Employee" +
+              $"WHERE Username = @username, Password = @password";
+
+
+            String sql = query.ToString();
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            ChapeauModel.Employee LoginEmployee = null;
+
+
+
+            while (reader.Read())
+            {
+                int employeeId = reader.GetInt32(0);
+                string firstname = reader.GetString(1);
+                string lastname = reader.GetString(2);
+                string loginPassword = reader.GetString(3);
+                JobRole role = (JobRole)reader.GetInt32(4);
+                string loginUsername = reader.GetString(5);
+
+                LoginEmployee = new ChapeauModel.Employee(employeeId, firstname, lastname, loginPassword, role, loginUsername);
+
+            }
+
+            conn.Close();
+            return LoginEmployee;
+        }
         public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
+            
             SqlConnection conn = openConnDB();
             List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
 
@@ -70,7 +107,7 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), reader["JobRole"].ToString(), reader["Username"].ToString());
+                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), (JobRole)reader["JobRole"], reader["Username"].ToString());
                 employee_list.Add(employee);
             }
 

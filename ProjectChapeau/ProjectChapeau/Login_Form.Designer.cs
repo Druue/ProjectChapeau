@@ -20,6 +20,11 @@
             base.Dispose(disposing);
         }
 
+        private System.Windows.Forms.Button button_login_to_begin;
+        private System.Windows.Forms.GroupBox login_controls_grpbox;
+        private System.Windows.Forms.TextBox txtbox_username;
+        private System.Windows.Forms.TextBox txtbox_password;
+        private System.Windows.Forms.Button button_login;
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -29,10 +34,18 @@
         private void InitializeComponent()
         {
             this.login_panel = new System.Windows.Forms.Panel();
+            this.button_login_to_begin = new System.Windows.Forms.Button();
+
+            this.login_controls_grpbox = new System.Windows.Forms.GroupBox();
+            this.button_login = new System.Windows.Forms.Button();
+            this.txtbox_password = new System.Windows.Forms.TextBox();
+            this.txtbox_username = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+
             // 
             // login_panel
             // 
+            
             this.login_panel.Location = new System.Drawing.Point(404, 209);
             this.login_panel.Name = "login_panel";
             this.login_panel.Size = new System.Drawing.Size(200, 100);
@@ -44,9 +57,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1596, 581);
             this.Controls.Add(this.login_panel);
-            this.Name = "Form1";
+            this.Name = "LoginForm";
             this.Text = "Chapeau";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
 
         }
