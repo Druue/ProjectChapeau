@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapeauKitBarUI;
+using Chapeau_Model;
 
 namespace ProjectChapeau
 {
@@ -21,7 +22,19 @@ namespace ProjectChapeau
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
             KitchenBarUI kitbar = new KitchenBarUI();
-            kitbar.GetOrders();
+            DataTable orderList = kitbar.GetOrders();
+
+            KitchenBarView.DataSource = orderList;
+        }
+
+        private void btnKitchen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

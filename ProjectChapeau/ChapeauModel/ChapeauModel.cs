@@ -102,21 +102,21 @@ namespace Chapeau_Model
         }
         public class Order // Made by elizabeth
         {
-            public List<string> items;
+            public string item;
             public int orderId { get; set; }
             public int tableId { get; set; }
             public string comments { get; set; }
             public DateTime orderTime;
-            public bool paidStatus;
+            //public bool paidStatus;
 
             public Order()
             {
                 //constructor
-                this.items = new List<string>();
+                this.item = "";
                 this.tableId = 0;
                 this.comments = "";
                 this.orderTime = DateTime.Now;
-                this.paidStatus = false;
+               // this.paidStatus = false;
             }
 
             public bool PlaceOrder()
