@@ -15,6 +15,7 @@ namespace Chapeau_DAL
         {
             try
             {
+                // @"Data Source=194.171.20.101;Initial Catalog=Chapeau_1718_DB01;Persist Security Info=True;User ID=Chapeau_1718_grp01;Password=***********"
                 SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;Initial Catalog=Chapeau_1718_DB01;User ID=Chapeau_1718_grp01;Password=PTR6gURrRx");
                 sqlconn.Open();
 
@@ -47,7 +48,8 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), 
+                    Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
                 table_list.Add(table);
             }
 
@@ -56,9 +58,8 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginTry (string username, string password) // HIER WAS JE GEBLEVEN!
+        public ChapeauModel.Employee LoginTry (string username, string password) 
         {
-            ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = openConnDB();
 
@@ -107,7 +108,9 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), (JobRole)reader["JobRole"], reader["Username"].ToString());
+                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), 
+                    reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(),
+                    (JobRole)reader["JobRole"], reader["Username"].ToString());
                 employee_list.Add(employee);
             }
 
