@@ -14,6 +14,8 @@ namespace ProjectChapeau
 {
     public partial class KitchenBarForm : Form
     {
+        
+
         public KitchenBarForm()
         {
             InitializeComponent();
@@ -21,10 +23,12 @@ namespace ProjectChapeau
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
+            this.BackColor = Color.Orange;
             KitchenBarUI kitbar = new KitchenBarUI();
             DataTable orderList = kitbar.GetOrders();
 
             KitchenBarView.DataSource = orderList;
+
         }
 
         private void btnKitchen_Click(object sender, EventArgs e)
