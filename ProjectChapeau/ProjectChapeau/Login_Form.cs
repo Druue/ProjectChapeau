@@ -155,6 +155,10 @@ namespace ProjectChapeau
         {
             string username = txtbox_username.Text;
             string password = txtbox_password.Text;
+
+            //this is the place for now. will change with login authentication
+            KitchenBarForm kitBarForm = new KitchenBarForm();
+            kitBarForm.ShowDialog();
         }
 
         private void LoginForm_Load_1(object sender, EventArgs e)

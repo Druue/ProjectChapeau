@@ -123,12 +123,12 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = openConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
-            /*
+            //sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+            
             sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
             sb.Append("FROM Orders, OrderItems, Menu");
-            sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId;");
-            */
+            sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+            
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
@@ -146,7 +146,7 @@ namespace Chapeau_DAL
                     order.comments = reader["Comments"].ToString();
                     order.tableId = (int)reader["TableId"];
                     order.orderTime = (DateTime)reader["OrderTime"];
-                    order.orderId = (int)reader["OrderId"];
+                    //order.orderId = (int)reader["OrderId"];
 
                 
                     orderList.Add(order);
