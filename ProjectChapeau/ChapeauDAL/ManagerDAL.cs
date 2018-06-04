@@ -10,25 +10,14 @@ namespace ChapeauDAL
 {
     public class ManagerDAO
     {
-        public SqlConnection openConnectionDB()
+        private SqlConnection openConnDB() //Made by Machelle
         {
-            string host = "194.171.20.101";
-            string db = "Chapeau_1718_DB01";
-            string user = "projectdbgroupa3";
-            string password = "PTR6gURrRx";
-            
-         try
+            try
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = host;
-                builder.UserID = user;
-                builder.Password = password;
-                builder.InitialCatalog = db;
+                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;Initial Catalog=Chapeau_1718_DB01;User ID=Chapeau_1718_grp01;Password=PTR6gURrRx");
+                sqlconn.Open();
 
-                SqlConnection connection = new SqlConnection(builder.ConnectionString);
-
-                connection.Open();
-                return connection;
+                return sqlconn;
 
             }
             catch (SqlException e)
@@ -39,15 +28,14 @@ namespace ChapeauDAL
             }
         }
 
-
-        private void closeConnDB(SqlConnection sqlconn)
+        private void closeConnDB(SqlConnection sqlconn) 
         {
             sqlconn.Close();
-        }
+        }   
 
         public void createEmployee(string firstname, string lastname, string jobrole, string password, string username)
         {
-            var connection = openConnectionDB();
+            var connection = openConnDB();
             var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "INSERT INTO Employee (Firstname,Lastname,JobRole,Password,Username) VALUES(" + firstname + "," + lastname + "," + jobrole + "," + password + "," + username + ")";
@@ -57,17 +45,17 @@ namespace ChapeauDAL
 
         public void editEmployee(string firstname, string lastname, string jobrole, string password, string username)
         {
-            var connection = openConnectionDB();
+            var connection = openConnDB();
             var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "UPDATE Emloyee SET Firstname = " + firstname + ",Lastname = " + lastname + ",JobRole = " + jobrole + ",Password =  " + password + ",Username = " + username + ";"; // UPDATE COMMANT
+            command.CommandText = "UPDATE Employee SET Firstname = " + firstname + ",Lastname = " + lastname + ",JobRole = " + jobrole + ",Password =  " + password + ",Username = " + username + ";"; // UPDATE COMMANT
             command.ExecuteNonQuery();
             connection.Close();
         }
 
         public void deleteEmployee(string name)
         {
-            var connection = openConnectionDB();
+            var connection = openConnDB();
             var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "DELETE FROM Employee WHERE Firstname = '" + name + "' ";
@@ -77,7 +65,7 @@ namespace ChapeauDAL
 
         public void addStock(string name)
         {
-            var connection = openConnectionDB();
+            var connection = openConnDB();
             var command = connection.CreateCommand();
             command.CommandType = System.Data.CommandType.Text;
             command.CommandText = "UPDATE Menu SET Stock = Stock + 1; WHERE itemName = " + name + "";
