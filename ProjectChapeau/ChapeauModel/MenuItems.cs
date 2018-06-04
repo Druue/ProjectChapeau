@@ -10,6 +10,5 @@ namespace ChapeauModel
     {
         public string ItemName;
         public int ItemPrice;
-
     }
 }

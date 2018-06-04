@@ -21,22 +21,22 @@ namespace ChapeauModel
 
         public TableTop(int id, int seats, string status)
         {
-            this.TableId = id;
-            this.Seats = seats;
-            this.TableStatus = status;
+            TableId = id;
+            Seats = seats;
+            TableStatus = status;
         }
 
-        public int getSeats()
+        public int GetSeats()
         {
             return Seats;
         }
 
-        public string getTableStatus()
+        public string GetTableStatus()
         {
             return TableStatus;
         }
 
-        public int getTableId()
+        public int GetTableId()
         {
             return TableId;
         }
@@ -56,14 +56,14 @@ namespace ChapeauModel
             //an empty constructor is nessecary to use an empty object (NULL)
         }
 
-        public Employee(int id, string firstname, string lastname, string password, JobRole Role, string username)
+        public Employee(int id, string firstname, string lastname, string password, JobRole role, string username)
         {
-            this.EmployeeId = id;
-            this.Firstname = firstname;
-            this.Lastname = lastname;
-            this.Password = password;
-            this.Role = Role;
-            this.Username = username;
+            EmployeeId = id;
+            Firstname = firstname;
+            Lastname = lastname;
+            Password = password;
+            Role = role;
+            Username = username;
         }
 
 
@@ -72,27 +72,27 @@ namespace ChapeauModel
             return EmployeeId;
         }
 
-        public string getFirstname()
+        public string GetFirstname()
         {
             return Firstname;
         }
 
-        public string getLastname()
+        public string GetLastname()
         {
             return Lastname;
         }
 
-        public string getPassword()
+        public string GetPassword()
         {
             return Password;
         }
 
-        public JobRole getJobRole()
+        public JobRole GetJobRole()
         {
             return Role;
         }
 
-        public string getUsername()
+        public string GetUsername()
         {
             return Username;
         }
@@ -101,20 +101,20 @@ namespace ChapeauModel
     public class Order // Made by elizabeth
     {
         public string item;
-        public int orderId { get; set; }
-        public int tableId { get; set; }
-        public string comments { get; set; }
+        public int OrderId { get; set; }
+        public int TableId { get; set; }
+        public string Comments { get; set; }
         public DateTime orderTime;
         //public bool paidStatus;
 
         public Order()
         {
             //constructor
-            this.item = "";
-            this.tableId = 0;
-            this.comments = "";
-            this.orderTime = DateTime.Now;
-            // this.paidStatus = false;
+            item = "";
+            TableId = 0;
+            Comments = "";
+            orderTime = DateTime.Now;
+            // paidStatus = false;
         }
 
         public bool PlaceOrder()
@@ -139,8 +139,5 @@ namespace ChapeauModel
             //= DB.OrderDAO();
             return this;
         }
-
-
     }
-
 }
