@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KitchenBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KitchenBarForm.Designer.cs">
+      <DependentUpon>KitchenBarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="KitchenBarForm.resx">
+      <DependentUpon>KitchenBarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,8 +88,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
+      <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
+      <Name>ChapeauLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
+      <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
+      <Name>ChapeauModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{68552843-E1CB-4B77-AA28-AF6C1ED75513}</Project>
+      <Project>{b7db8c99-e57e-4830-b032-a83aa333c7df}</Project>
       <Name>ChapeauUI</Name>
     </ProjectReference>
   </ItemGroup>
