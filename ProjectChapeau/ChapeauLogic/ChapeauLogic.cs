@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Chapeau_Model;
 using Chapeau_DAL;
 
-namespace Chapeau_Logic
+namespace ChapeauLogic
 {
     public class ChapeauLogic
     {
