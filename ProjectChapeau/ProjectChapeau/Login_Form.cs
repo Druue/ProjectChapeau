@@ -10,8 +10,6 @@ using System.Windows.Forms;
 
 namespace ProjectChapeau
 {
-
-
     public partial class LoginForm :Form
     {
         public int panelWidth = 1400; //please use these sizes for the form
@@ -30,21 +28,19 @@ namespace ProjectChapeau
             login_panel.Location = new Point(0, 0);
             login_panel.BackColor = Color.Orange;
 
-<<<<<<< HEAD:ProjectChapeau/ProjectChapeau/Login_Form.cs
+            //<<<<<<< HEAD:ProjectChapeau/ProjectChapeau/Login_Form.cs
             //sizing stuff login_panel
-            login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)
-            ((((AnchorStyles.Top | AnchorStyles.Bottom)
-=======
+            login_panel.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom);
+//=======
 
             //this allows the panel to get the size of the Form, even when resized by the user
             login_panel.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
->>>>>>> Sophie:ProjectChapeau/ProjectChapeau/Form1.cs
+//>>>>>>> Sophie:ProjectChapeau/ProjectChapeau/Form1.cs
             | AnchorStyles.Left)
             | AnchorStyles.Right);
             login_panel.AutoSize = true;
             
             Controls.Add(login_panel);
-
 
             //LOGIN TO BEGIN BUTTON 
             int loginButtonWidth = 160;
@@ -71,9 +67,6 @@ namespace ProjectChapeau
 
             //adding it to the login_panel
             login_panel.Controls.Add(button_login_to_begin);
-
-
-
         }
 
         public void button_login_to_begin_Click(object sender, EventArgs e) //Made by Machelle
@@ -93,7 +86,6 @@ namespace ProjectChapeau
 
             //adding the login_panel to the Controls in the Form
             Controls.Add(login_panel);
-
 
             //-----------------------------------------------------------------------------------------GROUPBOX FOR LOGIN CONTROLS ---------------------------------------------------------------------------------------------------------------------
 
@@ -149,7 +141,6 @@ namespace ProjectChapeau
 
             button_login.Location = new Point((login_controls_grpbox.Width / 2), login_controls_grpbox.Height / 2);
             login_controls_grpbox.Controls.Add(button_login);
-
 
             // --------------------------------------------------------------------------END OF GROUPBOX CONTROLS FOR LOGGING IN -----------------------------------------------------------------------------------------------------------------------------------
         }

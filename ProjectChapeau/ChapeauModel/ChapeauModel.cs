@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
@@ -19,22 +16,22 @@ namespace ChapeauModel
 
         public TableTop(int id, int seats, string status)
         {
-            this.TableId = id;
-            this.Seats = seats;
-            this.TableStatus = status;
+            TableId = id;
+            Seats = seats;
+            TableStatus = status;
         }
 
-        public int getSeats()
+        public int GetSeats()
         {
             return Seats;
         }
 
-        public string getTableStatus()
+        public string GetTableStatus()
         {
             return TableStatus;
         }
 
-        public int getTableId()
+        public int GetTableId()
         {
             return TableId;
         }
@@ -101,20 +98,18 @@ namespace ChapeauModel
     {
         public List<string> items;
 
-        public int orderId { get; set; }
-        public int tableId { get; set; }
-        public string comments { get; set; }
+        public int OrderId { get; set; }
+        public int TableId { get; set; }
+        public string Comments { get; set; }
         public DateTime orderTime;
-        public bool paidStatus;
 
         public Order()
         {
             //constructor
             items = new List<string>();
-            tableId = 0;
-            comments = "";
+            TableId = 0;
+            Comments = "";
             orderTime = DateTime.Now;
-            paidStatus = false;
         }
 
         public bool PlaceOrder()

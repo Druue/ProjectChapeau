@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
     public class Payment //Sophie
     {
-        public int Id { get; private set; }
-        public int Vat { get; set; }
+        public int EmployeeId { get; set; }
+        public double Vat { get; set; }
         public double Tip { get; set; }
         public double TotalPayment { get; set; }
-        public bool IsPayed { get; set; }
+        //public bool IsPayed { get; set; } not sure if keeping
         public string Comments { get; set; }
+        public DateTime TimePayed { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-        //public List<MenuItems> MenuItems { get; set; } (DAL STUFF - FIX LATER)
+        //public List<MenuItems> MenuItems { get; set; } (FIX LATER)
 
-        public Payment(int id, int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod)
+        //public Payment() Not sure if empty constructor is needed
+        //{
+
+        //}
+
+        public Payment(int employeeId , int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod)
         {
-            Id = id;
+            EmployeeId = employeeId;
             Vat = vat;
             Tip = tip;
             TotalPayment = totalPayment;
-            IsPayed = isPayed;
+            //IsPayed = isPayed;
             Comments = comments;
+            TimePayed = DateTime.Now;
             PaymentMethod = paymentMethod;
-            //MenuItems = menuitems; (DAL STUFF - FIX LATER)
+            //MenuItems = menuitems; (FIX LATER)
         }
     }
 }

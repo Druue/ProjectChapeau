@@ -1,25 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using System.Text;
 
 namespace Chapeau_DAL
 {
     public class ChapeauDAL
     {
-        private SqlConnection openConnDB() //Made by Machelle
+        private SqlConnection OpenConnDB() //Made by Machelle
         {
             try
             {
-                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;Initial Catalog=Chapeau_1718_DB01;User ID=Chapeau_1718_grp01;Password=PTR6gURrRx");
+                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;
+                                                            Initial Catalog=Chapeau_1718_DB01;
+                                                            User ID=Chapeau_1718_grp01;
+                                                            Password=PTR6gURrRx");
                 sqlconn.Open();
 
                 return sqlconn;
-
             }
+
             catch (SqlException e)
             {
                 SqlConnection sqlconn = null;
@@ -28,10 +27,25 @@ namespace Chapeau_DAL
             }
         }
 
-        private void closeConnDB(SqlConnection sqlconn) //Made by Machelle
+        private void CloseConnDB(SqlConnection sqlconn) //Made by Machelle
         {
             sqlconn.Close();
         }
+
+        //Method for gathering info for payment.
+
+
+        //Method for putting payment info into the database
+
+        private void InsertPayment()
+        {
+            using (OpenConnDB())
+            {
+                String query = "INSERT INTO dbo.Payment (EmployeeId, Vat, Tip, TotalPayment, IsPayed, Comments, PaymentMethod, MenuItems) " +
+                                "VALUES (@EmployeeId, @Vat, @Tip, @TotalPayment, @IsPayed, @Comments, @PaymentMethod, @MenuItems");
+            }
+        }
+
         //public List<ChapeauModel.TableTop> TableTopDAO()
         //{
         //    SqlConnection conn = openConnDB();
