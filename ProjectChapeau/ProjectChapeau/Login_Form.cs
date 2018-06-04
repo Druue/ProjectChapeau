@@ -28,16 +28,10 @@ namespace ProjectChapeau
             login_panel.Location = new Point(0, 0);
             login_panel.BackColor = Color.Orange;
 
-            //<<<<<<< HEAD:ProjectChapeau/ProjectChapeau/Login_Form.cs
-            //sizing stuff login_panel
-            login_panel.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom);
-//=======
 
-            //this allows the panel to get the size of the Form, even when resized by the user
-            login_panel.Anchor = (((AnchorStyles.Top | AnchorStyles.Bottom)
-//>>>>>>> Sophie:ProjectChapeau/ProjectChapeau/Form1.cs
-            | AnchorStyles.Left)
-            | AnchorStyles.Right);
+            //sizing stuff login_panel
+            login_panel.Anchor = ((System.Windows.Forms.AnchorStyles)
+            (AnchorStyles.Top | AnchorStyles.Bottom));
             login_panel.AutoSize = true;
             
             Controls.Add(login_panel);
@@ -45,7 +39,7 @@ namespace ProjectChapeau
             //LOGIN TO BEGIN BUTTON 
             int loginButtonWidth = 160;
             int loginButtonHeight = 30;
-            Button button_login_to_begin = new Button();
+            //Button button_login_to_begin = new Button();
 
             //login to begin button set up
             button_login_to_begin.Width = loginButtonWidth;
@@ -90,7 +84,7 @@ namespace ProjectChapeau
             //-----------------------------------------------------------------------------------------GROUPBOX FOR LOGIN CONTROLS ---------------------------------------------------------------------------------------------------------------------
 
             //group box that contains the log in textboxes and button
-            GroupBox login_controls_grpbox = new GroupBox();
+            //GroupBox login_controls_grpbox = new GroupBox();
             login_controls_grpbox.Location = new System.Drawing.Point(100, 100);
             login_controls_grpbox.Size = new Size(login_panel.Width / 3, login_panel.Height / 3);
 
@@ -99,24 +93,28 @@ namespace ProjectChapeau
 
 
             //TEXTBOX FOR ENTERING USERNAME
-            TextBox txtbox_username = new TextBox();
+            //TextBox txtbox_username = new TextBox();
             txtbox_username.Name = "usernamebox";
             txtbox_username.Width = loginButtonWidth;
             txtbox_username.Height = loginButtonHeight;
             txtbox_username.ForeColor = Color.Black;
             txtbox_username.Font = new Font("Arial", 10, FontStyle.Bold);
-            txtbox_username.Location = new Point((login_controls_grpbox.Width / 2 - loginButtonWidth), login_controls_grpbox.Height / 2);
+            txtbox_username.Location = 
+            new Point((login_controls_grpbox.Width / 2 - loginButtonWidth),
+            login_controls_grpbox.Height / 2);
 
             login_controls_grpbox.Controls.Add(txtbox_username);
 
             //TEXTBOX FOR ENTERING PASSWORD
-            TextBox txtbox_password = new TextBox();
+            //TextBox txtbox_password = new TextBox();
             txtbox_password.Name = "passwordbox";
             txtbox_password.Width = loginButtonWidth;
             txtbox_password.Height = loginButtonHeight;
             txtbox_password.ForeColor = Color.Black;
             txtbox_password.Font = new Font("Arial", 10, FontStyle.Bold);
-            txtbox_password.Location = new Point((login_controls_grpbox.Width / 2 - loginButtonWidth), login_controls_grpbox.Height / 2 + txtbox_username.Height);
+            txtbox_password.Location = 
+            new Point((login_controls_grpbox.Width / 2 - loginButtonWidth),
+            login_controls_grpbox.Height / 2 + txtbox_username.Height);
 
             login_controls_grpbox.Controls.Add(txtbox_password);
 
@@ -125,7 +123,7 @@ namespace ProjectChapeau
             string password = txtbox_password.Text;
 
             //Login after filling in user information BUTTON 
-            Button button_login = new Button();
+            //Button button_login = new Button();
 
 
             button_login.Text = "Log in";
@@ -147,7 +145,12 @@ namespace ProjectChapeau
 
         protected void button_login_Click(object sender, EventArgs e)
         {
+            string username = txtbox_username.Text;
+            string password = txtbox_password.Text;
 
+            //this is the place for now. will change with login authentication
+            KitchenBarForm kitBarForm = new KitchenBarForm();
+            kitBarForm.ShowDialog();
         }
 
         private void LoginForm_Load_1(object sender, EventArgs e)

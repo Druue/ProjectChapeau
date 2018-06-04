@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D40F339D-A1C4-4146-8CCB-3A93B86D54FA}</ProjectGuid>
+    <ProjectGuid>{B7DB8C99-E57E-4830-B032-A83AA333C7DF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ChapeauUI</RootNamespace>
@@ -32,7 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,18 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+    <Compile Include="KitchenBarUI.cs" />
     <Compile Include="LoginUI.cs" />
-=======
-    <Compile Include="PaymentUI.cs" />
->>>>>>> Sophie
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChapeauDAL\ChapeauDAL.csproj">
-      <Project>{F944FFDB-6BF9-4C26-A41F-DEF57E306A2C}</Project>
-      <Name>ChapeauDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
       <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
       <Name>ChapeauLogic</Name>

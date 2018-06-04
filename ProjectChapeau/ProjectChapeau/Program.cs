@@ -13,7 +13,7 @@ namespace ProjectChapeau
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Payment_Form());
+            Application.Run(new LoginForm());
         }
     }
 }

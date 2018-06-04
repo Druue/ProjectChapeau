@@ -1,14 +1,32 @@
-﻿using ChapeauModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Chapeau_DAL;
+using Chapeau_Model;
 
-namespace ChapeauLogic
+namespace Chapeau_Logic
 {
     public class ChapeauLogic
     {
-        public Order ShowOrders()
+        public void showOrders()
         {
-            Order order = new Order();
+            ChapeauDAL stuff = new ChapeauDAL();
+            stuff.OrderDAO(); 
+            //ChapeauModel.Order order = new ChapeauModel.Order();
 
-            return order;
+            //return order;
         }
+
+        public ChapeauModel.Employee LoginLogic()
+        {
+            ChapeauModel.Employee login = new ChapeauModel.Employee();
+
+
+            return login;
+        }
+
+
     }
 }
