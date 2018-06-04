@@ -1,57 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ChapeauModel
+namespace Chapeau_Model
 {
-    public class TableTop //made by Machelle
+    class ChapeauModel
     {
-        int TableId;
-        int Seats;
-        string TableStatus;
-
-        public TableTop()
+        public class TableTop //made by Machelle
         {
-            //an empty constructor is nessecary to use an empty object (NULL)
+
+            int TableId;
+            int Seats;
+            string TableStatus;
+
+            public TableTop()
+            {
+                //an empty constructor is nessecary to use an empty object (NULL)
+            }
+
+            public TableTop(int id, int seats, string status)
+            {
+                this.TableId = id;
+                this.Seats = seats;
+                this.TableStatus = status;
+            }
+
+            public int getSeats()
+            {
+                return Seats;
+            }
+
+            public string getTableStatus()
+            {
+                return TableStatus;
+            }
+
+            public int getTableId()
+            {
+                return TableId;
+            }
         }
 
-        public TableTop(int id, int seats, string status)
-        {
-            TableId = id;
-            Seats = seats;
-            TableStatus = status;
-        }
-
-        public int GetSeats()
-        {
-            return Seats;
-        }
-
-        public string GetTableStatus()
-        {
-            return TableStatus;
-        }
-
-        public int GetTableId()
-        {
-            return TableId;
-        }
-    }
-
-    public class Employee //made by Machelle
-    {
-        int EmployeeId;
-        string Firstname;
-        string Lastname;
-        string Password;
-        string JobRole;
-        string Username;
-
-        public Employee()
-        {
-            //an empty constructor is nessecary to use an empty object (NULL)
-        }
-
-        public Employee(int id, string firstname, string lastname, string password, string jobRole, string username)
+        public class Employee //made by Machelle
         {
             int EmployeeId;
             string Firstname;
@@ -60,15 +52,11 @@ namespace ChapeauModel
             JobRole Role;
             string Username;
 
-        public int GetEmployeeId()
-        {
-            return EmployeeId;
-        }
+            public Employee()
+            {
+                //an empty constructor is nessecary to use an empty object (NULL)
+            }
 
-        public string GetFirstname()
-        {
-            return Firstname;
-        }
             public Employee(int id, string firstname, string lastname, string password, JobRole Role, string username)
             {
                 this.EmployeeId = id;
@@ -79,20 +67,21 @@ namespace ChapeauModel
                 this.Username = username;
             }
 
-        public string GetLastname()
-        {
-            return Lastname;
-        }
 
-        public string GetPassword()
-        {
-            return Password;
-        }
+            public int getEmployeeId()
+            {
+                return EmployeeId;
+            }
 
-        public string GetJobRole()
-        {
-            return JobRole;
-        }
+            public string getFirstname()
+            {
+                return Firstname;
+            }
+
+            public string getLastname()
+            {
+                return Lastname;
+            }
 
             public string getPassword()
             {
@@ -112,60 +101,47 @@ namespace ChapeauModel
         }
         public class Order // Made by elizabeth
         {
-            return Username;
-        }
-    }
+            public string item;
+            public int orderId { get; set; }
+            public int tableId { get; set; }
+            public string comments { get; set; }
+            public DateTime orderTime;
+            //public bool paidStatus;
 
+            public Order()
+            {
+                //constructor
+                this.item = "";
+                this.tableId = 0;
+                this.comments = "";
+                this.orderTime = DateTime.Now;
+                // this.paidStatus = false;
+            }
 
+            public bool PlaceOrder()
+            {
+                return false;
+            }
 
-    public class Order // Made by elizabeth
-    {
-        public List<string> items;
+            public bool ModifyOrder()
+            {
+                return false;
+            }
+
+            public bool RemoveOrder()
+            {
+                return false;
+            }
 
             public Order GetOrder()
             {
                 //ChapeauDAL DB = new ChapeauDAL();
-                
+
                 //= DB.OrderDAO();
                 return this;
             }
-            
-        public int OrderId { get; set; }
-        public int TableId { get; set; }
-        public string Comments { get; set; }
-        public DateTime orderTime;
 
-        public Order()
-        {
-            //constructor
-            items = new List<string>();
-            TableId = 0;
-            Comments = "";
-            orderTime = DateTime.Now;
-        }
 
-        public bool PlaceOrder()
-        {
-            return false;
-        }
-
-        public bool ModifyOrder()
-        {
-            return false;
-        }
-
-        public bool RemoveOrder()
-        {
-            return false;
-        }
-
-        public Order GetOrder()
-        {
-            //ChapeauDAL DB = new ChapeauDAL();
-
-            //= DB.OrderDAO();
-            return this;
         }
     }
-
 }
