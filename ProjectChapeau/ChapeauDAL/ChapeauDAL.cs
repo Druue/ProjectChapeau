@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Text;
+using ChapeauModel;
 
 namespace Chapeau_DAL
 {
@@ -45,15 +46,32 @@ namespace Chapeau_DAL
                                 "VALUES (@EmployeeId, @Vat, @Tip, @TotalPayment, @IsPayed, @Comments, @PaymentMethod, @MenuItems)";
             }
         }
-
-        //public List<ChapeauModel.TableTop> TableTopDAO()
-        //{
-        //    SqlConnection conn = openConnDB();
-        //    List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
-
-
-        public ChapeauModel.Employee LoginTry (string username, string password) 
+        public List<ChapeauModel.TableTop> TableTopDAO()
         {
+            SqlConnection conn = openConnDB();
+            List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
+
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT TableId, Seats, TableStatus FROM TableTop");
+            String sql = sb.ToString();
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                table_list.Add(table);
+            }
+
+            closeConnDB(conn);
+
+            return table_list;
+        }
+
+        public ChapeauModel.Employee LoginTry(string username, string password) // HIER WAS JE GEBLEVEN!
+        {
+            ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = openConnDB();
 
@@ -89,62 +107,56 @@ namespace Chapeau_DAL
         }
         public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
-            
+
             SqlConnection conn = openConnDB();
             List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
 
-        //    SqlCommand command = new SqlCommand(sql, conn);
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
-        //        table_list.Add(table);
-        //    }
 
-        //    closeConnDB(conn);
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT EmployeeId, Firstname, Lastname, Password, JobRole, Username FROM Employee");
+            String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), 
-                    reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(),
-                    (JobRole)reader["JobRole"], reader["Username"].ToString());
+                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), (JobRole)reader["JobRole"], reader["Username"].ToString());
                 employee_list.Add(employee);
             }
 
-        //public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
-        //{
-        //    SqlConnection conn = openConnDB();
-        //    List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
+            closeConnDB(conn);
 
+            return employee_list;
+        }
 
         public List<ChapeauModel.Order> OrderDAO()
         {
             SqlConnection conn = openConnDB();
             StringBuilder sb = new StringBuilder();
-            //sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
-            
-            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
-            sb.Append("FROM Orders, OrderItems, Menu");
-            sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
-            
+            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+
+            //sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
+            //sb.Append("FROM Orders, OrderItems, Menu");
+            //sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
-        //    SqlCommand command = new SqlCommand(sql, conn);
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-        //        ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), reader["JobRole"].ToString(), reader["Username"].ToString());
-        //        employee_list.Add(employee);
-        //    }
+            List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
 
-            int lastOrderId = -1;
+            //int lastOrderId = -1;
             while (reader.Read())
             {
-                // Only update order details if order number changes or first time
+                ChapeauModel.Order order = new ChapeauModel.Order();
+                order.orderId = (int)reader["OrderId"];
+                order.item = reader["ItemName"].ToString();
+                order.comments = reader["Comments"].ToString();
+                order.tableId = (int)reader["TableId"];
+                order.orderTime = (DateTime)reader["OrderTime"];
+
+                orderList.Add(order);
+                /* Only update order details if order number changes or first time
                 if (lastOrderId != (int)reader["OrderId"])
                 {
                     ChapeauModel.Order order = new ChapeauModel.Order();
@@ -154,51 +166,20 @@ namespace Chapeau_DAL
                     order.orderTime = (DateTime)reader["OrderTime"];
                     //order.orderId = (int)reader["OrderId"];
 
-        //    return employee_list;
-        //}
-
-        //public List<ChapeauModel.Order> OrderDAO()
-        //{
-        //    SqlConnection conn = openConnDB();
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
-        //    /*
-        //    sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
-        //    sb.Append("FROM Orders, OrderItems, Menu");
-        //    sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId;");
-        //    */
-        //    String sql = sb.ToString();
-        //    SqlCommand command = new SqlCommand(sql, conn);
-        //    SqlDataReader reader = command.ExecuteReader();
-
-        //    List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
-
-        //    int lastOrderId = -1;
-        //    while (reader.Read())
-        //    {
-        //        // Only update order details if order number changes or first time
-        //        if (lastOrderId != (int)reader["OrderId"])
-        //        {
-        //            ChapeauModel.Order order = new ChapeauModel.Order();
-        //            order.orderId = (int)reader["OrderId"];
-        //            order.comments = reader["Comments"].ToString();
-        //            order.tableId = (int)reader["TableId"];
-        //            order.orderTime = (DateTime)reader["OrderTime"];
-        //            order.orderId = (int)reader["OrderId"];
-
                 
-        //            orderList.Add(order);
+                    orderList.Add(order);
 
-        //        }
+                }
 
-        //        lastOrderId = (int)reader["OrderId"];
+                lastOrderId = (int)reader["OrderId"];
 
-        //        // Add all items belonging to order
-        //        orderList.Last().items.Add(reader["ItemName"].ToString());
-        //    }
+                // Add all items belonging to order
+                orderList.Last().items.Add(reader["ItemName"].ToString());*/
+            }
 
-        //    return orderList;
-        //}
+            return orderList;
+        }
+
 
     }
 }
