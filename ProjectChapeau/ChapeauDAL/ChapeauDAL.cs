@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using ChapeauModel;
+using Chapeau_Model;
 
 
 namespace Chapeau_DAL
@@ -36,10 +36,10 @@ namespace Chapeau_DAL
         {
             sqlconn.Close();
         }
-        public List<TableTop> TableTopDAO()
+        public List<ChapeauModel.TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();
-            List<TableTop> table_list = new List<TableTop>();
+            List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
 
 
             StringBuilder sb = new StringBuilder();
@@ -50,7 +50,7 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                TableTop table = new TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
                 table_list.Add(table);
             }
 
@@ -59,9 +59,9 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public Employee LoginTry(string username, string password) // HIER WAS JE GEBLEVEN!
+        public ChapeauModel.Employee LoginTry(string username, string password) // HIER WAS JE GEBLEVEN!
         {
-            Employee loginTry = null;
+            ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = OpenConnDB();
 
@@ -75,7 +75,7 @@ namespace Chapeau_DAL
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
-            Employee LoginEmployee = null;
+            ChapeauModel.Employee LoginEmployee = null;
 
 
 
@@ -95,11 +95,11 @@ namespace Chapeau_DAL
             conn.Close();
             return LoginEmployee;
         }
-        public List<Employee> EmployeeDAO() //Made by Machelle
+        public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
 
             SqlConnection conn = OpenConnDB();
-            List<Employee> employee_list = new List<Employee>();
+            List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
 
 
             StringBuilder sb = new StringBuilder();
@@ -110,7 +110,7 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                Employee employee = new Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), (JobRole)reader["JobRole"], reader["Username"].ToString());
+                ChapeauModel.Employee employee = new ChapeauModel.Employee(Int32.Parse(reader["EmployeeId"].ToString()), reader["Firstname"].ToString(), reader["Lastname"].ToString(), reader["Password"].ToString(), (JobRole)reader["JobRole"], reader["Username"].ToString());
                 employee_list.Add(employee);
             }
 
@@ -119,7 +119,7 @@ namespace Chapeau_DAL
             return employee_list;
         }
 
-        public List<Order> OrderDAO()
+        public List<ChapeauModel.Order> OrderDAO()
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
@@ -133,12 +133,12 @@ namespace Chapeau_DAL
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
-            List<Order> orderList = new List<Order>();
+            List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
 
             //int lastOrderId = -1;
             while (reader.Read())
             {
-                Order order = new Order
+                ChapeauModel.Order order = new ChapeauModel.Order
                 {
                     OrderId = (int)reader["OrderId"],
                     item = reader["ItemName"].ToString(),

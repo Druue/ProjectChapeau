@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ChapeauModel;
+using Chapeau_Model;
 
-namespace ChapeauLogic
+namespace Chapeau_Logic
 {
     public class PaymentLogic
     {
-        public Payment payment()
-        {
+        //public Payment payment()
+        //{
             
-            Payment payment = new Payment();
+        //    //Payment payment = new Payment();
 
-            return payment;
-        }
+        //    return payment;
+        //}
     }
 }

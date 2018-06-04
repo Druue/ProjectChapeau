@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChapeauModel
+namespace Chapeau_Model
 {
     public class Payment //Sophie
     {
