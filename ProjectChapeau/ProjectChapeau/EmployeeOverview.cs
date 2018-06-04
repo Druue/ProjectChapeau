@@ -28,7 +28,7 @@ namespace ProjectChapeau
                 {
                     string name = Employee_dataGridView.SelectedCells.ToString();
                     ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();
-                    employeeOverview.deleteEmployee(name);
+                    employeeOverview.delete(name);
 
                 }
             }
@@ -42,7 +42,7 @@ namespace ProjectChapeau
                 string username = newUsername.Text.ToString();
 
                 ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();
-                employeeOverview.editEmployee(firstname, lastname, jobRole, password, username);
+                employeeOverview.edit(firstname, lastname, jobRole, password, username);
             }
         }
 
@@ -69,7 +69,7 @@ namespace ProjectChapeau
             string username = newUsername.Text.ToString();
 
             ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();            
-            employeeOverview.createEmployee(firstname, lastname, jobRole, password, username);
+            employeeOverview.create(firstname, lastname, jobRole, password, username);
 
         }
     }

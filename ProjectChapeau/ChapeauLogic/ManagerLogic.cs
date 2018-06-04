@@ -11,47 +11,30 @@ namespace ChapeauLogic
 {
     public class EmployeeRepository
     {
-        private ManagerDAO managerDAO = new ManagerDAO();
-
-        public void createEmployee(string firstname, string lastname, string jobrole, string password, string username)
+        public void create(string firstname, string lastname, string jobrole, string password, string username)
         {
-            var connection = this.managerDAO.openConnectionDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "INSERT INTO Employee (Firstname,Lastname,JobRole,Password,Username) VALUES(" +firstname+","+lastname+","+jobrole+","+password+","+username+")";
-            command.ExecuteNonQuery();
-            connection.Close();
+            ChapeauDAL.ManagerDAO managerDAL = new ChapeauDAL.ManagerDAO();
+            managerDAL.createEmployee(firstname, lastname, jobrole, password, username);
         }
 
-        public void editEmployee(string firstname, string lastname, string jobrole, string password, string username)
+        public void edit(string firstname, string lastname, string jobrole, string password, string username)
         {
-            var connection = this.managerDAO.openConnectionDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "UPDATE Emloyee SET Firstname = " + firstname + ",Lastname = " + lastname + ",JobRole = " + jobrole + ",Password =  " + password + ",Username = " + username + ";"; // UPDATE COMMANT
-            command.ExecuteNonQuery();
-            connection.Close();
+            ChapeauDAL.ManagerDAO managerDAL = new ChapeauDAL.ManagerDAO();
+            managerDAL.editEmployee(firstname, lastname, jobrole, password, username);
+        }
+        public void delete(string firstname)
+        {
+            ChapeauDAL.ManagerDAO managerDAL = new ChapeauDAL.ManagerDAO();
+            managerDAL.deleteEmployee(firstname);
         }
 
-        public void deleteEmployee(string name)
+        public void addStock(string itemname)
         {
-            var connection = this.managerDAO.openConnectionDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "DELETE FROM Employee WHERE Firstname = '"+name+"' ";
-            command.ExecuteNonQuery();
-            connection.Close();
+            ChapeauDAL.ManagerDAO managerDAL = new ChapeauDAL.ManagerDAO();
+            managerDAL.addStock(itemname);
         }
 
-        public void addStock(string name)
-        {
-            var connection = this.managerDAO.openConnectionDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "UPDATE Menu SET Stock = Stock + 1; WHERE itemName = " +name+"";
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
+
 
 
     }
