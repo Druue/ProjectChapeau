@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChapeauModel
 {
-
-    public class TableTop //made by Machelle
-    {
+        public class TableTop //made by Machelle
+        {
 
         int TableId;
         int Seats;
@@ -139,8 +138,6 @@ namespace ChapeauModel
             //= DB.OrderDAO();
             return this;
         }
-
-
     }
-
 }
+
