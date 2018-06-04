@@ -10,7 +10,7 @@ namespace ChapeauDAL
 {
     public class ManagerDAO
     {
-        private SqlConnection openConnectionDB()
+        public SqlConnection openConnectionDB()
         {
             string host = "194.171.20.101";
             string db = "Chapeau_1718_DB01";
@@ -38,15 +38,7 @@ namespace ChapeauDAL
                 return sqlconn;
             }
         }
-        public List<Employee> ReadAll()
-        {
-            List<Employee> employeeList = new List<Employee>();
 
-            // connection to data base and do the querys 
-
-            return employeeList;
-
-        }
 
         private void closeConnDB(SqlConnection sqlconn)
         {

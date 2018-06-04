@@ -19,19 +19,7 @@ namespace ChapeauModel
             
         }
     }
-    public class EmployeeList
-    {
-        List<Employee> sl = new List<Employee>();
 
-        public void addList(Employee s)
-        {
-            sl.Add(s);
-        }
-
-        public List<Employee> GetList()
-        {
-            return sl;
-        }
-    }
+    
 }
 

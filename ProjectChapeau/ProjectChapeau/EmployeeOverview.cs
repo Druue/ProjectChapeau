@@ -16,8 +16,9 @@ namespace ProjectChapeau
         public EmployeeOverview()
         {
             InitializeComponent();
+            
         }
-        int selectedRow;
+       
         public void Employee_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -25,10 +26,23 @@ namespace ProjectChapeau
             {
                 if (MessageBox.Show("Are you sure you want to delete this employee?", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    //deleting the rown that was selected
-                    selectedRow = Employee_dataGridView.CurrentCell.RowIndex;
-                    Employee_dataGridView.Rows.RemoveAt(selectedRow);
+                    string name = Employee_dataGridView.SelectedCells.ToString();
+                    ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();
+                    employeeOverview.deleteEmployee(name);
+
                 }
+            }
+            if (Employee_dataGridView.Columns[e.ColumnIndex].Name == "Edit")
+            {
+                
+                string firstname = newFirstName.Text.ToString();
+                string lastname = newLastName.Text.ToString();
+                string jobRole = newJobRole.Text.ToString();
+                string password = newPassword.Text.ToString();
+                string username = newUsername.Text.ToString();
+
+                ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();
+                employeeOverview.editEmployee(firstname, lastname, jobRole, password, username);
             }
         }
 
@@ -39,7 +53,7 @@ namespace ProjectChapeau
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             managerForm form = new managerForm();
@@ -48,7 +62,14 @@ namespace ProjectChapeau
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            // pop up massase with what needs to be added then that will be added to de db
+            string firstname = newFirstName.Text.ToString();
+            string lastname = newLastName.Text.ToString();
+            string jobRole = newJobRole.Text.ToString();
+            string password = newPassword.Text.ToString();
+            string username = newUsername.Text.ToString();
+
+            ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();            
+            employeeOverview.createEmployee(firstname, lastname, jobRole, password, username);
 
         }
     }
