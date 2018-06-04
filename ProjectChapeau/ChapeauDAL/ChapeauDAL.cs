@@ -42,7 +42,7 @@ namespace Chapeau_DAL
             using (OpenConnDB())
             {
                 String query = "INSERT INTO dbo.Payment (EmployeeId, Vat, Tip, TotalPayment, IsPayed, Comments, PaymentMethod, MenuItems) " +
-                                "VALUES (@EmployeeId, @Vat, @Tip, @TotalPayment, @IsPayed, @Comments, @PaymentMethod, @MenuItems");
+                                "VALUES (@EmployeeId, @Vat, @Tip, @TotalPayment, @IsPayed, @Comments, @PaymentMethod, @MenuItems)";
             }
         }
 
