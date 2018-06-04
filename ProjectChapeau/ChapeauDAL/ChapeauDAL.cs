@@ -11,7 +11,7 @@ namespace Chapeau_DAL
 {
     public class ChapeauDAL
     {
-        private SqlConnection openConnDB() //Made by Machelle
+        private SqlConnection OpenConnDB() //Made by Machelle
         {
             try
             {
@@ -32,13 +32,13 @@ namespace Chapeau_DAL
             }
         }
 
-        private void closeConnDB(SqlConnection sqlconn) //Made by Machelle
+        private void CloseConnDB(SqlConnection sqlconn) //Made by Machelle
         {
             sqlconn.Close();
         }
         public List<TableTop> TableTopDAO()
         {
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
             List<TableTop> table_list = new List<TableTop>();
 
 
@@ -54,7 +54,7 @@ namespace Chapeau_DAL
                 table_list.Add(table);
             }
 
-            closeConnDB(conn);
+            CloseConnDB(conn);
 
             return table_list;
         }
@@ -63,7 +63,7 @@ namespace Chapeau_DAL
         {
             Employee loginTry = null;
 
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
 
             string query = $"SELECT EmployeeId, Username, Password, JobRole" +
               $"FROM Employee" +
@@ -98,7 +98,7 @@ namespace Chapeau_DAL
         public List<Employee> EmployeeDAO() //Made by Machelle
         {
 
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
             List<Employee> employee_list = new List<Employee>();
 
 
@@ -114,14 +114,14 @@ namespace Chapeau_DAL
                 employee_list.Add(employee);
             }
 
-            closeConnDB(conn);
+            CloseConnDB(conn);
 
             return employee_list;
         }
 
         public List<Order> OrderDAO()
         {
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
 
@@ -138,12 +138,14 @@ namespace Chapeau_DAL
             //int lastOrderId = -1;
             while (reader.Read())
             {
-                ChapeauModel.Order order = new Order();
-                order.orderId = (int)reader["OrderId"];
-                order.item = reader["ItemName"].ToString();
-                order.comments = reader["Comments"].ToString();
-                order.tableId = (int)reader["TableId"];
-                order.orderTime = (DateTime)reader["OrderTime"];
+                Order order = new Order
+                {
+                    OrderId = (int)reader["OrderId"],
+                    item = reader["ItemName"].ToString(),
+                    Comments = reader["Comments"].ToString(),
+                    TableId = (int)reader["TableId"],
+                    orderTime = (DateTime)reader["OrderTime"]
+                };
 
                 orderList.Add(order);
                 /* Only update order details if order number changes or first time
