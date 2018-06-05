@@ -28,22 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowlaypnl_table_overview_uneven = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowlaypnl_table_overview_even = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // panel1
+            // flowlaypnl_table_overview_uneven
             // 
-            this.panel1.Location = new System.Drawing.Point(13, 13);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 562);
-            this.panel1.TabIndex = 0;
+            this.flowlaypnl_table_overview_uneven.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(12, 53);
+            this.flowlaypnl_table_overview_uneven.Name = "flowlaypnl_table_overview_uneven";
+            this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(163, 522);
+            this.flowlaypnl_table_overview_uneven.TabIndex = 0;
+            // 
+            // flowlaypnl_table_overview_even
+            // 
+            this.flowlaypnl_table_overview_even.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(181, 53);
+            this.flowlaypnl_table_overview_even.Name = "flowlaypnl_table_overview_even";
+            this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(163, 522);
+            this.flowlaypnl_table_overview_even.TabIndex = 1;
             // 
             // RestaurantOverview_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 587);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowlaypnl_table_overview_even);
+            this.Controls.Add(this.flowlaypnl_table_overview_uneven);
             this.Name = "RestaurantOverview_Form";
             this.Text = "RestaurantOverview_Form";
             this.ResumeLayout(false);
@@ -52,6 +63,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowlaypnl_table_overview_uneven;
+        private System.Windows.Forms.FlowLayoutPanel flowlaypnl_table_overview_even;
     }
 }

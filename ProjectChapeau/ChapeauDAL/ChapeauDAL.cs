@@ -104,7 +104,7 @@ namespace Chapeau_DAL
         public List<ChapeauModel.TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();
-            List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
+            List<TableTop> table_list = new List<TableTop>();
 
 
             StringBuilder sb = new StringBuilder();
@@ -115,7 +115,8 @@ namespace Chapeau_DAL
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                ChapeauModel.TableTop table = new ChapeauModel.TableTop(Int32.Parse(reader["TableId"].ToString()), Int32.Parse(reader["Seats"].ToString()), reader["TableStatus"].ToString());
+                TableTop table = new TableTop(Int32.Parse(reader["TableId"].ToString()),
+                    Int32.Parse(reader["Seats"].ToString()), (TableStatus)reader["TableStatus"]);
                 table_list.Add(table);
             }
 
@@ -124,13 +125,13 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginDAO(string username, string password) // HIER WAS JE GEBLEVEN!
+        public ChapeauModel.Employee LoginDAO(string username, string password)
         {
             ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = OpenConnDB();
             
-            string query = $"SELECT EmployeeId, Username, Password, JobRole " +
+            string query = $"SELECT EmployeeId, Username, Password, JobRole, Firstname, Lastname " +
               $"FROM Employee " +
               $"WHERE Username = @username AND Password = @password";
 
@@ -147,11 +148,13 @@ namespace Chapeau_DAL
             {
                 // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
                 int employeeId = reader.GetInt32(0);
-                string firstname = reader.GetString(1);
-                string lastname = reader.GetString(2);
-                string loginPassword = reader.GetString(3);
-                JobRole role = (JobRole)reader.GetInt32(4);
-                string loginUsername = reader.GetString(5);
+                string loginUsername = reader.GetString(1);
+                string loginPassword = reader.GetString(2);
+                JobRole role = (JobRole)reader.GetInt32(3);
+                string firstname = reader.GetString(4);
+                string lastname = reader.GetString(5);
+                
+                
 
                 LoginEmployee = new ChapeauModel.Employee(employeeId, firstname, lastname, loginPassword, role, loginUsername);
 
