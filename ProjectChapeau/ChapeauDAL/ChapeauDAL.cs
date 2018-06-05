@@ -9,7 +9,7 @@ using Chapeau_Model;
 
 namespace Chapeau_DAL
 {
-    public class ChapeauDAL
+    public class Chapeau_DAL
     {
         private SqlConnection OpenConnDB() //Made by Machelle
         {

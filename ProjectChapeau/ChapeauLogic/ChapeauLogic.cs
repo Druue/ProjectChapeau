@@ -12,7 +12,7 @@ namespace Chapeau_Logic
     {
         public List<ChapeauModel.Order> showOrders()
         {
-            ChapeauDAL stuff = new ChapeauDAL();
+            Chapeau_DAL.Chapeau_DAL stuff = new Chapeau_DAL.Chapeau_DAL();
             List<ChapeauModel.Order> orderList = stuff.OrderDAO();
 
             return orderList;
