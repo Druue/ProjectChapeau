@@ -101,7 +101,7 @@ namespace Chapeau_DAL
             CloseConnDB(conn);
         }
 
-        public List<ChapeauModel.TableTop> TableTopDAO()
+        public List<TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();
             List<TableTop> table_list = new List<TableTop>();
