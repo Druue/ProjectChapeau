@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.label = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@
             this.toolStripMenuItem1});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(900, 28);
+            this.menuStrip.Size = new System.Drawing.Size(807, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -52,24 +52,12 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(33, 24);
             this.toolStripMenuItem1.Text = "|||";
             // 
-            // label
-            // 
-            this.label.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label.Location = new System.Drawing.Point(0, 28);
-            this.label.Name = "label";
-            this.label.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label.Size = new System.Drawing.Size(900, 29);
-            this.label.TabIndex = 1;
-            this.label.Text = "Label";
-            this.label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 534);
-            this.Controls.Add(this.label);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(807, 605);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -88,6 +76,5 @@
 
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.Label label;
     }
 }

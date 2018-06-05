@@ -157,6 +157,10 @@
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StyleGuide\StyleGuide.csproj">
+      <Project>{3f33d740-3d14-4f1d-b149-f02599d5ecb0}</Project>
+      <Name>StyleGuide</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

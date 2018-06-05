@@ -31,52 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.stock = new System.Windows.Forms.Label();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.stockDataGridView = new System.Windows.Forms.DataGridView();
-            this.backButton = new System.Windows.Forms.Button();
-            this.chapeau_1718_DB01DataSet2 = new ProjectChapeau.Chapeau_1718_DB01DataSet2();
-            this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.menuTableAdapter = new ProjectChapeau.Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter();
             this.itemNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip.SuspendLayout();
+            this.menuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chapeau_1718_DB01DataSet2 = new ProjectChapeau.Chapeau_1718_DB01DataSet2();
+            this.backButton = new System.Windows.Forms.Button();
+            this.menuTableAdapter = new ProjectChapeau.Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter();
+            this.stockLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // stock
-            // 
-            this.stock.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.stock.Dock = System.Windows.Forms.DockStyle.Top;
-            this.stock.Font = new System.Drawing.Font("Arial Narrow", 13.8F);
-            this.stock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.stock.Location = new System.Drawing.Point(0, 28);
-            this.stock.Name = "stock";
-            this.stock.Size = new System.Drawing.Size(667, 43);
-            this.stock.TabIndex = 0;
-            this.stock.Text = "Stock";
-            this.stock.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.BackColor = System.Drawing.Color.DarkOrange;
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuButton});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(667, 28);
-            this.menuStrip.TabIndex = 2;
-            this.menuStrip.Text = "menuStrip1";
-            // 
-            // menuButton
-            // 
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(33, 24);
-            this.menuButton.Text = "|||";
             // 
             // stockDataGridView
             // 
@@ -89,41 +55,14 @@
             this.stockDataGridViewTextBoxColumn});
             this.stockDataGridView.DataSource = this.menuBindingSource;
             this.stockDataGridView.Location = new System.Drawing.Point(134, 113);
-            this.stockDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stockDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.stockDataGridView.Name = "stockDataGridView";
             this.stockDataGridView.RowTemplate.Height = 24;
             this.stockDataGridView.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.stockDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.stockDataGridView.Size = new System.Drawing.Size(416, 294);
+            this.stockDataGridView.Size = new System.Drawing.Size(538, 326);
             this.stockDataGridView.TabIndex = 2;
             this.stockDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.stockDataGridView_CellContentClick);
-            // 
-            // backButton
-            // 
-            this.backButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.backButton.Location = new System.Drawing.Point(134, 466);
-            this.backButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(129, 43);
-            this.backButton.TabIndex = 3;
-            this.backButton.Text = "Back";
-            this.backButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.backButton.UseVisualStyleBackColor = false;
-            this.backButton.Click += new System.EventHandler(this.backButton_Click);
-            // 
-            // chapeau_1718_DB01DataSet2
-            // 
-            this.chapeau_1718_DB01DataSet2.DataSetName = "Chapeau_1718_DB01DataSet2";
-            this.chapeau_1718_DB01DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // menuBindingSource
-            // 
-            this.menuBindingSource.DataMember = "Menu";
-            this.menuBindingSource.DataSource = this.chapeau_1718_DB01DataSet2;
-            // 
-            // menuTableAdapter
-            // 
-            this.menuTableAdapter.ClearBeforeFill = true;
             // 
             // itemNameDataGridViewTextBoxColumn
             // 
@@ -145,36 +84,68 @@
             this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
             this.stockDataGridViewTextBoxColumn.Width = 85;
             // 
+            // menuBindingSource
+            // 
+            this.menuBindingSource.DataMember = "Menu";
+            this.menuBindingSource.DataSource = this.chapeau_1718_DB01DataSet2;
+            // 
+            // chapeau_1718_DB01DataSet2
+            // 
+            this.chapeau_1718_DB01DataSet2.DataSetName = "Chapeau_1718_DB01DataSet2";
+            this.chapeau_1718_DB01DataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // backButton
+            // 
+            this.backButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.backButton.Location = new System.Drawing.Point(134, 501);
+            this.backButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(129, 43);
+            this.backButton.TabIndex = 3;
+            this.backButton.Text = "Back";
+            this.backButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
+            // 
+            // menuTableAdapter
+            // 
+            this.menuTableAdapter.ClearBeforeFill = true;
+            // 
+            // stockLabel
+            // 
+            this.stockLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.stockLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockLabel.Location = new System.Drawing.Point(0, 0);
+            this.stockLabel.Name = "stockLabel";
+            this.stockLabel.Size = new System.Drawing.Size(828, 32);
+            this.stockLabel.TabIndex = 4;
+            this.stockLabel.Text = "Stock";
+            this.stockLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // StockOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 572);
+            this.ClientSize = new System.Drawing.Size(828, 644);
+            this.Controls.Add(this.stockLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.stockDataGridView);
-            this.Controls.Add(this.stock);
-            this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip;
             this.Name = "StockOverview";
             this.Text = "StockOverview";
             this.Load += new System.EventHandler(this.StockOverview_Load);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.stockDataGridView, 0);
+            this.Controls.SetChildIndex(this.backButton, 0);
+            this.Controls.SetChildIndex(this.stockLabel, 0);
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label stock;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem menuButton;
         private System.Windows.Forms.DataGridView stockDataGridView;
         private System.Windows.Forms.Button backButton;
         private Chapeau_1718_DB01DataSet2 chapeau_1718_DB01DataSet2;
@@ -182,5 +153,6 @@
         private Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter menuTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label stockLabel;
     }
 }

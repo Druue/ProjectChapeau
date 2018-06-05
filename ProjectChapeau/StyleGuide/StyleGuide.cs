@@ -9,17 +9,40 @@ using System.Windows.Forms;
 
 namespace StyleGuide
 {
-        public class BaseButton : Button
+    public class BaseButton1 : Button
+    {
+        public Button BaseButton;        
+        
+        public void InitializeComponent()
         {
-            public BaseButton()
-            {
-                FlatStyle = FlatStyle.Flat;
-                ForeColor = Color.FromArgb(192, 64, 0);
-                Size = new Size(100, 30);
-                UseVisualStyleBackColor = true;
-                
-            }
-
+            this.BaseButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // BaseButton
+            // 
+            this.BaseButton.BackColor = System.Drawing.SystemColors.Control;
+            this.BaseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.BaseButton.Location = new System.Drawing.Point(0, 0);
+            this.BaseButton.Name = "BaseButton";
+            this.BaseButton.Size = new System.Drawing.Size(129, 43);
+            this.BaseButton.TabIndex = 0;
+            this.BaseButton.Text = "Back";
+            this.BaseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BaseButton.UseVisualStyleBackColor = true;
+            // 
+            // BaseButton1
+            // 
+            this.BaseButton.BackColor = System.Drawing.SystemColors.Control;
+            this.BaseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.BaseButton.Location = new System.Drawing.Point(0, 0);
+            this.BaseButton.Name = "BaseButton";
+            this.BaseButton.Size = new System.Drawing.Size(129, 43);
+            this.BaseButton.TabIndex = 0;
+            this.BaseButton.Text = "Back";
+            this.BaseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BaseButton.UseVisualStyleBackColor = true;
+            // 
         }
     }
+
 }

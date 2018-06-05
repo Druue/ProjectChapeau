@@ -7,15 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StyleGuide;
 
 namespace ProjectChapeau
 {
-    public partial class StockOverview : Form
+    public partial class StockOverview : BaseForm
     {
         public StockOverview()
         {
             InitializeComponent();
+            
         }
+        public override string Text { get => base.Text; set => base.Text = "Stock"; }
 
         private void StockOverview_Load(object sender, EventArgs e)
         {
