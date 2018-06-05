@@ -57,17 +57,17 @@
     <Compile Include="Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderingForm.designer.cs">
+      <DependentUpon>OrderingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Payment_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Payment_Form.Designer.cs">
       <DependentUpon>Payment_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OrderingForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OrderingForm.Designer.cs">
-      <DependentUpon>OrderingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
