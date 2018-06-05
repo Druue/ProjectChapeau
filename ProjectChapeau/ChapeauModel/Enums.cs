@@ -20,4 +20,9 @@ namespace Chapeau_Model
     {
         Sent, Ready, Served
     }
+
+    public enum TableStatus
+    {
+        Available, Occupied, Reserved
+    }
 }

@@ -8,40 +8,7 @@ namespace Chapeau_Model
 {
     public class ChapeauModel
     {
-        public class TableTop //made by Machelle
-        {
-
-            int TableId;
-            int Seats;
-            string TableStatus;
-
-            public TableTop()
-            {
-                //an empty constructor is nessecary to use an empty object (NULL)
-            }
-
-            public TableTop(int id, int seats, string status)
-            {
-                TableId = id;
-                Seats = seats;
-                TableStatus = status;
-            }
-
-            public int GetSeats()
-            {
-                return Seats;
-            }
-
-            public string GetTableStatus()
-            {
-                return TableStatus;
-            }
-
-            public int GetTableId()
-            {
-                return TableId;
-            }
-        }
+       
 
         public class Employee //made by Machelle
         {
@@ -99,6 +66,8 @@ namespace Chapeau_Model
             }
 
         }
+
+ 
 
         public class Order // Made by elizabeth
         {
