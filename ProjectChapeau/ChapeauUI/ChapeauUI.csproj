@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="KitchenBarUI.cs" />
     <Compile Include="LoginUI.cs" />
+    <Compile Include="OrderingUI.cs" />
+    <Compile Include="PaymentUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
