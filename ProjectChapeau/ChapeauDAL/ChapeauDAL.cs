@@ -36,6 +36,55 @@ namespace Chapeau_DAL
         {
             sqlconn.Close();
         }
+
+        public List<OrderItems> OrderItemsDAO(int itemId, int orderId)
+        {
+            SqlConnection conn = OpenConnDB();
+            List<OrderItems> orderItems = new List<OrderItems>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT ItemName, ItemId, Price, Vat FROM Menu " +
+                      "WHERE ItemId = @itemId AND OrderId = @orderId FROM OrderItems" /*+
+                      "something about getting the right orderid"*/);
+            String sql = sb.ToString();
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@itemId", itemId); //prevents sql injection
+            command.Parameters.AddWithValue("@orderId", orderId); //prevents sql injection
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                OrderItems item = new OrderItems(reader["ItemName"].ToString(), /*Int32.Parse(reader["ItemId"].ToString()),*/
+                                                        Int32.Parse(reader["Price"].ToString()), double.Parse(reader["Vat"].ToString()));
+                orderItems.Add(item);
+            }
+
+            CloseConnDB(conn);
+
+            return orderItems;
+        }
+
+        public void PaymentDAO(Payment payment)
+        {
+            SqlConnection conn = OpenConnDB();
+            List<OrderItems> orderItems = new List<OrderItems>();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("INSERT STATEMENT");
+            String sql = sb.ToString();
+
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                
+            }
+
+            CloseConnDB(conn);
+        }
+
         public List<ChapeauModel.TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();

@@ -10,7 +10,6 @@ namespace Chapeau_Model
     {
         public class TableTop //made by Machelle
         {
-
             int TableId;
             int Seats;
             string TableStatus;
@@ -68,7 +67,7 @@ namespace Chapeau_Model
             }
 
 
-            public int getEmployeeId()
+            public int GetEmployeeId()
             {
                 return EmployeeId;
             }
