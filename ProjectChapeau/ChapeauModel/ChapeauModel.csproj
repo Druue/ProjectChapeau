@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="ChapeauModel.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="MenuItems.cs" />
+    <Compile Include="OrderItems.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

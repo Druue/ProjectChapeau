@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Chapeau_Model
 {
@@ -12,14 +13,14 @@ namespace Chapeau_Model
         public string Comments { get; set; }
         public DateTime TimePayed { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
-        //public List<MenuItems> MenuItems { get; set; } (FIX LATER)
+        public List<OrderItems> OrderItems { get; set; }
 
         //public Payment() Not sure if empty constructor is needed
         //{
 
         //}
 
-        public Payment(int employeeId , int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod)
+        public Payment(int employeeId , int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod, OrderItems orderItems)
         {
             EmployeeId = employeeId;
             Vat = vat;
@@ -29,7 +30,16 @@ namespace Chapeau_Model
             Comments = comments;
             TimePayed = DateTime.Now;
             PaymentMethod = paymentMethod;
-            //MenuItems = menuitems; (FIX LATER)
+            OrderItems = OrderItems;
+        }
+
+        public PaymentMethod GetPaymentMethod()
+        {
+            //Check which button was checked on the form
+
+            PaymentMethod pm = new PaymentMethod();
+            return pm = 0;
+
         }
     }
 }
