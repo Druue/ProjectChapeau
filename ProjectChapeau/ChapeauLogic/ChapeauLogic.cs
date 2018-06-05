@@ -16,6 +16,9 @@ namespace Chapeau_Logic
             List<ChapeauModel.Order> orderList = stuff.OrderDAO();
 
             return orderList;
+
+            
+
         }//i hate git so much today
     }
 }
