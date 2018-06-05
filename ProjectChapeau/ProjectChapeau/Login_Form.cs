@@ -79,7 +79,7 @@ namespace ProjectChapeau
                         break;
                     case JobRole.Wait:
                         MessageBox.Show("Waiter login successfull");
-                        LoginForm.Hide();
+                       // LoginForm.Hide();
                         break;
                 } 
             }

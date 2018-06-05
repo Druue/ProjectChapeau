@@ -9,7 +9,7 @@ using Chapeau_Model;
 
 namespace Chapeau_DAL
 {
-    public class Chapeau_DAL
+    public class ChapeauDAL
     {
         private SqlConnection OpenConnDB() //Made by Machelle
         {
@@ -101,7 +101,7 @@ namespace Chapeau_DAL
             CloseConnDB(conn);
         }
 
-        public List<ChapeauModel.TableTop> TableTopDAO()
+        public List<TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();
             List<TableTop> table_list = new List<TableTop>();
