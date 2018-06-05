@@ -10,7 +10,7 @@ namespace Chapeau_Logic
 {
     public class ChapeauLogic
     {
-        public void showOrders()
+        public void ShowOrders()
         {
             ChapeauDAL stuff = new ChapeauDAL();
             stuff.OrderDAO(); 
@@ -22,8 +22,7 @@ namespace Chapeau_Logic
         public ChapeauModel.Employee LoginLogic()
         {
             ChapeauModel.Employee login = new ChapeauModel.Employee();
-
-
+            
             return login;
         }
 
