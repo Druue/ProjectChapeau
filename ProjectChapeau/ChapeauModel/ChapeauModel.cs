@@ -10,7 +10,6 @@ namespace Chapeau_Model
     {
         public class TableTop //made by Machelle
         {
-
             int TableId;
             int Seats;
             string TableStatus;
@@ -45,12 +44,12 @@ namespace Chapeau_Model
 
         public class Employee //made by Machelle
         {
-            int EmployeeId;
-            string Firstname;
-            string Lastname;
-            string Password;
-            JobRole Role;
-            string Username;
+           public int EmployeeId;
+           public  string Firstname;
+           public string Lastname;   //set these to public
+           public string Password;
+           public JobRole Role;
+           public  string Username;
 
             public Employee()
             {
@@ -68,7 +67,7 @@ namespace Chapeau_Model
             }
 
 
-            public int getEmployeeId()
+            public int GetEmployeeId()
             {
                 return EmployeeId;
             }
@@ -99,23 +98,24 @@ namespace Chapeau_Model
             }
 
         }
+
         public class Order // Made by elizabeth
         {
             public string item;
-            public int OrderId { get; set; }
-            public int TableId { get; set; }
-            public string Comments { get; set; }
+            public int orderId { get; set; }
+            public int tableId { get; set; }
+            public string comments { get; set; }
             public DateTime orderTime;
             //public bool paidStatus;
 
             public Order()
             {
                 //constructor
-                item = "";
-                TableId = 0;
-                Comments = "";
-                orderTime = DateTime.Now;
-                // paidStatus = false;
+                this.item = "";
+                this.tableId = 0;
+                this.comments = "";
+                this.orderTime = DateTime.Now;
+               // this.paidStatus = false;
             }
 
             public bool PlaceOrder()

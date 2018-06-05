@@ -10,23 +10,12 @@ namespace Chapeau_Logic
 {
     public class ChapeauLogic
     {
-        public void showOrders()
+        public List<ChapeauModel.Order> showOrders()
         {
             ChapeauDAL stuff = new ChapeauDAL();
-            stuff.OrderDAO(); 
-            //ChapeauModel.Order order = new ChapeauModel.Order();
+            List<ChapeauModel.Order> orderList = stuff.OrderDAO();
 
-            //return order;
+            return orderList;
         }
-
-        public ChapeauModel.Employee LoginLogic()
-        {
-            ChapeauModel.Employee login = new ChapeauModel.Employee();
-
-
-            return login;
-        }
-
-
     }
 }

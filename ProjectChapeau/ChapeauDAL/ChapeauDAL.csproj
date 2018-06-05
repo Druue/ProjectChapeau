@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChapeauDAL.cs" />
+    <Compile Include="ManagerDAL.cs" />
+    <Compile Include="OrderingDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
