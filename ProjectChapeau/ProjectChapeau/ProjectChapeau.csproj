@@ -54,13 +54,16 @@
     <Compile Include="OrderingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderingForm.designer.cs">
+    <Compile Include="OrderingForm.Designer.cs">
       <DependentUpon>OrderingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderingForm.aa.resx">
+      <DependentUpon>OrderingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderingForm.resx">
       <DependentUpon>OrderingForm.cs</DependentUpon>
