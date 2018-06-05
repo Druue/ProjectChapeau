@@ -14,6 +14,8 @@ namespace ChapeauUI
         {
             /*MenuListView.HideSelection = false;
 
+
+
             OrderingDAL MenuDB = new OrderingDAL();
             List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
             MenuItemsList = MenuDB.DB_getMenu();

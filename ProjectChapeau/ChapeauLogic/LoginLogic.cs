@@ -14,7 +14,7 @@ namespace Chapeau_Logic
         
         public ChapeauModel.Employee LoginCheck(string username, string password)
         {
-            ChapeauDAL dal = new ChapeauDAL();
+            Chapeau_DAL.Chapeau_DAL dal = new Chapeau_DAL.Chapeau_DAL();
 
             ChapeauModel.Employee employee = dal.LoginDAO(username, password);
 
