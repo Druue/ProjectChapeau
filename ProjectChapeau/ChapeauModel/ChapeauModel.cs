@@ -45,12 +45,12 @@ namespace Chapeau_Model
 
         public class Employee //made by Machelle
         {
-            int EmployeeId;
-            string Firstname;
-            string Lastname;
-            string Password;
-            JobRole Role;
-            string Username;
+           public int EmployeeId;
+           public  string Firstname;
+           public string Lastname;   //set these to public
+           public string Password;
+           public JobRole Role;
+           public  string Username;
 
             public Employee()
             {
@@ -99,6 +99,7 @@ namespace Chapeau_Model
             }
 
         }
+
         public class Order // Made by elizabeth
         {
             public string item;

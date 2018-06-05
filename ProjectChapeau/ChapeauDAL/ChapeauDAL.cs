@@ -19,7 +19,9 @@ namespace Chapeau_DAL
                                                             Initial Catalog=Chapeau_1718_DB01;
                                                             User ID=Chapeau_1718_grp01;
                                                             Password=PTR6gURrRx");
-                sqlconn.Open();
+
+                //Data Source = 194.171.20.101; Initial Catalog = Chapeau_1718_DB01; Persist Security Info = True; User ID = Chapeau_1718_grp01; Password = ***********
+                          sqlconn.Open();
 
                 return sqlconn;
 
@@ -36,6 +38,7 @@ namespace Chapeau_DAL
         {
             sqlconn.Close();
         }
+
         public List<ChapeauModel.TableTop> TableTopDAO()
         {
             SqlConnection conn = OpenConnDB();
@@ -59,28 +62,28 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginTry(string username, string password) // HIER WAS JE GEBLEVEN!
+        public ChapeauModel.Employee LoginDAO(string username, string password) // HIER WAS JE GEBLEVEN!
         {
             ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = OpenConnDB();
+            
+            string query = $"SELECT EmployeeId, Username, Password, JobRole " +
+              $"FROM Employee " +
+              $"WHERE Username = @username AND Password = @password";
 
-            string query = $"SELECT EmployeeId, Username, Password, JobRole" +
-              $"FROM Employee" +
-              $"WHERE Username = @username, Password = @password";
 
-
-            String sql = query.ToString();
-
-            SqlCommand command = new SqlCommand(sql, conn);
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@username", username); //this is to prevent sql injection!!
+            command.Parameters.AddWithValue("@password", password);
             SqlDataReader reader = command.ExecuteReader();
 
             ChapeauModel.Employee LoginEmployee = null;
 
-
-
-            while (reader.Read())
+            
+            if (reader.Read())
             {
+                // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
                 int employeeId = reader.GetInt32(0);
                 string firstname = reader.GetString(1);
                 string lastname = reader.GetString(2);
@@ -95,6 +98,7 @@ namespace Chapeau_DAL
             conn.Close();
             return LoginEmployee;
         }
+
         public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
 

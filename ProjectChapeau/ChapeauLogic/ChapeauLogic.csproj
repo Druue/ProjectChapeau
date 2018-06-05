@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChapeauLogic.cs" />
+    <Compile Include="LoginLogic.cs" />
     <Compile Include="PaymentLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
