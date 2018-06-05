@@ -11,12 +11,17 @@ namespace Chapeau_DAL
 {
     public class ChapeauDAL
     {
-        private SqlConnection openConnDB() //Made by Machelle
+        private SqlConnection OpenConnDB() //Made by Machelle
         {
             try
             {
-                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;Initial Catalog=Chapeau_1718_DB01;User ID=Chapeau_1718_grp01;Password=PTR6gURrRx");
-                sqlconn.Open();
+                SqlConnection sqlconn = new SqlConnection(@"Data Source=tcp:194.171.20.101;
+                                                            Initial Catalog=Chapeau_1718_DB01;
+                                                            User ID=Chapeau_1718_grp01;
+                                                            Password=PTR6gURrRx");
+
+                //Data Source = 194.171.20.101; Initial Catalog = Chapeau_1718_DB01; Persist Security Info = True; User ID = Chapeau_1718_grp01; Password = ***********
+                          sqlconn.Open();
 
                 return sqlconn;
 
@@ -29,17 +34,18 @@ namespace Chapeau_DAL
             }
         }
 
-        private void closeConnDB(SqlConnection sqlconn) //Made by Machelle
+        private void CloseConnDB(SqlConnection sqlconn) //Made by Machelle
         {
             sqlconn.Close();
         }
+
         public List<ChapeauModel.TableTop> TableTopDAO()
         {
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
             List<ChapeauModel.TableTop> table_list = new List<ChapeauModel.TableTop>();
 
 
-            StringBuilder sb = new StringBuilder();   
+            StringBuilder sb = new StringBuilder();
             sb.Append("SELECT TableId, Seats, TableStatus FROM TableTop");
             String sql = sb.ToString();
 
@@ -51,33 +57,33 @@ namespace Chapeau_DAL
                 table_list.Add(table);
             }
 
-            closeConnDB(conn);
+            CloseConnDB(conn);
 
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginTry (string username, string password) // HIER WAS JE GEBLEVEN!
+        public ChapeauModel.Employee LoginDAO(string username, string password) // HIER WAS JE GEBLEVEN!
         {
             ChapeauModel.Employee loginTry = null;
 
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
+            
+            string query = $"SELECT EmployeeId, Username, Password, JobRole " +
+              $"FROM Employee " +
+              $"WHERE Username = @username AND Password = @password";
 
-            string query = $"SELECT EmployeeId, Username, Password, JobRole" +
-              $"FROM Employee" +
-              $"WHERE Username = @username, Password = @password";
 
-
-            String sql = query.ToString();
-
-            SqlCommand command = new SqlCommand(sql, conn);
+            SqlCommand command = new SqlCommand(query, conn);
+            command.Parameters.AddWithValue("@username", username); //this is to prevent sql injection!!
+            command.Parameters.AddWithValue("@password", password);
             SqlDataReader reader = command.ExecuteReader();
 
             ChapeauModel.Employee LoginEmployee = null;
 
-
-
-            while (reader.Read())
+            
+            if (reader.Read())
             {
+                // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
                 int employeeId = reader.GetInt32(0);
                 string firstname = reader.GetString(1);
                 string lastname = reader.GetString(2);
@@ -92,10 +98,11 @@ namespace Chapeau_DAL
             conn.Close();
             return LoginEmployee;
         }
+
         public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
         {
-            
-            SqlConnection conn = openConnDB();
+
+            SqlConnection conn = OpenConnDB();
             List<ChapeauModel.Employee> employee_list = new List<ChapeauModel.Employee>();
 
 
@@ -111,14 +118,14 @@ namespace Chapeau_DAL
                 employee_list.Add(employee);
             }
 
-            closeConnDB(conn);
+            CloseConnDB(conn);
 
             return employee_list;
         }
 
         public List<ChapeauModel.Order> OrderDAO()
         {
-            SqlConnection conn = openConnDB();
+            SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
             

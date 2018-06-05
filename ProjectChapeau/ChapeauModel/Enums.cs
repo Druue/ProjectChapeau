@@ -20,6 +20,4 @@ namespace Chapeau_Model
     {
         Sent, Ready, Served
     }
-
-
 }

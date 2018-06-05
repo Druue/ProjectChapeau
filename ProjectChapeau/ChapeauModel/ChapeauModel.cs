@@ -8,7 +8,6 @@ namespace Chapeau_Model
 {
     public class ChapeauModel
     {
-
         public class TableTop //made by Machelle
         {
 
@@ -23,22 +22,22 @@ namespace Chapeau_Model
 
             public TableTop(int id, int seats, string status)
             {
-                this.TableId = id;
-                this.Seats = seats;
-                this.TableStatus = status;
+                TableId = id;
+                Seats = seats;
+                TableStatus = status;
             }
 
-            public int getSeats()
+            public int GetSeats()
             {
                 return Seats;
             }
 
-            public string getTableStatus()
+            public string GetTableStatus()
             {
                 return TableStatus;
             }
 
-            public int getTableId()
+            public int GetTableId()
             {
                 return TableId;
             }
@@ -46,26 +45,26 @@ namespace Chapeau_Model
 
         public class Employee //made by Machelle
         {
-            int EmployeeId;
-            string Firstname;
-            string Lastname;
-            string Password;
-            JobRole Role;
-            string Username;
+           public int EmployeeId;
+           public  string Firstname;
+           public string Lastname;   //set these to public
+           public string Password;
+           public JobRole Role;
+           public  string Username;
 
             public Employee()
             {
                 //an empty constructor is nessecary to use an empty object (NULL)
             }
 
-            public Employee(int id, string firstname, string lastname, string password, JobRole Role, string username)
+            public Employee(int id, string firstname, string lastname, string password, JobRole role, string username)
             {
-                this.EmployeeId = id;
-                this.Firstname = firstname;
-                this.Lastname = lastname;
-                this.Password = password;
-                this.Role = Role;
-                this.Username = username;
+                EmployeeId = id;
+                Firstname = firstname;
+                Lastname = lastname;
+                Password = password;
+                Role = role;
+                Username = username;
             }
 
 
@@ -74,32 +73,33 @@ namespace Chapeau_Model
                 return EmployeeId;
             }
 
-            public string getFirstname()
+            public string GetFirstname()
             {
                 return Firstname;
             }
 
-            public string getLastname()
+            public string GetLastname()
             {
                 return Lastname;
             }
 
-            public string getPassword()
+            public string GetPassword()
             {
                 return Password;
             }
 
-            public JobRole getJobRole()
+            public JobRole GetJobRole()
             {
                 return Role;
             }
 
-            public string getUsername()
+            public string GetUsername()
             {
                 return Username;
             }
 
         }
+
         public class Order // Made by elizabeth
         {
             public string item;
@@ -128,7 +128,7 @@ namespace Chapeau_Model
             {
                 return false;
             }
-            
+
             public bool RemoveOrder()
             {
                 return false;
@@ -137,12 +137,12 @@ namespace Chapeau_Model
             public Order GetOrder()
             {
                 //ChapeauDAL DB = new ChapeauDAL();
-                
+
                 //= DB.OrderDAO();
                 return this;
             }
-            
-
         }
+
     }
 }
+
