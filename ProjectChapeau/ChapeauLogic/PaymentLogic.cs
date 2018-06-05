@@ -24,7 +24,7 @@ namespace Chapeau_Logic
             payment.PaymentMethod = 0; //PaymentMethod = user input from form
             payment.Comments = "";
 
-            Chapeau_DAL.Chapeau_DAL dal = new Chapeau_DAL.Chapeau_DAL();
+            ChapeauDAL dal = new ChapeauDAL();
             List<OrderItems> orderItems = dal.OrderItemsDAO(itemid, orderid);
 
             foreach (OrderItems item in orderItems)
