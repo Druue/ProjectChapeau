@@ -9,7 +9,6 @@ namespace Chapeau_Model
         public double Vat { get; set; }
         public double Tip { get; set; }
         public double TotalPayment { get; set; }
-        //public bool IsPayed { get; set; } not sure if keeping
         public string Comments { get; set; }
         public DateTime TimePayed { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
@@ -20,13 +19,12 @@ namespace Chapeau_Model
 
         //}
 
-        public Payment(int employeeId , int vat, double tip, double totalPayment, bool isPayed, string comments, PaymentMethod paymentMethod, OrderItems orderItems)
+        public Payment(int employeeId , int vat, double tip, double totalPayment, string comments, PaymentMethod paymentMethod, OrderItems orderItems)
         {
             EmployeeId = employeeId;
             Vat = vat;
             Tip = tip;
             TotalPayment = totalPayment;
-            //IsPayed = isPayed;
             Comments = comments;
             TimePayed = DateTime.Now;
             PaymentMethod = paymentMethod;
