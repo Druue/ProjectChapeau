@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderingForm));
             this.OrderingSystemPanel = new System.Windows.Forms.Panel();
             this.CancelOrderButton = new System.Windows.Forms.Button();
@@ -42,6 +43,11 @@
             this.AddToCartButton = new System.Windows.Forms.Button();
             this.MenuListView = new System.Windows.Forms.ListView();
             this.OrdersCart = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ItemNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeleteButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -49,11 +55,7 @@
             this.ItemID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentHidden = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MenuListImageList = new System.Windows.Forms.ImageList(this.components);
             this.OrderingSystemPanel.SuspendLayout();
             this.MenuDisplayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersCart)).BeginInit();
@@ -143,8 +145,11 @@
             // 
             // MenuListView
             // 
+            this.MenuListView.LargeImageList = this.MenuListImageList;
             resources.ApplyResources(this.MenuListView, "MenuListView");
+            this.MenuListView.MultiSelect = false;
             this.MenuListView.Name = "MenuListView";
+            this.MenuListView.SmallImageList = this.MenuListImageList;
             this.MenuListView.UseCompatibleStateImageBehavior = false;
             // 
             // OrdersCart
@@ -164,6 +169,32 @@
             this.OrdersCart.RowHeadersVisible = false;
             this.OrdersCart.RowTemplate.Height = 24;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // CommentButtonColumn
             // 
             resources.ApplyResources(this.CommentButtonColumn, "CommentButtonColumn");
@@ -173,6 +204,8 @@
             // 
             resources.ApplyResources(this.ItemNameColumn, "ItemNameColumn");
             this.ItemNameColumn.Name = "ItemNameColumn";
+            this.ItemNameColumn.ReadOnly = true;
+            this.ItemNameColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // DeleteButtonColumn
             // 
@@ -201,31 +234,58 @@
             resources.ApplyResources(this.CommentHidden, "CommentHidden");
             this.CommentHidden.Name = "CommentHidden";
             // 
-            // dataGridViewTextBoxColumn1
+            // MenuListImageList
             // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.MenuListImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("MenuListImageList.ImageStream")));
+            this.MenuListImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.MenuListImageList.Images.SetKeyName(0, "1-salade-nicoise.jpg");
+            this.MenuListImageList.Images.SetKeyName(1, "2-french-omelette.jpg");
+            this.MenuListImageList.Images.SetKeyName(2, "3-Fennel.jpg");
+            this.MenuListImageList.Images.SetKeyName(3, "4-quichie-of-the-day.jpg");
+            this.MenuListImageList.Images.SetKeyName(4, "5-Croque-Monsieur-French-Toast.jpg");
+            this.MenuListImageList.Images.SetKeyName(5, "6-croque-madame-toast.jpg");
+            this.MenuListImageList.Images.SetKeyName(6, "7-homemade-soup-of-the-day.jpg");
+            this.MenuListImageList.Images.SetKeyName(7, "8-homemade-onion-soup.jpg");
+            this.MenuListImageList.Images.SetKeyName(8, "9-tortilla-chips.jpg");
+            this.MenuListImageList.Images.SetKeyName(9, "10-crudites-with-olive-anchovy.jpg");
+            this.MenuListImageList.Images.SetKeyName(10, "11-toast-belgian-prepare.jpg");
+            this.MenuListImageList.Images.SetKeyName(11, "12-bread.jpg");
+            this.MenuListImageList.Images.SetKeyName(12, "13-homemade-soup-of-the-day.jpg");
+            this.MenuListImageList.Images.SetKeyName(13, "14-homemade-soup-of-the-day.jpg");
+            this.MenuListImageList.Images.SetKeyName(14, "15-beef-carpaccio.jpg");
+            this.MenuListImageList.Images.SetKeyName(15, "16-escargots.jpg");
+            this.MenuListImageList.Images.SetKeyName(16, "17-goat-cheese.jpg");
+            this.MenuListImageList.Images.SetKeyName(17, "18-tenderloin-from-black-angus.jpg");
+            this.MenuListImageList.Images.SetKeyName(18, "19-butcher-steak.jpg");
+            this.MenuListImageList.Images.SetKeyName(19, "20-lamb-chops.jpg");
+            this.MenuListImageList.Images.SetKeyName(20, "21-rattatouille.jpg");
+            this.MenuListImageList.Images.SetKeyName(21, "22-French-fish-stew.jpg");
+            this.MenuListImageList.Images.SetKeyName(22, "23-whole-lobster.jpg");
+            this.MenuListImageList.Images.SetKeyName(23, "24-creme-brulee.jpg");
+            this.MenuListImageList.Images.SetKeyName(24, "25-chocolate-crumble.jpg");
+            this.MenuListImageList.Images.SetKeyName(25, "26-dame-blanche.jpg");
+            this.MenuListImageList.Images.SetKeyName(26, "27-cheese.jpg");
+            this.MenuListImageList.Images.SetKeyName(27, "28-coca-cola.jpg");
+            this.MenuListImageList.Images.SetKeyName(28, "29-sprite.jpg");
+            this.MenuListImageList.Images.SetKeyName(29, "30-fanta-orange.jpg");
+            this.MenuListImageList.Images.SetKeyName(30, "31-bitter-lemon.jpg");
+            this.MenuListImageList.Images.SetKeyName(31, "32-tonic.jpg");
+            this.MenuListImageList.Images.SetKeyName(32, "33-ginger-ale.jpg");
+            this.MenuListImageList.Images.SetKeyName(33, "33-lipton-ice-tea.jpg");
+            this.MenuListImageList.Images.SetKeyName(34, "34-coffee.jpg");
+            this.MenuListImageList.Images.SetKeyName(35, "35-tea.jpg");
+            this.MenuListImageList.Images.SetKeyName(36, "36-fresh-mint-tea.jpg");
+            this.MenuListImageList.Images.SetKeyName(37, "37-espresso.jpg");
+            this.MenuListImageList.Images.SetKeyName(38, "38-capuccino.jpg");
+            this.MenuListImageList.Images.SetKeyName(39, "39-heineken-small.jpg");
+            this.MenuListImageList.Images.SetKeyName(40, "40-heineken-medium.jpg");
+            this.MenuListImageList.Images.SetKeyName(41, "41-palm.jpg");
+            this.MenuListImageList.Images.SetKeyName(42, "42-beer.jpg");
+            this.MenuListImageList.Images.SetKeyName(43, "43-corona.jpg");
+            this.MenuListImageList.Images.SetKeyName(44, "44-sauvignon-blanc-bottle.jpg");
+            this.MenuListImageList.Images.SetKeyName(45, "45-merlot-bottle.jpg");
+            this.MenuListImageList.Images.SetKeyName(46, "45-sauvignon-blanc-glass.jpg");
+            this.MenuListImageList.Images.SetKeyName(47, "46-merlot-glass.jpg");
             // 
             // OrderingForm
             // 
@@ -233,7 +293,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.OrderingSystemPanel);
             this.Name = "OrderingForm";
-            this.Load += new System.EventHandler(this.OrderingForm_Load);
             this.OrderingSystemPanel.ResumeLayout(false);
             this.MenuDisplayPanel.ResumeLayout(false);
             this.MenuDisplayPanel.PerformLayout();
@@ -258,6 +317,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.ColumnHeader ItemNamePriceOverview;
+        private System.Windows.Forms.ColumnHeader dotsPriceOverview;
+        private System.Windows.Forms.ColumnHeader ItemPriceOverview;
         private System.Windows.Forms.DataGridViewButtonColumn CommentButtonColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemNameColumn;
         private System.Windows.Forms.DataGridViewButtonColumn DeleteButtonColumn;
@@ -265,10 +328,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemID;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentHidden;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.ColumnHeader ItemNamePriceOverview;
-        private System.Windows.Forms.ColumnHeader dotsPriceOverview;
-        private System.Windows.Forms.ColumnHeader ItemPriceOverview;
+        public System.Windows.Forms.ImageList MenuListImageList;
     }
 }
 
