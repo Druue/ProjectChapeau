@@ -11,37 +11,31 @@ namespace StyleGuide
 {
     public class BaseButton1 : Button
     {
-        public Button BaseButton;        
+            
         
-        public void InitializeComponent()
+         public BaseButton1()
         {
-            this.BaseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BaseButton
             // 
-            this.BaseButton.BackColor = System.Drawing.SystemColors.Control;
-            this.BaseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.BaseButton.Location = new System.Drawing.Point(0, 0);
-            this.BaseButton.Name = "BaseButton";
-            this.BaseButton.Size = new System.Drawing.Size(129, 43);
-            this.BaseButton.TabIndex = 0;
-            this.BaseButton.Text = "Back";
-            this.BaseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BaseButton.UseVisualStyleBackColor = true;
-            // 
-            // BaseButton1
-            // 
-            this.BaseButton.BackColor = System.Drawing.SystemColors.Control;
-            this.BaseButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.BaseButton.Location = new System.Drawing.Point(0, 0);
-            this.BaseButton.Name = "BaseButton";
-            this.BaseButton.Size = new System.Drawing.Size(129, 43);
-            this.BaseButton.TabIndex = 0;
-            this.BaseButton.Text = "Back";
-            this.BaseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BaseButton.UseVisualStyleBackColor = true;
-            // 
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.Location = new System.Drawing.Point(0, 0);
+            this.Name = "BaseButton";
+            this.Size = new System.Drawing.Size(129, 43);
+            this.TabIndex = 0;
+            this.Text = "Back";
+            this.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.UseVisualStyleBackColor = true;
+            this.Click += new System.EventHandler(this.BaseButton_Click);
+            this.ResumeLayout(false);
+
+        }
+
+        private void BaseButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
