@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-using System.Windows.Forms;
+//using System.Windows.Forms;
+using Chapeau_DAL;
+using Chapeau_Model;
 
-namespace ChapeauTestV2
+namespace Chapeau_DAL
 {
     public class OrderingDAL
     {
@@ -106,7 +108,7 @@ namespace ChapeauTestV2
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+               // MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
             }
 
         }

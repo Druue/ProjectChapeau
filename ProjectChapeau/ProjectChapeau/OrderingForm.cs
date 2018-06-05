@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChapeauTestV2
+using ChapeauUI;
+
+namespace ProjectChapeau
 {
     public partial class OrderingForm : Form
     {
@@ -71,8 +73,8 @@ namespace ChapeauTestV2
             DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to place this order?", "Chapeau says", MessageBoxButtons.YesNo);
             if (ContinueDialog == DialogResult.Yes)
             {
-                OrderingDAL DBconnection = new OrderingDAL();
-                DBconnection.DB_InsertOrder(OrderingUI.SettingOrderFromCart(OrdersCart));
+               // OrderingDAL DBconnection = new OrderingDAL();
+                //DBconnection.DB_InsertOrder(OrderingUI.SettingOrderFromCart(OrdersCart));
             }
         }
 
@@ -80,6 +82,11 @@ namespace ChapeauTestV2
         {
             e.Cancel = true;
             e.NewWidth = PriceOverviewListView.Columns[e.ColumnIndex].Width;
+        }
+
+        private void OrderingForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

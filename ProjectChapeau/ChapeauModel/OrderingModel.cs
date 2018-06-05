@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
-namespace ChapeauTestV2
+namespace Chapeau_Model
 {
     public class OrderingModel
     {
@@ -56,12 +56,12 @@ namespace ChapeauTestV2
     }
 
 
-    public class DataGridViewNumericUpDownCell : DataGridViewTextBoxCell
-    {
-        public DataGridViewNumericUpDownCell()
-        {
+    //public class DataGridViewNumericUpDownCell : DataGridViewTextBoxCell
+   // {
+        //public DataGridViewNumericUpDownCell()
+       // {
 
-        }
-    }
+        //}
+   // }
 }
 

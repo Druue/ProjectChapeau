@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Chapeau_Model;
 
-namespace ChapeauTestV2
+namespace ChapeauUI
 {
     public class OrderingUI
     {
         public static void FillMenuList(ListView MenuListView, ComboBox MenuTypeComboBox)
         {
-            MenuListView.HideSelection = false;
+            /*MenuListView.HideSelection = false;
 
             OrderingDAL MenuDB = new OrderingDAL();
             List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
@@ -67,14 +68,14 @@ namespace ChapeauTestV2
 
                     }
                     break;
-            }
+            }*/
 
 
         }
 
         public static void AddCartItems(int MenuItemID, DataGridView OrderCart)
         {
-            OrderingDAL MenuDB = new OrderingDAL();
+            /*OrderingDAL MenuDB = new OrderingDAL();
             List<OrderingModel.Item> MenuList = MenuDB.DB_getMenu();
 
             foreach (OrderingModel.Item item in MenuList)
@@ -96,7 +97,7 @@ namespace ChapeauTestV2
 
                 }     
 
-            }
+            }*/
         }
 
         public static int SearchCorrectRow(DataGridView OrderCart, int MenuItemID)

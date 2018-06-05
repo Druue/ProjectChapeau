@@ -1,4 +1,4 @@
-﻿namespace ChapeauTestV2
+﻿namespace ProjectChapeau
 {
     partial class OrderingForm
     {
@@ -233,6 +233,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.OrderingSystemPanel);
             this.Name = "OrderingForm";
+            this.Load += new System.EventHandler(this.OrderingForm_Load);
             this.OrderingSystemPanel.ResumeLayout(false);
             this.MenuDisplayPanel.ResumeLayout(false);
             this.MenuDisplayPanel.PerformLayout();

@@ -123,10 +123,13 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="CancelOrderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>681, 450</value>
+    <value>511, 366</value>
+  </data>
+  <data name="CancelOrderButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="CancelOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 52</value>
+    <value>88, 42</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CancelOrderButton.TabIndex" type="System.Int32, mscorlib">
@@ -151,10 +154,13 @@
     <value>NoControl</value>
   </data>
   <data name="AddOrderButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>834, 450</value>
+    <value>626, 366</value>
+  </data>
+  <data name="AddOrderButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="AddOrderButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 52</value>
+    <value>94, 42</value>
   </data>
   <data name="AddOrderButton.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -196,10 +202,13 @@
     <value>False</value>
   </data>
   <data name="PriceOverviewListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>657, 19</value>
+    <value>493, 15</value>
+  </data>
+  <data name="PriceOverviewListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="PriceOverviewListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 340</value>
+    <value>241, 277</value>
   </data>
   <data name="PriceOverviewListView.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -217,10 +226,13 @@
     <value>2</value>
   </data>
   <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 20</value>
+    <value>307, 16</value>
+  </data>
+  <data name="textBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 22</value>
+    <value>130, 20</value>
   </data>
   <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -250,10 +262,13 @@
     <value>ALL(*)</value>
   </data>
   <data name="MenuTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 19</value>
+    <value>16, 15</value>
+  </data>
+  <data name="MenuTypeComboBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="MenuTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>367, 24</value>
+    <value>276, 21</value>
   </data>
   <data name="MenuTypeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -280,10 +295,13 @@
     <value>NoControl</value>
   </data>
   <data name="AddToCartButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 288</value>
+    <value>160, 234</value>
+  </data>
+  <data name="AddToCartButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="AddToCartButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 32</value>
+    <value>131, 26</value>
   </data>
   <data name="AddToCartButton.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -304,10 +322,13 @@
     <value>2</value>
   </data>
   <data name="MenuListView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 63</value>
+    <value>16, 51</value>
+  </data>
+  <data name="MenuListView.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="MenuListView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>560, 207</value>
+    <value>421, 169</value>
   </data>
   <data name="MenuListView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -325,10 +346,13 @@
     <value>3</value>
   </data>
   <data name="MenuDisplayPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 19</value>
+    <value>16, 15</value>
+  </data>
+  <data name="MenuDisplayPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="MenuDisplayPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>599, 340</value>
+    <value>449, 276</value>
   </data>
   <data name="MenuDisplayPanel.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -406,10 +430,13 @@
     <value>False</value>
   </data>
   <data name="OrdersCart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 379</value>
+    <value>16, 308</value>
+  </data>
+  <data name="OrdersCart.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="OrdersCart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>599, 172</value>
+    <value>449, 140</value>
   </data>
   <data name="OrdersCart.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -427,10 +454,13 @@
     <value>4</value>
   </data>
   <data name="OrderingSystemPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 26</value>
+    <value>22, 21</value>
+  </data>
+  <data name="OrderingSystemPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="OrderingSystemPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1026, 587</value>
+    <value>770, 477</value>
   </data>
   <data name="OrderingSystemPanel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -475,10 +505,10 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1079, 636</value>
+    <value>809, 517</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1069,6 +1099,9 @@
         TujtBXj7ftKht2fggN43fAgAevp+hwEgAgBm3+8I9AqEBADZ1Vif6OIpFAqFQqFQKBQKhUKhUKQs/x/l
         6KF5rsoo+gAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Ordering</value>
