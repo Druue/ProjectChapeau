@@ -122,17 +122,12 @@ namespace Chapeau_DAL
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
             
-            //sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName");
-            //sb.Append("FROM Orders, OrderItems, Menu");
-            //sb.Append("WHERE Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
-            
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
             List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
 
-            //int lastOrderId = -1;
             while (reader.Read())
             {
                 ChapeauModel.Order order = new ChapeauModel.Order();
@@ -143,25 +138,6 @@ namespace Chapeau_DAL
                 order.orderTime = (DateTime)reader["OrderTime"];
 
                 orderList.Add(order);
-                /* Only update order details if order number changes or first time
-                if (lastOrderId != (int)reader["OrderId"])
-                {
-                    ChapeauModel.Order order = new ChapeauModel.Order();
-                    order.orderId = (int)reader["OrderId"];
-                    order.comments = reader["Comments"].ToString();
-                    order.tableId = (int)reader["TableId"];
-                    order.orderTime = (DateTime)reader["OrderTime"];
-                    //order.orderId = (int)reader["OrderId"];
-
-                
-                    orderList.Add(order);
-
-                }
-
-                lastOrderId = (int)reader["OrderId"];
-
-                // Add all items belonging to order
-                orderList.Last().items.Add(reader["ItemName"].ToString());*/
             }
 
             return orderList;

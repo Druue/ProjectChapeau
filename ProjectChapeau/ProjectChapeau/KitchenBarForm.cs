@@ -23,11 +23,8 @@ namespace ProjectChapeau
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
-            this.BackColor = Color.Orange;
-            KitchenBarUI kitbar = new KitchenBarUI();
-            DataTable orderList = kitbar.GetOrders();
 
-            KitchenBarView.DataSource = orderList;
+
 
         }
 
@@ -39,6 +36,14 @@ namespace ProjectChapeau
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            KitchenBarUI kitbar = new KitchenBarUI();
+            DataTable orderList = kitbar.GetOrders();
+
+            KitchenBarView.DataSource = orderList;
         }
     }
 }
