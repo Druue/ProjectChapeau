@@ -21,15 +21,13 @@ namespace ProjectChapeau
        
         public void Employee_dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (Employee_dataGridView.Columns[e.ColumnIndex].Name == "Delete")
             {
                 if (MessageBox.Show("Are you sure you want to delete this employee?", "Message", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    string name = Employee_dataGridView.SelectedCells.ToString();
+                    string firstName = Employee_dataGridView.SelectedRows[0].Cells[2].Value.ToString();
                     ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();
-                    employeeOverview.delete(name);
-
+                    employeeOverview.delete(firstName);
                 }
             }
             if (Employee_dataGridView.Columns[e.ColumnIndex].Name == "Edit")
@@ -50,7 +48,6 @@ namespace ProjectChapeau
         {
             // TODO: This line of code loads data into the 'chapeau_1718_DB01DataSet.Employee' table. You can move, or remove it, as needed.
             this.employeeTableAdapter.Fill(this.chapeau_1718_DB01DataSet.Employee);
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -69,8 +66,26 @@ namespace ProjectChapeau
             string username = newUsername.Text.ToString();
 
             ChapeauLogic.EmployeeRepository employeeOverview = new ChapeauLogic.EmployeeRepository();            
-            employeeOverview.create(firstname, lastname, jobRole, password, username);
+            employeeOverview.create(firstname, lastname, jobRole, password, username);            
+        }
 
+        private void Employee_dataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (Employee_dataGridView.SelectedRows.Count < 2) // make sure user select not more 1 row 
+            {
+                string firstName = Employee_dataGridView.SelectedRows[0].Cells[2].Value.ToString();
+                string lastName = Employee_dataGridView.SelectedRows[0].Cells[3].Value.ToString();
+                string jobRole = Employee_dataGridView.SelectedRows[0].Cells[4].Value.ToString() ;
+                string password = Employee_dataGridView.SelectedRows[0].Cells[5].Value.ToString() ;
+                string userName = Employee_dataGridView.SelectedRows[0].Cells[6].Value.ToString();
+
+                newFirstName.Text = firstName;
+                newLastName.Text = lastName;
+                newJobRole.Text = jobRole;
+                newPassword.Text = password;
+                newUsername.Text = userName;                
+            }
+            
         }
     }
 }

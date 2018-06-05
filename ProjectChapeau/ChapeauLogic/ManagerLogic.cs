@@ -28,10 +28,10 @@ namespace ChapeauLogic
             managerDAL.deleteEmployee(firstname);
         }
 
-        public void addStock(string itemname)
+        public void addStock(string itemname, int stock)
         {
             ChapeauDAL.ManagerDAO managerDAL = new ChapeauDAL.ManagerDAO();
-            managerDAL.addStock(itemname);
+            managerDAL.addStock(itemname, stock);
         }
 
 

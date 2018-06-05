@@ -39,6 +39,7 @@
             this.backButton = new System.Windows.Forms.Button();
             this.menuTableAdapter = new ProjectChapeau.Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter();
             this.stockLabel = new System.Windows.Forms.Label();
+            this.addButton = new StyleGuide.BaseButton1();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).BeginInit();
@@ -115,18 +116,30 @@
             // 
             this.stockLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.stockLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockLabel.Location = new System.Drawing.Point(0, 0);
+            this.stockLabel.Location = new System.Drawing.Point(0, 28);
             this.stockLabel.Name = "stockLabel";
             this.stockLabel.Size = new System.Drawing.Size(828, 32);
             this.stockLabel.TabIndex = 4;
             this.stockLabel.Text = "Stock";
             this.stockLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // addButton
+            // 
+            this.addButton.Font = new System.Drawing.Font("Arial Narrow", 12F);
+            this.addButton.Location = new System.Drawing.Point(460, 501);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(129, 43);
+            this.addButton.TabIndex = 5;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
             // StockOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 644);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.stockLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.stockDataGridView);
@@ -137,6 +150,7 @@
             this.Controls.SetChildIndex(this.stockDataGridView, 0);
             this.Controls.SetChildIndex(this.backButton, 0);
             this.Controls.SetChildIndex(this.stockLabel, 0);
+            this.Controls.SetChildIndex(this.addButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).EndInit();
@@ -154,5 +168,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label stockLabel;
+        private StyleGuide.BaseButton1 addButton;
     }
 }

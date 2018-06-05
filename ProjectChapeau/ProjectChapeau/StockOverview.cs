@@ -38,5 +38,14 @@ namespace ProjectChapeau
             managerForm form = new managerForm();
             form.ShowDialog();
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            string itemName = stockDataGridView.SelectedRows[0].Cells[0].Value.ToString();
+            int stock = (int)stockDataGridView.SelectedRows[0].Cells[1].Value;
+
+            ChapeauLogic.EmployeeRepository stockOverview = new ChapeauLogic.EmployeeRepository();
+            stockOverview.addStock(itemName, stock);
+        }
     }
 }

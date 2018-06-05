@@ -28,49 +28,78 @@ namespace ChapeauDAL
             }
         }
 
-        private void closeConnDB(SqlConnection sqlconn) 
+        private void closeConnDB(SqlConnection sqlconn)
         {
             sqlconn.Close();
-        }   
+        }
 
         public void createEmployee(string firstname, string lastname, string jobrole, string password, string username)
         {
             var connection = openConnDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "INSERT INTO Employee (Firstname,Lastname,JobRole,Password,Username) VALUES(" + firstname + "," + lastname + "," + jobrole + "," + password + "," + username + ")";
-            command.ExecuteNonQuery();
-            connection.Close();
+            String query = "INSERT INTO Employee(Firstname, Lastname, JobRole, Password, Username) VALUES(@firstname,@lastname,@jobrole,@password,@username)";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@firstname", firstname);
+                command.Parameters.AddWithValue("@lastname", lastname);
+                command.Parameters.AddWithValue("@jobrole", jobrole);
+                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@username", username);
+
+                int result = command.ExecuteNonQuery();
+
+                // Check Error
+                if (result < 0)
+                    Console.WriteLine("Error inserting data into Database!");
+
+                connection.Close();
+            }
         }
 
         public void editEmployee(string firstname, string lastname, string jobrole, string password, string username)
         {
             var connection = openConnDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "UPDATE Employee SET Firstname = " + firstname + ",Lastname = " + lastname + ",JobRole = " + jobrole + ",Password =  " + password + ",Username = " + username + ";"; // UPDATE COMMANT
-            command.ExecuteNonQuery();
-            connection.Close();
+
+            String query = "UPDATE Employee SET JobRole =@jobrole,Password = @password,Username = @username WHERE firstName = @firstname and lastName = @lastname"; // UPDATE COMMANT
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@firstname", firstname);
+                command.Parameters.AddWithValue("@lastname", lastname);
+                command.Parameters.AddWithValue("@jobrole", jobrole);
+                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@username", username);
+
+                command.ExecuteNonQuery();             
+
+                connection.Close();
+            }
         }
 
         public void deleteEmployee(string name)
         {
             var connection = openConnDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "DELETE FROM Employee WHERE Firstname = '" + name + "' ";
-            command.ExecuteNonQuery();
-            connection.Close();
+            string query = "DELETE FROM Employee WHERE Firstname = @name";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@name", name);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
 
-        public void addStock(string name)
+        public void addStock(string name, int stock)
         {
             var connection = openConnDB();
-            var command = connection.CreateCommand();
-            command.CommandType = System.Data.CommandType.Text;
-            command.CommandText = "UPDATE Menu SET Stock = Stock + 1; WHERE itemName = " + name + "";
-            command.ExecuteNonQuery();
-            connection.Close();
+            
+            string query = "UPDATE Menu SET Stock = @stock WHERE itemName = @name";
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@stock", stock +1);
+                command.Parameters.AddWithValue("@name",name);
+                command.ExecuteNonQuery();
+                connection.Close();
+            }            
         }
     }
 
