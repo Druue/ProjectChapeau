@@ -46,8 +46,7 @@ namespace Chapeau_DAL
 
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ItemName, ItemId, Price, Vat FROM Menu " +
-                      "WHERE ItemId = @itemId AND OrderId = @orderId FROM OrderItems" /*+
-                      "something about getting the right orderid"*/);
+                      "WHERE ItemId = @itemId AND OrderId = @orderId FROM OrderItems");
             String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
@@ -57,8 +56,8 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                OrderItems item = new OrderItems(reader["ItemName"].ToString(), /*Int32.Parse(reader["ItemId"].ToString()),*/
-                                                        Int32.Parse(reader["Price"].ToString()), double.Parse(reader["Vat"].ToString()));
+                OrderItems item = new OrderItems(reader["ItemName"].ToString(), Int32.Parse(reader["Price"].ToString()),
+                                                 double.Parse(reader["Vat"].ToString()));
                 orderItems.Add(item);
             }
 
@@ -73,15 +72,30 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT STATEMENT");
+            sb.Append("INSERT into Payment (EmployeedId, TableId, VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
+                      "VALUES (@EmployeeId, @TableId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
             String sql = sb.ToString();
+                       
 
             SqlCommand command = new SqlCommand(sql, conn);
-            SqlDataReader reader = command.ExecuteReader();
+            command.Parameters.AddWithValue("@EmployeeId", payment.EmployeeId);
+            command.Parameters.AddWithValue("@TableId", payment.TableId);
+            command.Parameters.AddWithValue("@Vat", payment.Vat);
+            command.Parameters.AddWithValue("@Tip", payment.Tip);
+            command.Parameters.AddWithValue("@InitialPrice", payment.InitialPrice);
+            command.Parameters.AddWithValue("@TotalPrice", payment.TotalPrice);
+            command.Parameters.AddWithValue("@Comments", payment.Comments);
+            command.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod);
+            command.Parameters.AddWithValue("@TimePayed", payment.TimePayed);
 
-            while (reader.Read())
+            int rowsAffected = command.ExecuteNonQuery();
+            if (rowsAffected == 0)
             {
-                
+
+            }
+            else
+            {
+
             }
 
             CloseConnDB(conn);
