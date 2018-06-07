@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace Chapeau_Logic
 {
-    public class EmployeeRepository
+    public class EmployeeRepository // check comment to see if this is still connected
     {
         public void create(string firstname, string lastname, string jobrole, string password, string username)
         {
@@ -31,7 +31,7 @@ namespace Chapeau_Logic
         public void addStock(string itemname, int stock)
         {
             Chapeau_DAL.ManagerDAO managerDAL = new Chapeau_DAL.ManagerDAO();
-            managerDAL.addStock(itemname, stock);
+            managerDAL.addStock(itemname, stock); 
         }
 
 
