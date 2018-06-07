@@ -75,16 +75,18 @@ namespace Chapeau_Model
             public int orderId { get; set; }
             public int tableId { get; set; }
             public string comments { get; set; }
+            public string PlacedBy { get; set; }
             public DateTime orderTime;
             //public bool paidStatus;
 
             public Order()
             {
                 //constructor
-                this.item = "";
-                this.tableId = 0;
-                this.comments = "";
-                this.orderTime = DateTime.Now;
+                item = "";
+                tableId = 0;
+                comments = "";
+                PlacedBy = "";
+                orderTime = DateTime.Now;
                // this.paidStatus = false;
             }
 

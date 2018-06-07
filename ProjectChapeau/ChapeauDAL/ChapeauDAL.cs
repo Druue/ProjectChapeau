@@ -192,24 +192,32 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, Orders.Comments, Orders.TableId, Orders.OrderTime, ItemName FROM  Orders, OrderItems, Menu WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Orders.OrderTime, ItemName, Employee.Firstname, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
             
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
             List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
+            
 
             while (reader.Read())
             {
-                ChapeauModel.Order order = new ChapeauModel.Order();
-                order.orderId = (int)reader["OrderId"];
-                order.item = reader["ItemName"].ToString();
-                order.comments = reader["Comments"].ToString();
-                order.tableId = (int)reader["TableId"];
-                order.orderTime = (DateTime)reader["OrderTime"];
+                bool completed = (bool)reader["completed"];
+                if (completed == false)
+                {
+                    ChapeauModel.Order order = new ChapeauModel.Order();
+                    order.orderId = (int)reader["OrderId"];
+                    order.comments = reader["Comment"].ToString();
+                    order.tableId = (int)reader["TableId"];
+                    order.orderTime = (DateTime)reader["OrderTime"];
+                    order.item = reader["ItemName"].ToString();
+                    order.PlacedBy = reader["Firstname"].ToString();
+                    
 
-                orderList.Add(order);
+                    orderList.Add(order);
+                }
+
             }
 
             return orderList;
