@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KitchenBarUI.cs" />
     <Compile Include="LoginUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

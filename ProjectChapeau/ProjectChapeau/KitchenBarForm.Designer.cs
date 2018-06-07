@@ -31,34 +31,20 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenBarForm));
             this.panelKitchen = new System.Windows.Forms.Panel();
-            this.KitchenBarView = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnKitchen = new System.Windows.Forms.Button();
             this.btnGetWait = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.KitchenBarView)).BeginInit();
             this.SuspendLayout();
             // 
             // panelKitchen
             // 
-            this.panelKitchen.BackColor = System.Drawing.Color.Transparent;
+            this.panelKitchen.BackColor = System.Drawing.Color.White;
             this.panelKitchen.ForeColor = System.Drawing.SystemColors.Window;
             this.panelKitchen.Location = new System.Drawing.Point(175, 52);
             this.panelKitchen.Name = "panelKitchen";
             this.panelKitchen.Size = new System.Drawing.Size(671, 294);
             this.panelKitchen.TabIndex = 0;
-            // 
-            // KitchenBarView
-            // 
-            this.KitchenBarView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.KitchenBarView.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.KitchenBarView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.KitchenBarView.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.KitchenBarView.Location = new System.Drawing.Point(52, 52);
-            this.KitchenBarView.Name = "KitchenBarView";
-            this.KitchenBarView.Size = new System.Drawing.Size(925, 370);
-            this.KitchenBarView.TabIndex = 1;
-            this.KitchenBarView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label1
             // 
@@ -114,8 +100,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1031, 544);
-            this.Controls.Add(this.KitchenBarView);
+            this.ClientSize = new System.Drawing.Size(1142, 594);
             this.Controls.Add(this.btnGetWait);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKitchen);
@@ -123,7 +108,6 @@
             this.Name = "KitchenBarForm";
             this.Text = "Kitchen Orders";
             this.Load += new System.EventHandler(this.KitchenBarForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.KitchenBarView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,7 +118,6 @@
         private System.Windows.Forms.Panel panelKitchen;
         private System.Windows.Forms.Button btnKitchen;
         private System.Windows.Forms.Button btnGetWait;
-        private System.Windows.Forms.DataGridView KitchenBarView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
     }
