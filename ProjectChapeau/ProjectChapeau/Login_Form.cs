@@ -30,12 +30,7 @@ namespace ProjectChapeau
 
         protected void button_login_Click(object sender, EventArgs e)
         {
-         //   string username = txtbox_username.Text;
-           // string password = txtbox_password.Text;
 
-            //this is the place for now. will change with login authentication
-            KitchenBarForm kitBarForm = new KitchenBarForm();
-            kitBarForm.ShowDialog();
         }
 
         private void LoginForm_Load_1(object sender, EventArgs e)
@@ -70,16 +65,16 @@ namespace ProjectChapeau
                 {
                     case JobRole.Bar:
                         MessageBox.Show("Bar login successfull"); //employee en login form meepassen of een showDialog gebruiken!
-                        //ELIZABETH:
-                        //please replace the MessageBox.Show method above with your creation of a new form, and set it to .Show();
-                        this.Hide();
+
+                        KitchenBarForm BarForm = new KitchenBarForm();
+                        BarForm.Show();
                         break;
 
                     case JobRole.Kitchen:
                         MessageBox.Show("Kitchen login successfull");
 
-                        //ELIZABETH:
-                        //please put your kitchen form in here the same way as you did with the bar form
+                        KitchenBarForm kitchenForm = new KitchenBarForm();
+                        kitchenForm.Show();
                         break;
 
                     case JobRole.Manager:

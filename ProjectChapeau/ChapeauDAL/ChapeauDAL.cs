@@ -203,16 +203,17 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                int completed = (int)reader["completed"];
-                if (completed == 0)
+                bool completed = (bool)reader["completed"];
+                if (completed == false)
                 {
                     ChapeauModel.Order order = new ChapeauModel.Order();
                     order.orderId = (int)reader["OrderId"];
-                    order.item = reader["ItemName"].ToString();
-                    order.comments = reader["Comments"].ToString();
+                    order.comments = reader["Comment"].ToString();
                     order.tableId = (int)reader["TableId"];
-                    order.PlacedBy = reader["Firstname"].ToString();
                     order.orderTime = (DateTime)reader["OrderTime"];
+                    order.item = reader["ItemName"].ToString();
+                    order.PlacedBy = reader["Firstname"].ToString();
+                    
 
                     orderList.Add(order);
                 }
