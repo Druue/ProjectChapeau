@@ -28,28 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RestaurantOverview_Form));
             this.flowlaypnl_table_overview_uneven = new System.Windows.Forms.FlowLayoutPanel();
             this.flowlaypnl_table_overview_even = new System.Windows.Forms.FlowLayoutPanel();
             this.btn_logoff = new System.Windows.Forms.Button();
             this.lbl_loggedinEmployee = new System.Windows.Forms.Label();
             this.pnl_topbar = new System.Windows.Forms.Panel();
+            this.pnl_tableoverview_container = new System.Windows.Forms.Panel();
             this.pnl_topbar.SuspendLayout();
+            this.pnl_tableoverview_container.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowlaypnl_table_overview_uneven
             // 
             this.flowlaypnl_table_overview_uneven.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(12, 53);
+            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(52, 13);
             this.flowlaypnl_table_overview_uneven.Name = "flowlaypnl_table_overview_uneven";
-            this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(163, 522);
+            this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(113, 608);
             this.flowlaypnl_table_overview_uneven.TabIndex = 0;
             // 
             // flowlaypnl_table_overview_even
             // 
             this.flowlaypnl_table_overview_even.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(181, 53);
+            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(252, 13);
             this.flowlaypnl_table_overview_even.Name = "flowlaypnl_table_overview_even";
-            this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(163, 522);
+            this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(128, 608);
             this.flowlaypnl_table_overview_even.TabIndex = 1;
             // 
             // btn_logoff
@@ -59,7 +62,7 @@
             this.btn_logoff.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btn_logoff.FlatAppearance.BorderSize = 0;
             this.btn_logoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logoff.Location = new System.Drawing.Point(302, 0);
+            this.btn_logoff.Location = new System.Drawing.Point(404, 0);
             this.btn_logoff.Name = "btn_logoff";
             this.btn_logoff.Size = new System.Drawing.Size(79, 35);
             this.btn_logoff.TabIndex = 2;
@@ -70,9 +73,9 @@
             // lbl_loggedinEmployee
             // 
             this.lbl_loggedinEmployee.AutoSize = true;
-            this.lbl_loggedinEmployee.Location = new System.Drawing.Point(81, 9);
+            this.lbl_loggedinEmployee.Location = new System.Drawing.Point(127, 9);
             this.lbl_loggedinEmployee.Name = "lbl_loggedinEmployee";
-            this.lbl_loggedinEmployee.Size = new System.Drawing.Size(24, 17);
+            this.lbl_loggedinEmployee.Size = new System.Drawing.Size(28, 18);
             this.lbl_loggedinEmployee.TabIndex = 3;
             this.lbl_loggedinEmployee.Text = "    ";
             // 
@@ -80,27 +83,38 @@
             // 
             this.pnl_topbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.pnl_topbar.Controls.Add(this.btn_logoff);
+            this.pnl_topbar.Controls.Add(this.lbl_loggedinEmployee);
             this.pnl_topbar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnl_topbar.ForeColor = System.Drawing.Color.White;
             this.pnl_topbar.Location = new System.Drawing.Point(-1, 0);
             this.pnl_topbar.Name = "pnl_topbar";
-            this.pnl_topbar.Size = new System.Drawing.Size(384, 37);
+            this.pnl_topbar.Size = new System.Drawing.Size(486, 37);
             this.pnl_topbar.TabIndex = 4;
+            // 
+            // pnl_tableoverview_container
+            // 
+            this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_table_overview_even);
+            this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_table_overview_uneven);
+            this.pnl_tableoverview_container.Location = new System.Drawing.Point(22, 43);
+            this.pnl_tableoverview_container.Name = "pnl_tableoverview_container";
+            this.pnl_tableoverview_container.Size = new System.Drawing.Size(436, 656);
+            this.pnl_tableoverview_container.TabIndex = 5;
             // 
             // RestaurantOverview_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 676);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(484, 753);
             this.Controls.Add(this.pnl_topbar);
-            this.Controls.Add(this.lbl_loggedinEmployee);
-            this.Controls.Add(this.flowlaypnl_table_overview_even);
-            this.Controls.Add(this.flowlaypnl_table_overview_uneven);
+            this.Controls.Add(this.pnl_tableoverview_container);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RestaurantOverview_Form";
-            this.Text = "RestaurantOverview_Form";
+            this.Text = "Chapeau - Restaurant Overview";
             this.pnl_topbar.ResumeLayout(false);
+            this.pnl_topbar.PerformLayout();
+            this.pnl_tableoverview_container.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -111,5 +125,6 @@
         private System.Windows.Forms.Button btn_logoff;
         private System.Windows.Forms.Label lbl_loggedinEmployee;
         private System.Windows.Forms.Panel pnl_topbar;
+        private System.Windows.Forms.Panel pnl_tableoverview_container;
     }
 }

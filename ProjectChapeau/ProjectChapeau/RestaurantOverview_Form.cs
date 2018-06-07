@@ -20,10 +20,10 @@ namespace ProjectChapeau
             InitializeComponent();
 
 
-            this.Name = "RestaurantOverviewForm";
             TableTopLogic tablelogic = new TableTopLogic();
             List<TableTop> AllTables = tablelogic.tableTopListLogic();
 
+            lbl_loggedinEmployee.ForeColor = Color.Black;
             lbl_loggedinEmployee.Text = employee.Firstname + " " + employee.Lastname;
             lbl_loggedinEmployee.Font =new Font(lbl_loggedinEmployee.Font, FontStyle.Bold);
             pnl_topbar.Controls.Add(lbl_loggedinEmployee);
@@ -48,9 +48,11 @@ namespace ProjectChapeau
 
             public TableButton(TableTop table, RestaurantOverview_Form form)
             {
-                this.Size = new Size(60, 60);
-                this.Text = table.GetTableId().ToString();
+                this.Size = new Size(80, 80);
+                this.Font = new Font("Arial", 12, FontStyle.Bold);
+                this.Text = table.GetTableId().ToString();                
                 this.Click += new EventHandler((s, ev) => TableButton_Click(s, ev, table, form));
+                this.Margin = new Padding(4,14, 4, 4);
 
                 if (table.GetTableStatus() == TableStatus.Available)
                 {
