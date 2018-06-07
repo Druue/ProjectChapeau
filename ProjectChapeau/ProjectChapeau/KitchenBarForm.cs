@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapeauKitBarUI;
 using Chapeau_Model;
+using Chapeau_Logic;
 
 namespace ProjectChapeau
 {
@@ -23,9 +24,23 @@ namespace ProjectChapeau
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
+            ChapeauLogic logic = new ChapeauLogic();
+            List<ChapeauModel.Order> orderList = logic.showOrders();
 
+            DataTable orderTable = new DataTable();
+            orderTable.Columns.Add("Order Number");
+            orderTable.Columns.Add("Item Name");
+            orderTable.Columns.Add("Comments");
+            orderTable.Columns.Add("Placed By");
+            orderTable.Columns.Add("Time");
 
+            foreach (var o in orderList)
+            {
+                string orderItem = o.item.Replace('_', ' ');
+                string orderTime = o.orderTime.ToString("HH:mm");
 
+                orderTable.Rows.Add(o.orderId, orderItem, o.comments,o.PlacedBy, orderTime);
+            }
         }
 
         private void btnKitchen_Click(object sender, EventArgs e)
@@ -40,10 +55,10 @@ namespace ProjectChapeau
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            KitchenBarUI kitbar = new KitchenBarUI();
-            DataTable orderList = kitbar.GetOrders();
+            //KitchenBarUI kitbar = new KitchenBarUI();
+            KitchenBarForm_Load(sender, e);
 
-            KitchenBarView.DataSource = orderList;
+            //KitchenBarView.DataSource = orderList;
         }
     }
 }
