@@ -30,68 +30,40 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(managerForm));
             this.back_button = new System.Windows.Forms.Button();
-            this.management_label = new System.Windows.Forms.Label();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuButton = new System.Windows.Forms.ToolStripMenuItem();
             this.Employees_button = new System.Windows.Forms.Button();
             this.stock_button = new System.Windows.Forms.Button();
             this.orders_button = new System.Windows.Forms.Button();
-            this.textmanager_label = new System.Windows.Forms.Label();
-            this.menuStrip.SuspendLayout();
+            this.subtitleLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Size = new System.Drawing.Size(750, 29);
+            this.titleLabel.Text = "Management";
+            this.titleLabel.Click += new System.EventHandler(this.titleLabel_Click);
             // 
             // back_button
             // 
             this.back_button.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.back_button.Location = new System.Drawing.Point(134, 466);
+            this.back_button.Location = new System.Drawing.Point(151, 553);
             this.back_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.back_button.Name = "back_button";
-            this.back_button.Size = new System.Drawing.Size(129, 43);
+            this.back_button.Size = new System.Drawing.Size(145, 51);
             this.back_button.TabIndex = 3;
             this.back_button.Text = "Back";
             this.back_button.UseVisualStyleBackColor = false;
             this.back_button.Click += new System.EventHandler(this.back_button_Click);
             // 
-            // management_label
-            // 
-            this.management_label.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.management_label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.management_label.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.management_label.Font = new System.Drawing.Font("Arial Narrow", 13.8F);
-            this.management_label.Location = new System.Drawing.Point(0, 28);
-            this.management_label.Name = "management_label";
-            this.management_label.Size = new System.Drawing.Size(667, 72);
-            this.management_label.TabIndex = 4;
-            this.management_label.Text = "Management";
-            this.management_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.BackColor = System.Drawing.Color.DarkOrange;
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuButton});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(667, 28);
-            this.menuStrip.TabIndex = 5;
-            this.menuStrip.Text = "menuStrip1";
-            // 
-            // menuButton
-            // 
-            this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(33, 24);
-            this.menuButton.Text = "|||";
-            this.menuButton.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
             // Employees_button
             // 
+            this.Employees_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Employees_button.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Employees_button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Employees_button.Image = ((System.Drawing.Image)(resources.GetObject("Employees_button.Image")));
-            this.Employees_button.Location = new System.Drawing.Point(271, 154);
+            this.Employees_button.Location = new System.Drawing.Point(305, 183);
+            this.Employees_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Employees_button.Name = "Employees_button";
-            this.Employees_button.Size = new System.Drawing.Size(117, 90);
+            this.Employees_button.Size = new System.Drawing.Size(132, 107);
             this.Employees_button.TabIndex = 0;
             this.Employees_button.Text = "Employees";
             this.Employees_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -101,12 +73,14 @@
             // 
             // stock_button
             // 
+            this.stock_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.stock_button.BackColor = System.Drawing.Color.WhiteSmoke;
             this.stock_button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stock_button.Image = ((System.Drawing.Image)(resources.GetObject("stock_button.Image")));
-            this.stock_button.Location = new System.Drawing.Point(271, 244);
+            this.stock_button.Location = new System.Drawing.Point(305, 290);
+            this.stock_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.stock_button.Name = "stock_button";
-            this.stock_button.Size = new System.Drawing.Size(117, 90);
+            this.stock_button.Size = new System.Drawing.Size(132, 107);
             this.stock_button.TabIndex = 1;
             this.stock_button.Text = "Stock";
             this.stock_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -116,12 +90,14 @@
             // 
             // orders_button
             // 
+            this.orders_button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.orders_button.BackColor = System.Drawing.Color.WhiteSmoke;
             this.orders_button.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orders_button.Image = ((System.Drawing.Image)(resources.GetObject("orders_button.Image")));
-            this.orders_button.Location = new System.Drawing.Point(271, 334);
+            this.orders_button.Location = new System.Drawing.Point(305, 397);
+            this.orders_button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.orders_button.Name = "orders_button";
-            this.orders_button.Size = new System.Drawing.Size(117, 91);
+            this.orders_button.Size = new System.Drawing.Size(132, 108);
             this.orders_button.TabIndex = 2;
             this.orders_button.Text = "Order";
             this.orders_button.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -129,38 +105,40 @@
             this.orders_button.UseVisualStyleBackColor = false;
             this.orders_button.Click += new System.EventHandler(this.orders_button_Click);
             // 
-            // textmanager_label
+            // subtitleLabel
             // 
-            this.textmanager_label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.textmanager_label.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textmanager_label.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.textmanager_label.Location = new System.Drawing.Point(0, 100);
-            this.textmanager_label.Name = "textmanager_label";
-            this.textmanager_label.Size = new System.Drawing.Size(667, 17);
-            this.textmanager_label.TabIndex = 6;
-            this.textmanager_label.Text = "Select a database:";
-            this.textmanager_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.textmanager_label.Click += new System.EventHandler(this.textmanager_label_Click);
+            this.subtitleLabel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.subtitleLabel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subtitleLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.subtitleLabel.Location = new System.Drawing.Point(109, 72);
+            this.subtitleLabel.Name = "subtitleLabel";
+            this.subtitleLabel.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
+            this.subtitleLabel.Size = new System.Drawing.Size(515, 570);
+            this.subtitleLabel.TabIndex = 6;
+            this.subtitleLabel.Text = "Select a database:";
+            this.subtitleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.subtitleLabel.Click += new System.EventHandler(this.textmanager_label_Click);
             // 
             // managerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 572);
-            this.Controls.Add(this.textmanager_label);
+            this.ClientSize = new System.Drawing.Size(750, 679);
+            this.Controls.Add(this.subtitleLabel);
             this.Controls.Add(this.orders_button);
-            this.Controls.Add(this.management_label);
             this.Controls.Add(this.stock_button);
             this.Controls.Add(this.Employees_button);
             this.Controls.Add(this.back_button);
-            this.Controls.Add(this.menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MainMenuStrip = this.menuStrip;
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "managerForm";
             this.Text = "Chapeau";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.back_button, 0);
+            this.Controls.SetChildIndex(this.Employees_button, 0);
+            this.Controls.SetChildIndex(this.stock_button, 0);
+            this.Controls.SetChildIndex(this.orders_button, 0);
+            this.Controls.SetChildIndex(this.subtitleLabel, 0);
+            this.Controls.SetChildIndex(this.titleLabel, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,13 +146,10 @@
 
         #endregion
         private System.Windows.Forms.Button back_button;
-        private System.Windows.Forms.Label management_label;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem menuButton;
         private System.Windows.Forms.Button Employees_button;
         private System.Windows.Forms.Button stock_button;
         private System.Windows.Forms.Button orders_button;
-        private System.Windows.Forms.Label textmanager_label;
+        private System.Windows.Forms.Label subtitleLabel;
     }
 }
 

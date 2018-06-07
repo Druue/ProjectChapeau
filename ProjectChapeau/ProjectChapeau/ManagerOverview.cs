@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using StyleGuide;
 
 
 namespace ProjectChapeau
 {
-    public partial class managerForm : Form
+    public partial class managerForm : BaseForm
     {
         public managerForm()
         {
@@ -20,7 +21,7 @@ namespace ProjectChapeau
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            subtitleLabel.SendToBack();
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -59,10 +60,15 @@ namespace ProjectChapeau
 
         private void orders_button_Click(object sender, EventArgs e)
         {
-            //needs to go to ordersform instead of employees
+            
             this.Hide();
-            EmployeeOverview form = new EmployeeOverview();
+            OrderOverview form = new OrderOverview();
             form.ShowDialog();
+        }
+
+        private void titleLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
     public class LoginForm : Form

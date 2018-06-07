@@ -60,6 +60,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Chapeau_1718_DB01DataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Chapeau_1718_DB01DataSet31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Chapeau_1718_DB01DataSet31.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +76,12 @@
     </Compile>
     <Compile Include="ManagerOverview.Designer.cs">
       <DependentUpon>ManagerOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderOverview.Designer.cs">
+      <DependentUpon>OrderOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManagerOverview.resx">
       <DependentUpon>ManagerOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderOverview.resx">
+      <DependentUpon>OrderOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,6 +144,17 @@
     </None>
     <None Include="Chapeau_1718_DB01DataSet2.xss">
       <DependentUpon>Chapeau_1718_DB01DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet31.xsc">
+      <DependentUpon>Chapeau_1718_DB01DataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet31.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Chapeau_1718_DB01DataSet31.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Chapeau_1718_DB01DataSet31.xss">
+      <DependentUpon>Chapeau_1718_DB01DataSet31.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

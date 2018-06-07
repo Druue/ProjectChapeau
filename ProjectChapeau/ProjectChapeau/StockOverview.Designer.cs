@@ -38,14 +38,16 @@
             this.chapeau_1718_DB01DataSet2 = new ProjectChapeau.Chapeau_1718_DB01DataSet2();
             this.backButton = new System.Windows.Forms.Button();
             this.menuTableAdapter = new ProjectChapeau.Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter();
-            this.stockLabel = new System.Windows.Forms.Label();
             this.addButton = new StyleGuide.BaseButton1();
-            this.baseButton11 = new StyleGuide.BaseButton1();
-            this.baseButton12 = new StyleGuide.BaseButton1();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.Size = new System.Drawing.Size(828, 29);
+            this.titleLabel.Text = "Stock";
             // 
             // stockDataGridView
             // 
@@ -114,17 +116,6 @@
             // 
             this.menuTableAdapter.ClearBeforeFill = true;
             // 
-            // stockLabel
-            // 
-            this.stockLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.stockLabel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stockLabel.Location = new System.Drawing.Point(0, 28);
-            this.stockLabel.Name = "stockLabel";
-            this.stockLabel.Size = new System.Drawing.Size(828, 32);
-            this.stockLabel.TabIndex = 4;
-            this.stockLabel.Text = "Stock";
-            this.stockLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // addButton
             // 
             this.addButton.BackColor = System.Drawing.SystemColors.Control;
@@ -138,51 +129,22 @@
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // baseButton11
-            // 
-            this.baseButton11.BackColor = System.Drawing.SystemColors.Control;
-            this.baseButton11.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.baseButton11.Location = new System.Drawing.Point(54, 333);
-            this.baseButton11.Name = "baseButton11";
-            this.baseButton11.Size = new System.Drawing.Size(75, 23);
-            this.baseButton11.TabIndex = 6;
-            this.baseButton11.Text = "baseButton11";
-            this.baseButton11.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.baseButton11.UseVisualStyleBackColor = true;
-            // 
-            // baseButton12
-            // 
-            this.baseButton12.BackColor = System.Drawing.SystemColors.Control;
-            this.baseButton12.Font = new System.Drawing.Font("Arial Narrow", 12F);
-            this.baseButton12.Location = new System.Drawing.Point(677, 144);
-            this.baseButton12.Name = "baseButton12";
-            this.baseButton12.Size = new System.Drawing.Size(129, 43);
-            this.baseButton12.TabIndex = 0;
-            this.baseButton12.Text = "baseButton12";
-            this.baseButton12.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.baseButton12.UseVisualStyleBackColor = true;
-            // 
             // StockOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 644);
-            this.Controls.Add(this.baseButton12);
-            this.Controls.Add(this.baseButton11);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.stockLabel);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.stockDataGridView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
             this.Name = "StockOverview";
             this.Text = "StockOverview";
             this.Load += new System.EventHandler(this.StockOverview_Load);
+            this.Controls.SetChildIndex(this.titleLabel, 0);
             this.Controls.SetChildIndex(this.stockDataGridView, 0);
             this.Controls.SetChildIndex(this.backButton, 0);
-            this.Controls.SetChildIndex(this.stockLabel, 0);
             this.Controls.SetChildIndex(this.addButton, 0);
-            this.Controls.SetChildIndex(this.baseButton11, 0);
-            this.Controls.SetChildIndex(this.baseButton12, 0);
             ((System.ComponentModel.ISupportInitialize)(this.stockDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chapeau_1718_DB01DataSet2)).EndInit();
@@ -199,9 +161,6 @@
         private Chapeau_1718_DB01DataSet2TableAdapters.MenuTableAdapter menuTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn itemNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label stockLabel;
         private StyleGuide.BaseButton1 addButton;
-        private StyleGuide.BaseButton1 baseButton11;
-        private StyleGuide.BaseButton1 baseButton12;
     }
 }
