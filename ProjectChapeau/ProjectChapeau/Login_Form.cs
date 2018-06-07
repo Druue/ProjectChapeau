@@ -70,15 +70,26 @@ namespace ProjectChapeau
                 {
                     case JobRole.Bar:
                         MessageBox.Show("Bar login successfull"); //employee en login form meepassen of een showDialog gebruiken!
+                        //ELIZABETH:
+                        //please replace the MessageBox.Show method above with your creation of a new form, and set it to .Show();
+                        this.Hide();
                         break;
+
                     case JobRole.Kitchen:
                         MessageBox.Show("Kitchen login successfull");
+
+                        //ELIZABETH:
+                        //please put your kitchen form in here the same way as you did with the bar form
                         break;
+
                     case JobRole.Manager:
                         MessageBox.Show("Manager login successfull");
                         break;
+
                     case JobRole.Wait:
-                        MessageBox.Show("Waiter login successfull");
+                        this.Hide();
+                        RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
+                        restaurantform.Show();
                         break;
                 } 
             }

@@ -18,9 +18,8 @@ namespace Chapeau_Logic
 
             ChapeauModel.Employee employee = dal.LoginDAO(username, password);
 
-               return employee;
-
-
+            return employee;
+            
         }
 
         
