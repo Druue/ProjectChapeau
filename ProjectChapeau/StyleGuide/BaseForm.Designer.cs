@@ -32,6 +32,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.sideMenu1 = new StyleGuide.sideMenu();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(33, 24);
             this.toolStripMenuItem1.Text = "|||";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // titleLabel
             // 
@@ -65,7 +67,15 @@
             this.titleLabel.TabIndex = 1;
             this.titleLabel.Text = "label1";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-           
+            // 
+            // sideMenu1
+            // 
+            this.sideMenu1.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sideMenu1.Location = new System.Drawing.Point(0, 32);
+            this.sideMenu1.Margin = new System.Windows.Forms.Padding(4);
+            this.sideMenu1.Name = "sideMenu1";
+            this.sideMenu1.Size = new System.Drawing.Size(251, 545);
+            this.sideMenu1.TabIndex = 2;
             // 
             // BaseForm
             // 
@@ -73,6 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(807, 605);
+            this.Controls.Add(this.sideMenu1);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.menuStrip);
             this.Font = new System.Drawing.Font("Arial", 10.5F);
@@ -94,5 +105,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         protected System.Windows.Forms.Label titleLabel;
+        private sideMenu sideMenu1;
     }
 }
