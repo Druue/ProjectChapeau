@@ -79,6 +79,9 @@ namespace ProjectChapeau
 
                     case JobRole.Manager:
                         MessageBox.Show("Manager login successfull");
+
+                        ManagerOverview managerOverview = new ManagerOverview();
+                        managerOverview.Show();
                         break;
 
                     case JobRole.Wait:
