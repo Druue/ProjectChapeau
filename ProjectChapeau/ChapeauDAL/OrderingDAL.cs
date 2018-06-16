@@ -48,8 +48,12 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                OrderingModel.Item Item = new OrderingModel.Item((int)reader["ItemId"], (int)reader["stock"],
-                    (string)reader["ItemName"], (decimal)reader["Price"], (string)reader["MenuType"]);
+                OrderingModel.Item Item = new OrderingModel.Item();
+                Item.itemID = (int)reader["ItemId"];
+                Item.stock = (int)reader["stock"];
+                Item.Name = (string)reader["ItemName"];
+                Item.itemPrice = (decimal)reader["Price"];
+                Item.MenuType = (MenuType)reader["MenuType"];
                 MenuItemsList.Add(Item);
             }
             reader.Close();
@@ -57,60 +61,95 @@ namespace Chapeau_DAL
             return MenuItemsList;
         }
 
-        public void DB_InsertOrder(List<OrderingModel.Item> OrderItemsList)
+        public TableStatus DB_getTableData(int tableId)
         {
-            try
+            SqlConnection connection = OpenConnectionDB();
+            string sqlQuery = "SELECT TableStatus FROM TableTop WHERE TableId =" + tableId;
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            TableStatus table_status = TableStatus.Available;
+
+            while (reader.Read())
             {
-                string time = DateTime.Now.ToShortTimeString().ToString();
-                string date = DateTime.Now.ToShortDateString();
-                string datetime = time + " " + date;
-                // wquery to select from specific columns
+                table_status = (TableStatus)reader["TableStatus"];
+            }
+            reader.Close();
+            connection.Close();
+            return table_status;
+        }
 
-                using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders VALUES(" +
-                        "@OrderId, @OrderTime)", OpenConnectionDB()))
+
+        public List<OrderingModel.Item> DB_getTableItems(int TableId)
+        {
+            SqlConnection connection = OpenConnectionDB();
+            List<OrderingModel.Item> TableItemsList = new List<OrderingModel.Item>();
+            string sqlQuery = "SELECT ItemId FROM OrderItems WHERE OrderId = (SELECT MAX(OrderId) FROM Orders WHERE TableId =" + TableId + " )";
+
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                OrderingModel.Item TableListItem = new OrderingModel.Item();
+                TableListItem.itemID = (int)reader["ItemId"];
+                foreach (OrderingModel.Item menuItem in DB_getMenu())
                 {
-                    cmd.Parameters.AddWithValue("@OrderId", "mysql_insert_id() + 1");
-                    cmd.Parameters.AddWithValue("@OrderTime", datetime);
-
-                    int rows = cmd.ExecuteNonQuery();
-
-                }
-
-                using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO OrderItems VALUES(" +
-                        "@OrderId, @ItemId, @Comment)", OpenConnectionDB()))
-                {
-
-                    foreach (OrderingModel.Item item in OrderItemsList)
+                    if (menuItem.itemID == TableListItem.itemID)
                     {
-                        cmd.Parameters.AddWithValue("@OrderId", "mysql_insert_id() + 1");
-                        cmd.Parameters.AddWithValue("@ItemId", item.itemID);
-                        cmd.Parameters.AddWithValue("@Comment", item.comment);
-
+                        TableItemsList.Add(menuItem);
                     }
-
-                    int rows = cmd.ExecuteNonQuery();
-                
                 }
-                
-            foreach (OrderingModel.Item item in OrderItemsList){
-
-            using (SqlCommand cmd =
-                   new SqlCommand("UPDATE Menu SET stock = @stock WHERE ID = " + item.itemID, OpenConnectionDB()))
-                    {
-                        cmd.Parameters.AddWithValue("@stock", "[stock - " + item.quantity + "]");
-                        int rows = cmd.ExecuteNonQuery();
-                    }
-                }               
-                OpenConnectionDB().Close();
 
             }
-            catch (SqlException ex)
-            {
-               // MessageBox.Show(string.Format("An error occurred: {0}", ex.Message));
+            reader.Close();
+            connection.Close();
+            return TableItemsList;
+        }
+
+        public void DB_InsertOrder(OrderingModel.Order NewOrder)
+        {
+                using (SqlCommand cmd =
+                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId)", OpenConnectionDB()))
+                {
+                    cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now.Date);
+                    cmd.Parameters.AddWithValue("@TableId", 9);
+
+                    int rows = cmd.ExecuteNonQuery();
+
+                }
+
+                foreach (OrderingModel.Item item in NewOrder.OrderItems)
+                {
+                    using (SqlCommand cmd =
+                        new SqlCommand("INSERT INTO OrderItems ([OrderId], [ItemId], [Comment]) VALUES((SELECT MAX(OrderId) FROM Orders), @ItemId, @Comment)", OpenConnectionDB()))
+                    {
+
+
+                        cmd.Parameters.AddWithValue("@ItemId", item.itemID);
+                        cmd.Parameters.AddWithValue("@Comment", item.comment);
+                        int rows = cmd.ExecuteNonQuery();
+
+                    }
+
+
+
+                }
+
+                foreach (OrderingModel.Item item in NewOrder.OrderItems)
+                {
+
+                    using (SqlCommand cmd =
+                           new SqlCommand("UPDATE Menu SET stock = (SELECT (stock - " + item.quantity + ")) WHERE stock = " + item.itemID, OpenConnectionDB()))
+                    {
+                        int rows = cmd.ExecuteNonQuery();
+                    }
+                }
+
             }
 
         }
+
     }
-}

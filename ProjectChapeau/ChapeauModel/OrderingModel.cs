@@ -11,47 +11,60 @@ namespace Chapeau_Model
     {
         public class Order
         {
-            public int OrderID, TableID, EmployeeID;
-            public double order_price;
-            public bool order_PaidStatus;
-            public List<Item> order_items;
+            public int orderID, tableID, employeeID;
+            public double orderPrice;
+            public bool orderPaidStatus;
 
             public Order()
             {
 
             }
 
-            public Order(int OrderID, int TableID, int EmployeeID, double order_price)
+            public Order(int orderID, int tableID, int employeeID, double orderPrice)
             {
-                this.OrderID = OrderID;
-                this.TableID = TableID;
-                this.EmployeeID = EmployeeID;
-                this.order_price = order_price;
+                this.orderID = orderID;
+                this.tableID = tableID;
+                this.employeeID = employeeID;
+                this.orderPrice = orderPrice;
             }
+
+            public List<Item> OrderItems;
         }
 
         public class Item
         {
             public int itemID;
-            public string name;
-            public decimal item_price;
+            protected string name;
+            public decimal itemPrice;
             public string comment;
+            public int stock;
             public int quantity;
-            public string MenuType;
+            protected MenuType menuType;
+
+            public string Name
+            {
+                get { return name; }
+                set
+                {
+                    name = value;
+                    name.Replace("_", " ");
+                }
+            }
+
+            public MenuType MenuType
+            {
+                get { return this.menuType; }
+                set
+                {
+                    menuType = value;
+                }
+            }
 
             public Item()
             {
-
+                this.comment = "";
             }
 
-            public Item(int itemID, int stock, string name, decimal item_price, string MenuType)
-            {
-                this.itemID = itemID;
-                this.name = name;
-                this.item_price = item_price;
-                this.MenuType = MenuType;
-
-            }
         }
     }
 

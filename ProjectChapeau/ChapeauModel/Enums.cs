@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Chapeau_Model
 {
+    public enum MenuType
+    {
+        Lunch = 1, Dinner, Drink
+    }
+
     public enum PaymentMethod
     {
         Cash, Debit, Credit

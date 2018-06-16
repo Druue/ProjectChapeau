@@ -75,6 +75,21 @@ namespace ProjectChapeau
 
               form.Hide();
 
+                if (table.GetTableStatus() == TableStatus.Available)
+                {
+                    OrderingForm ordering = new OrderingForm(table.GetTableId());
+                    ordering.Show();
+                }
+                else
+                {
+                    OccupiedTableForm occupied = new OccupiedTableForm(table.GetTableId());
+                    occupied.Show();
+                }
+                
+                
+
+
+
                 MessageBox.Show("Yaaay the eventhandlers work! :D table number: " + table.GetTableId());
                 //HENRY:
                 //create your form in here, use the following: YourFormName yourform = new YourFormName(table); then set that to yourform.Show();

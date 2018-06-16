@@ -20,9 +20,43 @@ namespace Chapeau_Logic
             return MenuItemsList;
         }
 
-        public static void ActionInsertOrdersDB(List<OrderingModel.Item> OrderItemsList)
+        public static List<OrderingModel.Item> CallTableItemsDB(int tableId)
         {
-            DBConnection.DB_InsertOrder(OrderItemsList);
+            List<OrderingModel.Item> TableItemsList;
+            TableItemsList = DBConnection.DB_getTableItems(tableId);
+
+            return TableItemsList;
         }
+
+        public static TableStatus getTableData(int tableId)
+        {
+            return DBConnection.DB_getTableData(tableId);
+
+        }
+
+        public static List<OrderingModel.Item> CallTableReceipt()
+        {
+            List<OrderingModel.Item> MenuItemsList;
+            MenuItemsList = DBConnection.DB_getMenu();
+
+            return MenuItemsList;
+        }
+
+        public static void ActionInsertOrdersDB(OrderingModel.Order NewOrder)
+        {
+            DBConnection.DB_InsertOrder(NewOrder);
+        }
+
+        public static string RepairName(string objectName)
+        {
+            objectName = objectName.Replace("_", " ");
+            return objectName;
+        }
+
+        public static double columnMultiplier(double valueX, double valueY)
+        {
+            return valueX * valueY;
+        }
+
     }
 }

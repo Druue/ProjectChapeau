@@ -84,10 +84,16 @@
     <Compile Include="ManagerOverview.Designer.cs">
       <DependentUpon>ManagerOverview.cs</DependentUpon>
     </Compile>
+    <Compile Include="OccupiedTableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OccupiedTableForm.Designer.cs">
+      <DependentUpon>OccupiedTableForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrderingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OrderingForm.designer.cs">
+    <Compile Include="OrderingForm.Designer.cs">
       <DependentUpon>OrderingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderOverview.cs">
@@ -128,8 +134,8 @@
     <EmbeddedResource Include="ManagerOverview.resx">
       <DependentUpon>ManagerOverview.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OrderingForm.aa.resx">
-      <DependentUpon>OrderingForm.cs</DependentUpon>
+    <EmbeddedResource Include="OccupiedTableForm.resx">
+      <DependentUpon>OccupiedTableForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrderingForm.resx">
       <DependentUpon>OrderingForm.cs</DependentUpon>

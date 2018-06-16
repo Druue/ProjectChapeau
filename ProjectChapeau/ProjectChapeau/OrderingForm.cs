@@ -14,34 +14,108 @@ namespace ProjectChapeau
 {
     public partial class OrderingForm : Form
     {
-        public OrderingForm()
+        private int tableId;
+        
+        public OrderingForm(TableTop table)
         {
             InitializeComponent();
+            this.tableId = table.GetTableId();
             FillMenuList();
+
+            if(table.GetTableStatus() == TableStatus.Occupied)
+            {
+                FillCartPrevItems();
+            }
+
             MenuTypeComboBox.SelectedIndexChanged += (s, e) => MenuTypeComboBox_SelectedIndexChanged(s, e);
             MenuListView.SelectedIndexChanged += (s, e) => MenuListView_SelectedIndexChanged(s, e);
+            OrdersCart.RowTemplate.Height = 40;
             OrdersCart.CellContentClick += (s, e) => OrderCartButtons_Click(s, e);
+            OrdersCart.CellPainting += (s, e) => OrderCartButtonGraphics_CellPainting(s, e);
             OrdersCart.AllowUserToAddRows = false;
             OrdersCart.RowsAdded += (s, e) => OrdersCart_RowsAdded(s, e);
             OrdersCart.RowsRemoved += (s, e) => OrdersCart_RowsRemoved(s, e);
+            OrdersCart.CellValueChanged += (s, e) => OrdersCart_CellStyleContentChanged(s, e);
             PriceOverviewListView.ColumnWidthChanging += (s, e) => PriceOverviewListView_ColumnWidthChanged(s, e);
+            
         }
 
-        public void FillMenuList()
+        private void FillMenuList()
         {
             MenuListView.HideSelection = false;
             MenuListView.Items.Clear();
             List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
             MenuItemsList = OrderingLogic.CallMenuListDB();
-            
+
             foreach (OrderingModel.Item MenuItem in MenuItemsList)
             {
-                ListViewItem ListViewMenuItem = new ListViewItem(MenuItem.name);
-                ListViewMenuItem.ImageIndex = MenuItem.itemID;
-                ListViewMenuItem.SubItems.Add(MenuItem.itemID.ToString());
-                MenuListView.Items.Add(ListViewMenuItem);
+
+                    ListViewItem ListViewMenuItem = new ListViewItem(MenuItem.Name);
+                    ListViewMenuItem.ImageIndex = (MenuItem.itemID - 1);
+                    ListViewMenuItem.SubItems.Add(MenuItem.itemID.ToString());
+
+                    if (MenuItem.stock < 1)
+                    {
+                        ListViewMenuItem.ForeColor = Color.Gray;
+                        ListViewMenuItem.ImageIndex = 48;
+                    }
+
+                    MenuListView.Items.Add(ListViewMenuItem);
             }
 
+        }
+
+        private void FillMenuList(MenuType Option)
+        {
+            MenuListView.HideSelection = false;
+            MenuListView.Items.Clear();
+            List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
+            MenuItemsList = OrderingLogic.CallMenuListDB();
+
+            foreach (OrderingModel.Item MenuItem in MenuItemsList)
+            {
+                if (MenuItem.MenuType == Option)
+                {
+                    ListViewItem ListViewMenuItem = new ListViewItem(MenuItem.Name);
+                    ListViewMenuItem.ImageIndex = (MenuItem.itemID - 1);
+                    ListViewMenuItem.SubItems.Add(MenuItem.itemID.ToString());
+
+                    if (MenuItem.stock < 1)
+                    {
+                        ListViewMenuItem.ForeColor = Color.Gray;
+                        ListViewMenuItem.ImageIndex = 48;
+                    }
+
+                    MenuListView.Items.Add(ListViewMenuItem);
+                }
+                
+            }
+
+        }
+
+        private void FillCartPrevItems()
+        {
+            List<OrderingModel.Item> TableList = OrderingLogic.CallTableItemsDB(tableId);
+
+            int storedItem = 50;
+            int storedIndex = 50;
+
+            for(int i=0; i < TableList.Count; i++)
+            {
+                TableList[i].quantity = 1;
+
+                if (TableList[i].itemID != storedItem)
+                {
+                    OrdersCart.Rows.Add("", TableList[i].Name, "", TableList[i].quantity++, TableList[i].itemID, TableList[i].itemPrice);
+                    storedItem = TableList[i].itemID;
+                    storedIndex = i;
+                }
+                else
+                {
+                    OrdersCart.Rows[storedIndex].Cells["QuantityColumn"].Value = TableList[storedIndex].quantity++;
+
+                }
+            }           
         }
 
         private void AddCartItems(int MenuItemID)
@@ -61,7 +135,7 @@ namespace ProjectChapeau
                     }
                     else
                     {
-                        OrdersCart.Rows.Add("Comment", item.name, "X", 1, item.itemID, item.item_price);
+                        OrdersCart.Rows.Add("", item.Name, "", 1, item.itemID, item.itemPrice);
                         break;
                     }
 
@@ -121,7 +195,7 @@ namespace ProjectChapeau
 
             Button AddCommentsButton = new Button();
             AddCommentsButton.Text = "Add comments to the Item";
-            AddCommentsButton.Location = new System.Drawing.Point(60, 210);
+            AddCommentsButton.Location = new Point(60, 210);
             AddCommentsButton.Width = 160;
             AddCommentsButton.Height = 30;
             CommentsForm.Controls.Add(AddCommentsButton);
@@ -140,21 +214,34 @@ namespace ProjectChapeau
             OrdersCart.Rows.Remove(OrdersCart.CurrentRow);
         }
 
-        private List<OrderingModel.Item> SettingOrderFromCart()
+        private OrderingModel.Order SettingOrderFromCart()
         {
-            List<OrderingModel.Item> OrderItemsList = new List<OrderingModel.Item>();
+            OrderingModel.Order NewOrder = new OrderingModel.Order();
 
             foreach (DataGridViewRow row in OrdersCart.Rows)
             {
-                OrderingModel.Item OrderItem = new OrderingModel.Item();
-                OrderItem.itemID = int.Parse(row.Cells["ItemID"].Value.ToString());
-                OrderItem.comment = row.Cells["CommentHidden"].Value.ToString();
-                OrderItem.quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
+                for(int i=0; i < int.Parse(row.Cells["QuantityColumn"].Value.ToString()); i++)
+                {
+                    OrderingModel.Item OrderItem = new OrderingModel.Item();
+                    OrderItem.itemID = int.Parse(row.Cells["ItemID"].Value.ToString());
 
-                OrderItemsList.Add(OrderItem);
+                    if (row.Cells["CommentHidden"].Value == null)
+                    {
+                        OrderItem.comment = "-";
+                    }
+                    else
+                    {
+                        OrderItem.comment = row.Cells["CommentHidden"].Value.ToString();
+                    }
+
+                    OrderItem.quantity = int.Parse(row.Cells["QuantityColumn"].Value.ToString());
+
+                    NewOrder.OrderItems.Add(OrderItem);
+                }
+             
             }
 
-            return OrderItemsList;
+            return NewOrder;
         }
 
         private void PriceOverviewUpdating()
@@ -165,21 +252,36 @@ namespace ProjectChapeau
             {
                 ListViewItem PriceRow = new ListViewItem(row.Cells["ItemNameColumn"].Value.ToString());
                 PriceRow.SubItems.Add("....................");
-                PriceRow.SubItems.Add(row.Cells["PriceColumn"].Value.ToString());
+                double truePrice = OrderingLogic.columnMultiplier(double.Parse(row.Cells["PriceColumn"].Value.ToString()), double.Parse(row.Cells["QuantityColumn"].Value.ToString()));
+                PriceRow.SubItems.Add(truePrice.ToString("0.0000"));
+                PriceRow.SubItems.Add(row.Cells["QuantityColumn"].Value.ToString());
 
                 PriceOverviewListView.Items.Add(PriceRow);
             }
         }
 
-
-
         private void MenuTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FillMenuList();
+            switch (MenuTypeComboBox.SelectedIndex)
+            {
+                case 0:
+                    FillMenuList();
+                    break;
+                case 1:
+                    FillMenuList(MenuType.Lunch);
+                    break;
+                case 2:
+                    FillMenuList(MenuType.Dinner);
+                    break;
+                case 3:
+                    FillMenuList(MenuType.Drink);
+                    break;
+            }
         }
 
         private void MenuListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (MenuListView.SelectedItems.Count > 0)
                 AddToCartButton.Enabled = true;           
             else
@@ -194,6 +296,10 @@ namespace ProjectChapeau
         private void OrdersCart_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
             PriceOverviewUpdating();           
+        }
+        private void OrdersCart_CellStyleContentChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            PriceOverviewUpdating();
         }
 
         private void AddToCartButton_Click(object sender, EventArgs e)
@@ -215,6 +321,39 @@ namespace ProjectChapeau
             }
         }
 
+        private void OrderCartButtonGraphics_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            //I supposed your button column is at index 0
+            if (e.ColumnIndex == 0)
+            {
+               
+                using (var imageSource = new Bitmap("C:\\Users\\Henry\\Desktop\\food items resized\\comment_icon.png"))
+                {
+                    e.PaintContent(e.CellBounds);
+                    e.Graphics.DrawImage(imageSource, e.CellBounds.Left + 10, e.CellBounds.Top + 5, 30, 30);
+                }
+                e.Handled = true;
+
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+
+                using (var imageSource = new Bitmap("C:\\Users\\Henry\\Desktop\\food items resized\\delete_icon.png"))
+                {
+                    e.PaintContent(e.CellBounds);
+                    e.Graphics.DrawImage(imageSource, e.CellBounds.Left + 9, e.CellBounds.Top + 10, 20, 20);
+                   
+                }
+                e.Handled = true;
+            }
+
+            
+        }
+
         private void AddOrderButton_Click(object sender, EventArgs e)
         {
             DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to place this order?", "Chapeau says", MessageBoxButtons.YesNo);
@@ -228,6 +367,11 @@ namespace ProjectChapeau
         {
             e.Cancel = true;
             e.NewWidth = PriceOverviewListView.Columns[e.ColumnIndex].Width;
+        }
+
+        private void OrderingSystemPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
