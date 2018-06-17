@@ -39,26 +39,27 @@ namespace Chapeau_DAL
             sqlconn.Close();
         }
 
-        public List<OrderItems> OrderItemsDAO(int orderID, int tableID) //Sophie - Complete(?)
+        public List<OrderItems> OrderItemsDAO(int orderID) //Sophie - Complete(?)
         {
             SqlConnection conn = OpenConnDB();
-            List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT ItemName, ItemId, Price, Vat FROM Menu " +
-                      "OrderId = @orderId AND TableId = @tableId FROM OrderItems");
+            sb.Append("SELECT ItemName, Price, Vat, [Orders].[OrderId], [OrderItems].[ItemId], completed " +
+                      "FROM Menu, OrderItems, Orders " +
+                      "WHERE [Orders].[OrderId] = [OrderItems].[OrderId] AND [Menu].[ItemId] = [OrderItems].[ItemId] AND completed = 1 " +
+                      "AND [Orders].[OrderId] = @orderId");
             String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@orderId", orderID); //prevents sql injection
-            command.Parameters.AddWithValue("@tableId", tableID); //prevents sql injection
             SqlDataReader reader = command.ExecuteReader();
-            OrderItems item;
 
+            OrderItems item;
+            List<OrderItems> orderItems = new List<OrderItems>();
             while (reader.Read())
             {
-                item = new OrderItems(reader["ItemName"].ToString(), 1, Int32.Parse(reader["Price"].ToString()),
-                                                 float.Parse(reader["Vat"].ToString()));
+                item = new OrderItems(reader["ItemName"].ToString(), 1, double.Parse(reader["Price"].ToString()),
+                                                 double.Parse(reader["Vat"].ToString()));
 
                 if (!orderItems.Contains(item))
                 {
@@ -88,14 +89,12 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT into Payment (TableId, EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
-                      "VALUES (@EmployeeId, @TableId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
-            String sql = sb.ToString();
-                       
+            sb.Append("INSERT into Payment (EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
+                      "VALUES (@EmployeeId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
+            String sql = sb.ToString();       
 
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@EmployeeId", payment.EmployeeId);
-            command.Parameters.AddWithValue("@TableId", payment.TableId);
             command.Parameters.AddWithValue("@Vat", payment.Vat);
             command.Parameters.AddWithValue("@Tip", payment.Tip);
             command.Parameters.AddWithValue("@InitialPrice", payment.InitialPrice);

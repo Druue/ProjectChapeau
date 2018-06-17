@@ -12,7 +12,6 @@ namespace ProjectChapeau
         public int panelHeight = 600;
 
         int orderId;
-        int tableId;
         int employeeId;
 
         public Payment_Form()
@@ -22,8 +21,7 @@ namespace ProjectChapeau
 
         private void Payment_Form_Load(object sender, EventArgs e)
         {
-            orderId = 1; //Elizabeth
-            tableId = 1; //Henry
+            orderId = 4; //Elizabeth + Henry
             employeeId = 1; //Machelle
 
             payMethod1.Appearance = Appearance.Button;
@@ -35,7 +33,7 @@ namespace ProjectChapeau
             orderItemsPaymentlv.Columns.Add("Price");
 
             PaymentLogic pl = new PaymentLogic();
-            List<OrderItems> orderItems = pl.GetOrderItems(orderId, tableId);
+            List<OrderItems> orderItems = pl.GetOrderItems(orderId);
 
             try
             {
@@ -69,15 +67,13 @@ namespace ProjectChapeau
         }
 
         private void FinishedPaymentBttn_Click(object sender, EventArgs e)
-        {
-            //string tipInput = CommentsTxt.Text;
-            //int tip = Int32.Parse(tipInput);
-            PaymentMethod paymentMethod = (PaymentMethod)1;
-            double tip = 0.2;
+        {            
+            PaymentMethod paymentMethod = (PaymentMethod)1; //user input
+            double tip = 0.2; //user input
 
 
             PaymentLogic pl = new PaymentLogic();
-            pl.InsertPayment(employeeId, orderId, tableId, tip, paymentMethod, CommentsTxt.Text);
+            pl.InsertPayment(employeeId, orderId, tip, paymentMethod, CommentsTxt.Text);
         }
     }
 }
