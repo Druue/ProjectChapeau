@@ -11,6 +11,7 @@ using Chapeau_Logic;
 using Chapeau_UI;
 using Chapeau_Model;
 
+
 namespace ProjectChapeau
 {
     public partial class RestaurantOverview_Form : Form
@@ -19,14 +20,43 @@ namespace ProjectChapeau
         {
             InitializeComponent();
 
+            //the timer (made by Machelle)
+            Timer timer = new Timer();
+            timer.Interval = (10 * 1000); // 10 secs
+            timer.Enabled = true;
+            timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this)); ;
+            timer.Start();
 
-            TableTopLogic tablelogic = new TableTopLogic();
-            List<TableTop> AllTables = tablelogic.tableTopListLogic();
-
+            //the controls that will not be reloaded each time and are therefore created here.
             lbl_loggedinEmployee.ForeColor = Color.Black;
             lbl_loggedinEmployee.Text = employee.Firstname + " " + employee.Lastname;
             lbl_loggedinEmployee.Font = new Font(lbl_loggedinEmployee.Font, FontStyle.Bold);
             pnl_topbar.Controls.Add(lbl_loggedinEmployee);
+
+            //everything that will be reloaded using the timer each 10 seconds
+            Load_RestaurantOverview(this);
+
+        }
+
+
+        protected void timer_Tick(object sender, EventArgs e, RestaurantOverview_Form form)
+        {
+            //clearing the even flow panels since these panels won't be re-added
+            form.flowlaypnl_statusEven.Controls.Clear();
+            form.flowlaypnl_table_overview_even.Controls.Clear();
+
+            //clearing the uneven flow panels since these panels won't be re-added
+            form.flowlaypnl_statusUneven.Controls.Clear();
+            form.flowlaypnl_table_overview_uneven.Controls.Clear();
+
+            Load_RestaurantOverview(form);
+            
+        }
+
+        public void Load_RestaurantOverview(RestaurantOverview_Form form)
+        {
+            TableTopLogic tablelogic = new TableTopLogic();
+            List<TableTop> AllTables = tablelogic.tableTopListLogic();
 
             foreach (TableTop table in AllTables)
             {
@@ -36,15 +66,15 @@ namespace ProjectChapeau
 
                 if (table.GetTableId() % 2 == 0)
                 {
-                    this.flowlaypnl_table_overview_even.Controls.Add(tablebutton); //add the even buttons here (2,4,6,8,10)
-                    this.flowlaypnl_statusEven.Controls.Add(statusButton);
-                    this.flowlaypnl_statusEven.Controls.Add(satTimeButton);
+                    form.flowlaypnl_table_overview_even.Controls.Add(tablebutton); //add the even buttons here (2,4,6,8,10)
+                    form.flowlaypnl_statusEven.Controls.Add(statusButton);
+                    form.flowlaypnl_statusEven.Controls.Add(satTimeButton);
                 }
                 else
                 {
-                    this.flowlaypnl_table_overview_uneven.Controls.Add(tablebutton); //add the uneven buttons here (1,3,5,7,9)
-                    this.flowlaypnl_statusUneven.Controls.Add(statusButton);
-                    this.flowlaypnl_statusUneven.Controls.Add(satTimeButton);
+                    form.flowlaypnl_table_overview_uneven.Controls.Add(tablebutton); //add the uneven buttons here (1,3,5,7,9)
+                    form.flowlaypnl_statusUneven.Controls.Add(statusButton);
+                    form.flowlaypnl_statusUneven.Controls.Add(satTimeButton);
                 }
             }
         }
