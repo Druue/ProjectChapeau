@@ -15,16 +15,18 @@ namespace Chapeau_Logic
             int itemid = 1;
             int orderid = 1;
 
-            Payment payment = new Payment();
-            payment.EmployeeId = 1; //gotten from machelle's part
-            payment.TableId = 1; //Gotten from table overview?
-            payment.Tip = 0; //tip = user input from form
-            payment.Vat = 0;
-            payment.InitialPrice = 0;
-            payment.PaymentMethod = 0; //PaymentMethod = user input from form
-            payment.Comments = "";
+            Payment payment = new Payment
+            {
+                EmployeeId = 1, //gotten from machelle's part
+                TableId = 1, //Gotten from table overview?
+                Tip = 0, //tip = user input from form
+                Vat = 0,
+                InitialPrice = 0,
+                PaymentMethod = 0, //PaymentMethod = user input from form
+                Comments = ""
+            };
 
-            Chapeau_DAL.ChapeauDAL dal = new Chapeau_DAL.ChapeauDAL();
+            ChapeauDAL dal = new ChapeauDAL();
             List<OrderItems> orderItems = dal.OrderItemsDAO(itemid, orderid);
 
             foreach (OrderItems item in orderItems)
