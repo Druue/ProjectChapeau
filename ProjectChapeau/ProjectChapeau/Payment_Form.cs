@@ -28,13 +28,16 @@ namespace ProjectChapeau
             payMethod2.Appearance = Appearance.Button;
             payMethod3.Appearance = Appearance.Button;
 
-            orderItemsPaymentlv.Columns.Add("Menu Items");
-            orderItemsPaymentlv.Columns.Add("Quantity");
-            orderItemsPaymentlv.Columns.Add("Price");
+            orderItemsPaymentlv.View = View.Details;
+            orderItemsPaymentlv.Columns.Add("Menu Items", 170, HorizontalAlignment.Left);
+            orderItemsPaymentlv.Columns.Add("Quantity", 67, HorizontalAlignment.Left);
+            orderItemsPaymentlv.Columns.Add("Price", 60, HorizontalAlignment.Left);
+
+            orderDetailsPaymentlv.View = View.SmallIcon;
 
             PaymentLogic pl = new PaymentLogic();
             List<OrderItems> orderItems = pl.GetOrderItems(orderId);
-
+            
             try
             {
                 if (orderItems.Count == 0)
@@ -44,10 +47,9 @@ namespace ProjectChapeau
 
                 for (int i = 0; i < orderItems.Count; i++)
                 {
-                    string[] item = { orderItems[i].ItemName, orderItems[i].Quantity.ToString(), orderItems[i].ItemPrice.ToString()};
-
-                    ListViewItem lvi = new ListViewItem(item);
-                    orderItemsPaymentlv.Items.Add(lvi);
+                    orderItemsPaymentlv.Items.Add(orderItems[i].ItemName);
+                    orderItemsPaymentlv.Items[i].SubItems.Add(orderItems[i].Quantity.ToString());
+                    orderItemsPaymentlv.Items[i].SubItems.Add(orderItems[i].ItemPrice.ToString());
                 }
             }
 
@@ -63,7 +65,7 @@ namespace ProjectChapeau
                 /*Hide();
                 RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
                 restaurantform.Show();*/
-            }                        
+            }            
         }
 
         private void FinishedPaymentBttn_Click(object sender, EventArgs e)
