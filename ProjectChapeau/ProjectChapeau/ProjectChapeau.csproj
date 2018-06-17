@@ -199,10 +199,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\ProjectChapeau\ProjectChapeau\StyleGuide\StyleGuide.csproj">
-      <Project>{3f33d740-3d14-4f1d-b149-f02599d5ecb0}</Project>
-      <Name>StyleGuide</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChapeauLogic\ChapeauLogic.csproj">
       <Project>{549e8f63-a98f-406c-831f-bf6096b1e71a}</Project>
       <Name>ChapeauLogic</Name>
@@ -218,6 +214,10 @@
     <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StyleGuide\StyleGuide2.0.csproj">
+      <Project>{3f33d740-3d14-4f1d-b149-f02599d5ecb0}</Project>
+      <Name>StyleGuide2.0</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

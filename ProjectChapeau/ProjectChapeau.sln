@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauModel", "ChapeauMode
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauUI", "ChapeauUI\ChapeauUI.csproj", "{B7DB8C99-E57E-4830-B032-A83AA333C7DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleGuide", "..\..\ProjectChapeau\ProjectChapeau\StyleGuide\StyleGuide.csproj", "{3F33D740-3D14-4F1D-B149-F02599D5ECB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StyleGuide2.0", "StyleGuide\StyleGuide2.0.csproj", "{3F33D740-3D14-4F1D-B149-F02599D5ECB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

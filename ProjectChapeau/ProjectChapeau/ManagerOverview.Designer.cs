@@ -137,6 +137,7 @@
             this.Name = "ManagerOverview";
             this.Text = "ManagerOverview";
             this.Load += new System.EventHandler(this.ManagerOverview_Load);
+            this.Controls.SetChildIndex(this.sideMenu, 0);
             this.Controls.SetChildIndex(this.backgroundPanel, 0);
             this.Controls.SetChildIndex(this.titleLabel, 0);
             this.backgroundPanel.ResumeLayout(false);
