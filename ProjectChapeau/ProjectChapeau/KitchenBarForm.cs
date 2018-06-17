@@ -23,60 +23,55 @@ namespace ProjectChapeau
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
+            BackgroundImageLayout = ImageLayout.Stretch;
+            WindowState = FormWindowState.Maximized;
+
             ChapeauLogic logic = new ChapeauLogic();
             List<ChapeauModel.Order> orderList = logic.showOrders();
 
             panelKitchen.BackColor = Color.FromArgb(230, Color.White);
 
-            ListView orderTable = new ListView
-            {
-                Height = 294, //671, 294
-                Width = 671,
-                View = View.Details,
-                BackColor = Color.Orange,
-                Scrollable = true,
-                GridLines = true
-            };
+            ListView orderTable = new ListView();
+            orderTable.Name = "orderTable";
+            orderTable.Height = panelKitchen.Width; //671, 294
+            orderTable.Width = panelKitchen.Width;
+            orderTable.View = View.Details;
+            orderTable.Font = new Font("Arial", 20, FontStyle.Regular);
+            orderTable.Scrollable = true;
+            orderTable.GridLines = false;
+            orderTable.FullRowSelect = true;
+            orderTable.MultiSelect = true;
+            orderTable.HideSelection = false;
 
-            ColumnHeader orderId = new ColumnHeader
-            {
-                //orderId.BackColor = Color.Orange;
-                Text = "Order Id",
-                Name = "col1",
-                Width = 134
-            };
+            ColumnHeader orderId = new ColumnHeader();
+           //orderId.BackColor = Color.Orange;
+            orderId.Text = "Order Id";
+            orderId.Name = "col1";
+            orderId.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(orderId);
 
-            ColumnHeader itemName = new ColumnHeader
-            {
-                Text = "Item Name",
-                Name = "col2",
-                Width = 134
-            };
+            ColumnHeader itemName = new ColumnHeader();
+            itemName.Text = "Item Name";
+            itemName.Name = "col2";
+            itemName.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(itemName);
 
-            ColumnHeader comments = new ColumnHeader
-            {
-                Text = "Comments",
-                Name = "col4",
-                Width = 134
-            };
+            ColumnHeader comments = new ColumnHeader();
+            comments.Text = "Comments";
+            comments.Name = "col4";
+            comments.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(comments);
 
-            ColumnHeader placedBy = new ColumnHeader
-            {
-                Text = "PlacedBy",
-                Name = "col5",
-                Width = 134
-            };
+            ColumnHeader placedBy = new ColumnHeader();
+            placedBy.Text = "PlacedBy";
+            placedBy.Name = "col5";
+            placedBy.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(placedBy);
 
-            ColumnHeader orderTime = new ColumnHeader
-            {
-                Text = "Order Time",
-                Name = "col6",
-                Width = 134
-            };
+            ColumnHeader orderTime = new ColumnHeader();
+            orderTime.Text = "Order Time";
+            orderTime.Name = "col6";
+            orderTime.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(orderTime);
 
             foreach (var o in orderList)
@@ -98,6 +93,7 @@ namespace ProjectChapeau
             panelKitchen.Controls.Add(orderTable);
         }
 
+
         private void btnKitchen_Click(object sender, EventArgs e)
         {
 
@@ -110,10 +106,7 @@ namespace ProjectChapeau
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            //KitchenBarUI kitbar = new KitchenBarUI();
             KitchenBarForm_Load(sender, e);
-
-            //KitchenBarView.DataSource = orderList;
         }
     }
 }
