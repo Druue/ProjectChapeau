@@ -28,10 +28,9 @@ namespace Chapeau_Logic
             return TableItemsList;
         }
 
-        public static TableStatus getTableData(int tableId)
+        public static TableStatus GetTableData(int tableId)
         {
             return DBConnection.DB_getTableData(tableId);
-
         }
 
         public static List<OrderingModel.Item> CallTableReceipt()
@@ -53,10 +52,9 @@ namespace Chapeau_Logic
             return objectName;
         }
 
-        public static double columnMultiplier(double valueX, double valueY)
+        public static double ColumnMultiplier(double valueX, double valueY)
         {
             return valueX * valueY;
         }
-
     }
 }

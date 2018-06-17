@@ -8,9 +8,8 @@ namespace Chapeau_Model
 {
     public class ChapeauModel
     {
-       
-
-        public class Employee //made by Machelle
+        /* EMPLOYEE SECTION - MACHELLE*/
+        public class Employee
         {
            public int EmployeeId;
            public  string Firstname;
@@ -33,7 +32,6 @@ namespace Chapeau_Model
                 Role = role;
                 Username = username;
             }
-
 
             public int GetEmployeeId()
             {
@@ -64,12 +62,11 @@ namespace Chapeau_Model
             {
                 return Username;
             }
-
         }
+        
+        /* ORDER SECTION - ELIZABETH*/
 
- 
-
-        public class Order // Made by elizabeth
+        public class Order
         {
             public string item;
             public int orderId { get; set; }

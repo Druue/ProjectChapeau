@@ -12,7 +12,7 @@ using Chapeau_Logic;
 
 namespace ProjectChapeau
 {
-    public partial class EmployeeOverview : BaseForm
+    public partial class EmployeeOverview/* : BaseForm*/
     {
         public EmployeeOverview()
         {
@@ -42,7 +42,7 @@ namespace ProjectChapeau
             string username = newUsername.Text.ToString();
 
             EmployeeRepository employeeOverview = new EmployeeRepository();
-            employeeOverview.create(firstname, lastname, password,jobRole, username);
+            employeeOverview.Create(firstname, lastname, password,jobRole, username);
         }
 
 
@@ -54,7 +54,7 @@ namespace ProjectChapeau
                 {
                     string firstName = Employee_dataGridView.SelectedRows[0].Cells[2].Value.ToString();
                     EmployeeRepository employeeOverview = new EmployeeRepository();
-                    employeeOverview.delete(firstName);
+                    employeeOverview.Delete(firstName);
                 }
             }
             if (Employee_dataGridView.Columns[e.ColumnIndex].Name == "Edit")
@@ -67,7 +67,7 @@ namespace ProjectChapeau
                 string username = newUsername.Text.ToString();
 
                 EmployeeRepository employeeOverview = new EmployeeRepository();
-                employeeOverview.edit(firstname, lastname, jobRole, password, username);
+                employeeOverview.Edit(firstname, lastname, jobRole, password, username);
             }
         }
         private void Employee_dataGridView_SelectionChanged(object sender, EventArgs e)

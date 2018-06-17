@@ -53,12 +53,28 @@ namespace Chapeau_DAL
             command.Parameters.AddWithValue("@itemId", itemId); //prevents sql injection
             command.Parameters.AddWithValue("@orderId", orderId); //prevents sql injection
             SqlDataReader reader = command.ExecuteReader();
+            OrderItems item;
 
             while (reader.Read())
             {
-                OrderItems item = new OrderItems(reader["ItemName"].ToString(), Int32.Parse(reader["Price"].ToString()),
+                item = new OrderItems(reader["ItemName"].ToString(), 1, Int32.Parse(reader["Price"].ToString()),
                                                  double.Parse(reader["Vat"].ToString()));
-                orderItems.Add(item);
+
+                if (!orderItems.Contains(item))
+                {
+                    orderItems.Add(item);
+                }
+
+                else
+                {
+                    for (int i = 0; i < orderItems.Count; i++)
+                    {
+                        if (orderItems[i].ItemName == item.ItemName)
+                        {
+                            orderItems[i].Quantity++;
+                        }
+                    }
+                }
             }
 
             CloseConnDB(conn);
@@ -153,11 +169,8 @@ namespace Chapeau_DAL
                 JobRole role = (JobRole)reader.GetInt32(3);
                 string firstname = reader.GetString(4);
                 string lastname = reader.GetString(5);
-                
-                
 
                 LoginEmployee = new ChapeauModel.Employee(employeeId, firstname, lastname, loginPassword, role, loginUsername);
-
             }
 
             conn.Close();

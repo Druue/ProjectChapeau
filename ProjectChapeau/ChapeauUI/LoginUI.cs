@@ -11,18 +11,13 @@ namespace Chapeau_UI
 {
     public class LoginUI
     {
-
         public ChapeauModel.Employee loginUI(string username, string password)
         {
-
             LoginLogic logic = new LoginLogic();
 
-                ChapeauModel.Employee employee = logic.LoginCheck(username, password);
-
-
-            return employee;
-      
+            ChapeauModel.Employee employee = logic.LoginCheck(username, password);
+            
+            return employee;      
         }
     }
-
 }

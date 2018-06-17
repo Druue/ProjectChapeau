@@ -60,9 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Chapeau_1718_DB01DataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeOverview.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="EmployeeOverview.cs" />
     <Compile Include="EmployeeOverview.Designer.cs">
       <DependentUpon>EmployeeOverview.cs</DependentUpon>
     </Compile>
@@ -142,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OrderOverview.resx">
       <DependentUpon>OrderOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payment_Form.resx">
+      <DependentUpon>Payment_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

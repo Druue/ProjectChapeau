@@ -39,7 +39,7 @@ namespace ProjectChapeau
             int stock = (int)stockDataGridView.SelectedRows[0].Cells[1].Value;
 
             EmployeeRepository stockOverview = new EmployeeRepository();
-            stockOverview.addStock(itemName, stock);
+            stockOverview.AddStock(itemName, stock);
         }
 
         private void stockDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)

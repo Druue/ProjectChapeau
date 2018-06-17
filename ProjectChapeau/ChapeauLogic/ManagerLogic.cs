@@ -11,31 +11,27 @@ namespace Chapeau_Logic
 {
     public class EmployeeRepository
     {
-        public void create(string firstname, string lastname, string jobrole, string password, string username)
+        public void Create(string firstname, string lastname, string jobrole, string password, string username)
         {
-            Chapeau_DAL.ManagerDAO managerDAL = new Chapeau_DAL.ManagerDAO();
+            ManagerDAO managerDAL = new ManagerDAO();
             managerDAL.createEmployee(firstname, lastname, jobrole, password, username);
         }
 
-        public void edit(string firstname, string lastname, string jobrole, string password, string username)
+        public void Edit(string firstname, string lastname, string jobrole, string password, string username)
         {
-            Chapeau_DAL.ManagerDAO managerDAL = new Chapeau_DAL.ManagerDAO();
+            ManagerDAO managerDAL = new ManagerDAO();
             managerDAL.editEmployee(firstname, lastname, jobrole, password, username);
         }
-        public void delete(string firstname)
+        public void Delete(string firstname)
         {
-            Chapeau_DAL.ManagerDAO managerDAL = new Chapeau_DAL.ManagerDAO();
+            ManagerDAO managerDAL = new ManagerDAO();
             managerDAL.deleteEmployee(firstname);
         }
 
-        public void addStock(string itemname, int stock)
+        public void AddStock(string itemname, int stock)
         {
-            Chapeau_DAL.ManagerDAO managerDAL = new Chapeau_DAL.ManagerDAO();
+            ManagerDAO managerDAL = new ManagerDAO();
             managerDAL.addStock(itemname, stock);
         }
-
-
-
-
     }
 }

@@ -31,7 +31,7 @@
             this.payMethod1 = new System.Windows.Forms.RadioButton();
             this.payMethod2 = new System.Windows.Forms.RadioButton();
             this.payMethod3 = new System.Windows.Forms.RadioButton();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.orderItemsPaymentlv = new System.Windows.Forms.ListView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.finishedPaymentBttn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -69,13 +69,13 @@
             this.payMethod3.Text = "payMethod3";
             this.payMethod3.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // orderItemsPaymentlv
             // 
-            this.listView1.Location = new System.Drawing.Point(157, 100);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(220, 269);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.orderItemsPaymentlv.Location = new System.Drawing.Point(157, 100);
+            this.orderItemsPaymentlv.Name = "orderItemsPaymentlv";
+            this.orderItemsPaymentlv.Size = new System.Drawing.Size(220, 269);
+            this.orderItemsPaymentlv.TabIndex = 3;
+            this.orderItemsPaymentlv.UseCompatibleStateImageBehavior = false;
             // 
             // textBox1
             // 
@@ -100,7 +100,7 @@
             this.ClientSize = new System.Drawing.Size(547, 554);
             this.Controls.Add(this.finishedPaymentBttn);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.orderItemsPaymentlv);
             this.Controls.Add(this.payMethod3);
             this.Controls.Add(this.payMethod2);
             this.Controls.Add(this.payMethod1);
@@ -118,7 +118,7 @@
         private System.Windows.Forms.RadioButton payMethod1;
         private System.Windows.Forms.RadioButton payMethod2;
         private System.Windows.Forms.RadioButton payMethod3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView orderItemsPaymentlv;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button finishedPaymentBttn;
     }

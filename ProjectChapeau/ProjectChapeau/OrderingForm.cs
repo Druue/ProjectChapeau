@@ -252,7 +252,7 @@ namespace ProjectChapeau
             {
                 ListViewItem PriceRow = new ListViewItem(row.Cells["ItemNameColumn"].Value.ToString());
                 PriceRow.SubItems.Add("....................");
-                double truePrice = OrderingLogic.columnMultiplier(double.Parse(row.Cells["PriceColumn"].Value.ToString()), double.Parse(row.Cells["QuantityColumn"].Value.ToString()));
+                double truePrice = OrderingLogic.ColumnMultiplier(double.Parse(row.Cells["PriceColumn"].Value.ToString()), double.Parse(row.Cells["QuantityColumn"].Value.ToString()));
                 PriceRow.SubItems.Add(truePrice.ToString("0.0000"));
                 PriceRow.SubItems.Add(row.Cells["QuantityColumn"].Value.ToString());
 

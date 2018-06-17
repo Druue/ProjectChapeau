@@ -35,9 +35,20 @@ namespace Chapeau_Logic
                 payment.InitialPrice += item.ItemPrice;
             }
 
-            payment.TotalPrice = payment.Vat + payment.InitialPrice;
+            payment.TotalPrice = payment.Vat + payment.InitialPrice;            
             
             dal.PaymentDAO(payment);
         }
+
+        public List<OrderItems> GetOrderItems()
+        {
+            int itemid = 1;
+            int orderid = 1;
+
+            ChapeauDAL dal = new ChapeauDAL();
+            List<OrderItems> orderItems = dal.OrderItemsDAO(itemid, orderid);
+
+            return orderItems;
+        }        
     }
 }
