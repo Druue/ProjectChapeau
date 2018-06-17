@@ -32,8 +32,9 @@
             this.payMethod2 = new System.Windows.Forms.RadioButton();
             this.payMethod3 = new System.Windows.Forms.RadioButton();
             this.orderItemsPaymentlv = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.finishedPaymentBttn = new System.Windows.Forms.Button();
+            this.CommentsTxt = new System.Windows.Forms.TextBox();
+            this.FinishedPaymentBttn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // payMethod1
@@ -77,29 +78,40 @@
             this.orderItemsPaymentlv.TabIndex = 3;
             this.orderItemsPaymentlv.UseCompatibleStateImageBehavior = false;
             // 
-            // textBox1
+            // CommentsTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(157, 439);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(220, 22);
-            this.textBox1.TabIndex = 4;
+            this.CommentsTxt.Location = new System.Drawing.Point(157, 434);
+            this.CommentsTxt.Name = "CommentsTxt";
+            this.CommentsTxt.Size = new System.Drawing.Size(220, 22);
+            this.CommentsTxt.TabIndex = 4;
             // 
-            // finishedPaymentBttn
+            // FinishedPaymentBttn
             // 
-            this.finishedPaymentBttn.Location = new System.Drawing.Point(157, 484);
-            this.finishedPaymentBttn.Name = "finishedPaymentBttn";
-            this.finishedPaymentBttn.Size = new System.Drawing.Size(220, 23);
-            this.finishedPaymentBttn.TabIndex = 5;
-            this.finishedPaymentBttn.Text = "Finalise Payment";
-            this.finishedPaymentBttn.UseVisualStyleBackColor = true;
+            this.FinishedPaymentBttn.Location = new System.Drawing.Point(157, 484);
+            this.FinishedPaymentBttn.Name = "FinishedPaymentBttn";
+            this.FinishedPaymentBttn.Size = new System.Drawing.Size(220, 23);
+            this.FinishedPaymentBttn.TabIndex = 5;
+            this.FinishedPaymentBttn.Text = "Finalise Payment";
+            this.FinishedPaymentBttn.UseVisualStyleBackColor = true;
+            this.FinishedPaymentBttn.Click += new System.EventHandler(this.FinishedPaymentBttn_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(325, 191);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
             // Payment_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 554);
-            this.Controls.Add(this.finishedPaymentBttn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.FinishedPaymentBttn);
+            this.Controls.Add(this.CommentsTxt);
             this.Controls.Add(this.orderItemsPaymentlv);
             this.Controls.Add(this.payMethod3);
             this.Controls.Add(this.payMethod2);
@@ -119,7 +131,8 @@
         private System.Windows.Forms.RadioButton payMethod2;
         private System.Windows.Forms.RadioButton payMethod3;
         private System.Windows.Forms.ListView orderItemsPaymentlv;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button finishedPaymentBttn;
+        private System.Windows.Forms.TextBox CommentsTxt;
+        private System.Windows.Forms.Button FinishedPaymentBttn;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

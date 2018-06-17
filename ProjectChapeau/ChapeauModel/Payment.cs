@@ -6,6 +6,7 @@ namespace Chapeau_Model
     public class Payment //Sophie
     {
         public int EmployeeId { get; set; }
+        public int OrderId { get; set; }
         public int TableId { get; set; }
         public double Vat { get; set; }
         public double Tip { get; set; }

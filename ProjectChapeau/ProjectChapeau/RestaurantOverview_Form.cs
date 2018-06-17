@@ -77,7 +77,7 @@ namespace ProjectChapeau
 
                 if (table.GetTableStatus() == TableStatus.Available)
                 {
-                    OrderingForm ordering = new OrderingForm(table.GetTableId());
+                    OrderingForm ordering = new OrderingForm(table);
                     ordering.Show();
                 }
                 else

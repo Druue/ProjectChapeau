@@ -39,26 +39,26 @@ namespace Chapeau_DAL
             sqlconn.Close();
         }
 
-        public List<OrderItems> OrderItemsDAO(int itemId, int orderId)
+        public List<OrderItems> OrderItemsDAO(int orderID, int tableID) //Sophie - Complete(?)
         {
             SqlConnection conn = OpenConnDB();
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ItemName, ItemId, Price, Vat FROM Menu " +
-                      "WHERE ItemId = @itemId AND OrderId = @orderId FROM OrderItems");
+                      "OrderId = @orderId AND TableId = @tableId FROM OrderItems");
             String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
-            command.Parameters.AddWithValue("@itemId", itemId); //prevents sql injection
-            command.Parameters.AddWithValue("@orderId", orderId); //prevents sql injection
+            command.Parameters.AddWithValue("@orderId", orderID); //prevents sql injection
+            command.Parameters.AddWithValue("@tableId", tableID); //prevents sql injection
             SqlDataReader reader = command.ExecuteReader();
             OrderItems item;
 
             while (reader.Read())
             {
                 item = new OrderItems(reader["ItemName"].ToString(), 1, Int32.Parse(reader["Price"].ToString()),
-                                                 double.Parse(reader["Vat"].ToString()));
+                                                 float.Parse(reader["Vat"].ToString()));
 
                 if (!orderItems.Contains(item))
                 {
@@ -88,7 +88,7 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT into Payment (EmployeedId, TableId, VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
+            sb.Append("INSERT into Payment (TableId, EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
                       "VALUES (@EmployeeId, @TableId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
             String sql = sb.ToString();
                        

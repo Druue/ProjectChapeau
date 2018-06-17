@@ -11,6 +11,10 @@ namespace ProjectChapeau
         public int panelWidth = 1400;
         public int panelHeight = 600;
 
+        int orderId;
+        int tableId;
+        int employeeId;
+
         public Payment_Form()
         {
             InitializeComponent();
@@ -18,7 +22,10 @@ namespace ProjectChapeau
 
         private void Payment_Form_Load(object sender, EventArgs e)
         {
-            
+            orderId = 1; //Elizabeth
+            tableId = 1; //Henry
+            employeeId = 1; //Machelle
+
             payMethod1.Appearance = Appearance.Button;
             payMethod2.Appearance = Appearance.Button;
             payMethod3.Appearance = Appearance.Button;
@@ -28,7 +35,7 @@ namespace ProjectChapeau
             orderItemsPaymentlv.Columns.Add("Price");
 
             PaymentLogic pl = new PaymentLogic();
-            List<OrderItems> orderItems = pl.GetOrderItems();
+            List<OrderItems> orderItems = pl.GetOrderItems(orderId, tableId);
 
             try
             {
@@ -53,12 +60,24 @@ namespace ProjectChapeau
                 "Payment View Error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation //For triangle Warning 
-                                );
-                Hide();
+                );
+
+                /*Hide();
                 RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
-                restaurantform.Show();
-            }
-            
+                restaurantform.Show();*/
+            }                        
+        }
+
+        private void FinishedPaymentBttn_Click(object sender, EventArgs e)
+        {
+            //string tipInput = CommentsTxt.Text;
+            //int tip = Int32.Parse(tipInput);
+            PaymentMethod paymentMethod = (PaymentMethod)1;
+            double tip = 0.2;
+
+
+            PaymentLogic pl = new PaymentLogic();
+            pl.InsertPayment(employeeId, orderId, tableId, tip, paymentMethod, CommentsTxt.Text);
         }
     }
 }
