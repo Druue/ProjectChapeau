@@ -235,5 +235,17 @@ namespace Chapeau_DAL
             return orderList;
         }
 
+        public void UpdateOrderDAO(ChapeauModel.Order selectedOrder)
+        {
+            SqlConnection conn = OpenConnDB();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Orders SET completed = @complete WHERE OrderId = @orderId");
+
+            String sql = sb.ToString();
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@complete", selectedOrder.completed);
+            command.Parameters.AddWithValue("@orderId", selectedOrder.orderId);
+            SqlDataReader reader = command.ExecuteReader();
+        }
     }
 }

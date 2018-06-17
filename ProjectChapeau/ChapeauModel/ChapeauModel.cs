@@ -74,7 +74,7 @@ namespace Chapeau_Model
             public string comments { get; set; }
             public string PlacedBy { get; set; }
             public DateTime orderTime;
-            //public bool paidStatus;
+            public int completed { get; set; }
 
             public Order()
             {
@@ -84,7 +84,7 @@ namespace Chapeau_Model
                 comments = "";
                 PlacedBy = "";
                 orderTime = DateTime.Now;
-               // this.paidStatus = false;
+                completed = 0;
             }
 
             public bool PlaceOrder()
