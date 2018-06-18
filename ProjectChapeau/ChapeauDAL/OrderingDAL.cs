@@ -95,7 +95,7 @@ namespace Chapeau_DAL
         public void DB_InsertOrder(OrderingModel.Order NewOrder, int tableId, int employeeId)
         {
                 using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders ([OrderTime], [TableId], [EmployeeId], [completed]) VALUES(@OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
+                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [EmployeeId], [completed]) VALUES((SELECT TOP 1 OrderId FROM Orders ORDER BY OrderId DESC),@OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
                 {
                     cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@TableId", tableId);
@@ -114,7 +114,7 @@ namespace Chapeau_DAL
             foreach (OrderingModel.Item item in NewOrder.OrderItems)
                 {
                     using (SqlCommand cmd =
-                        new SqlCommand("INSERT INTO OrderItems ([ItemId], [Comment]) VALUES(@ItemId, @Comment)", OpenConnectionDB()))
+                        new SqlCommand("INSERT INTO OrderItems ([OrderId], [ItemId], [Comment]) VALUES((SELECT TOP 1 OrderId FROM Orders ORDER BY OrderId DESC), @ItemId, @Comment)", OpenConnectionDB()))
                     {
                         cmd.Parameters.AddWithValue("@ItemId", item.itemID);
                         cmd.Parameters.AddWithValue("@Comment", item.comment);
@@ -170,10 +170,18 @@ namespace Chapeau_DAL
         public bool DB_GetOrderStatus(int OrderId)
         {
             SqlConnection connection = OpenConnectionDB();
-            string sqlQuery = "SELECT completed FROM Orders WHERE OrderId = " + OrderId;
+            string sqlQuery = "SELECT completed FROM Orders WHERE OrderId = " + OrderId ;
             SqlCommand command = new SqlCommand(sqlQuery, connection);
             SqlDataReader reader = command.ExecuteReader();
 
+            bool completed;
+
+            while (reader.Read())
+            {
+                completed = Convert.ToBoolean(reader["completed"]);
+            }
+            reader.Close();
+            connection.Close();
 
             return false;
 

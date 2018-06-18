@@ -96,7 +96,7 @@ namespace Chapeau_Logic
             return minutes;
         }
 
-        public static bool GetOrderStatus(int OrderId)
+       public static bool GetOrderStatus(int OrderId)
         {
             return DBConnection.DB_GetOrderStatus(OrderId);
 
