@@ -21,13 +21,13 @@ namespace ProjectChapeau
         {
             InitializeComponent();
             FillTableList();
+            this.table = table;
+            this.employee = employee;
             Timer timer = new Timer();
             timer.Interval = (10 * 1000); // 10 secs
             timer.Enabled = true;
             timer.Tick += new EventHandler((s, e) => timer_Tick(s, e)); ;
             timer.Start();
-            this.table = table;
-            this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
             if(OrderingLogic.GetOrderStatus(OrderingLogic.GetOrderId(table.GetTableId())) == true)
             {
@@ -55,7 +55,7 @@ namespace ProjectChapeau
 
         private void FillTableList()
         {
-          /*  tableReceiptListView.HideSelection = false;
+            tableReceiptListView.HideSelection = false;
             tableReceiptListView.Items.Clear();
             List<OrderingModel.Item> TableItemsList = new List<OrderingModel.Item>();
             TableItemsList = OrderingLogic.CallTableItemsDB(this.table.GetTableId());
@@ -74,7 +74,7 @@ namespace ProjectChapeau
             ListViewItem LvPriceItem = new ListViewItem("Total Price");
             LvPriceItem.SubItems.Add("...................");
             LvPriceItem.SubItems.Add(price.ToString());
-            tableReceiptListView.Items.Add(LvPriceItem);8*/
+            tableReceiptListView.Items.Add(LvPriceItem);
 
         }
 

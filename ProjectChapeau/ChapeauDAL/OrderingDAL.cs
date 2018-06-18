@@ -95,7 +95,7 @@ namespace Chapeau_DAL
         public void DB_InsertOrder(OrderingModel.Order NewOrder, int tableId, int employeeId)
         {
                 using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [EmployeeId], [completed]) VALUES((SELECT TOP 1 OrderId FROM Orders ORDER BY OrderId DESC),@OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
+                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [EmployeeId], [completed]) VALUES((SELECT TOP 1 OrderId FROM Orders ORDER BY OrderId DESC)+1,@OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
                 {
                     cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@TableId", tableId);
