@@ -75,30 +75,22 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT into Payment (EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
-                      "VALUES (@EmployeeId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
+            sb.Append("INSERT into Payment (OrderId, TotalPrice, EmployeeId, Tip, PaymentMethod, BasePrice, VATPrice, Comments, TimePayed)" +
+                      "VALUES (@OrderId, @TotalPrice, @EmployeeId, @Tip, @PaymentMethod, @BasePrice, @Vat, @Comments, @TimePayed)");
             String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
-            command.Parameters.AddWithValue("@EmployeeId", payment.EmployeeId);
-            command.Parameters.AddWithValue("@Vat", payment.Vat);
-            command.Parameters.AddWithValue("@Tip", payment.Tip);
-            command.Parameters.AddWithValue("@InitialPrice", payment.InitialPrice);
+            command.Parameters.AddWithValue("@OrderId", payment.OrderId);
             command.Parameters.AddWithValue("@TotalPrice", payment.TotalPrice);
+            command.Parameters.AddWithValue("@EmployeeId", payment.EmployeeId);
+            command.Parameters.AddWithValue("@Tip", payment.Tip);
+            command.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod.ToString());
+            command.Parameters.AddWithValue("@BasePrice", payment.InitialPrice);
+            command.Parameters.AddWithValue("@Vat", payment.Vat);
             command.Parameters.AddWithValue("@Comments", payment.Comments);
-            command.Parameters.AddWithValue("@PaymentMethod", payment.PaymentMethod);
             command.Parameters.AddWithValue("@TimePayed", payment.TimePayed);
 
-            int rowsAffected = command.ExecuteNonQuery();
-            if (rowsAffected == 0)
-            {
-
-            }
-            else
-            {
-
-            }
-
+            command.ExecuteNonQuery();
             CloseConnDB(conn);
         }
 

@@ -8,35 +8,31 @@ namespace ProjectChapeau
 {
     public partial class Payment_Form : Form
     {
-        public int panelWidth = 1400;
-        public int panelHeight = 600;
+        private int orderId;
+        private ChapeauModel.Employee employee;
 
-        int orderId;
-        int employeeId;
-
-        public Payment_Form()
+        public Payment_Form(ChapeauModel.Employee employee, int tableId)
         {
             InitializeComponent();
+            this.employee = employee;
+            this.orderId = OrderingLogic.GetOrderId(tableId);
         }
 
         private void Payment_Form_Load(object sender, EventArgs e)
         {
-            orderId = 49; //Elizabeth + Henry
-            employeeId = 1; //Machelle
-
-            payMethod1.Appearance = Appearance.Button; //Payment Method Buttons
-            payMethod1.BackgroundImageLayout = ImageLayout.Stretch;
-            payMethod2.Appearance = Appearance.Button;
-            payMethod2.BackgroundImageLayout = ImageLayout.Stretch;
-            payMethod3.Appearance = Appearance.Button;
-            payMethod3.BackgroundImageLayout = ImageLayout.Stretch;
+            payCashbttn.Appearance = Appearance.Button; //Payment Method Buttons
+            payCashbttn.BackgroundImageLayout = ImageLayout.Stretch;
+            payDebitbttn.Appearance = Appearance.Button;
+            payDebitbttn.BackgroundImageLayout = ImageLayout.Stretch;
+            payCreditbttn.Appearance = Appearance.Button;
+            payCreditbttn.BackgroundImageLayout = ImageLayout.Stretch;
 
             TipInputnum.Value = 0; //NumericUpDown -> TipInput
             TipInputnum.Minimum = 0;
             TipInputnum.DecimalPlaces = 2;
 
             orderItemsPaymentlv.View = View.Details;  //Items that have been ordered
-            orderItemsPaymentlv.Columns.Add("Menu Items", 180, HorizontalAlignment.Left);
+            orderItemsPaymentlv.Columns.Add("Menu Items", 175, HorizontalAlignment.Left);
             orderItemsPaymentlv.Columns.Add("Quantity", 70, HorizontalAlignment.Left);
             orderItemsPaymentlv.Columns.Add("Price", 65, HorizontalAlignment.Left);
 
@@ -53,7 +49,7 @@ namespace ProjectChapeau
             {
                 if (orderItems.Count == 0)
                 {
-                    throw new Exception("Either nothing has been ordered yet, or it hasn't been completed!");
+                    throw new Exception("Either nothing has been ordered yet, or your order hasn't been completed!");
                 }
 
                 for (int i = 0; i < orderItems.Count; i++)
@@ -87,22 +83,45 @@ namespace ProjectChapeau
         }        
 
         private void FinishedPaymentBttn_Click(object sender, EventArgs e)
-        {            
-            PaymentMethod paymentMethod = (PaymentMethod)1; //user input
+        {
+            PaymentMethod paymentMethod = PaymentMethod.Cash;
             double tip = double.Parse(TipInputnum.Value.ToString()); //user input
             
-            PaymentLogic pl = new PaymentLogic();
-            pl.InsertPayment(employeeId, orderId, tip, paymentMethod, CommentsTxt.Text);
+            if (payCreditbttn.Checked)
+            {
+                paymentMethod = PaymentMethod.Credit;
+            }
+
+            else if (payDebitbttn.Checked)
+            {
+                paymentMethod = PaymentMethod.Debit;
+            }            
+
+            PaymentLogic pl = new PaymentLogic();            
+
+            DialogResult confirmPayment = MessageBox.Show("Are you sure you wish to pay for this order?", "Confirm Payment", MessageBoxButtons.YesNo);
+            if (confirmPayment == DialogResult.Yes)
+            {
+                pl.InsertPayment(employee.EmployeeId, orderId, tip, paymentMethod, CommentsTxt.Text);
+
+                DialogResult finalisePayment = MessageBox.Show(
+                                               "You have succesfully paid for your order!",
+                                               "Payment Complete",
+                                               MessageBoxButtons.OK
+                                               );
+
+                if (finalisePayment == DialogResult.OK)
+                {
+                    this.Close();
+                }
+            }                                 
         }
 
         private void CancelPaymentbttn_Click(object sender, EventArgs e)
         {
-            //open previous form
-        }
-
-        private void TipInputnum_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+            //RestaurantOverview_Form restaurantOverview = new RestaurantOverview_Form(employee);
+            this.Close();
+            //restaurantOverview.Show();
+        }        
     }
 }
