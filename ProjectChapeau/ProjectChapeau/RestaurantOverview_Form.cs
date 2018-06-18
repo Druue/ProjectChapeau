@@ -121,12 +121,6 @@ namespace ProjectChapeau
                     OccupiedTableForm occupied = new OccupiedTableForm(table);
                     occupied.ShowDialog();
                 }
-
-
-
-
-
-                MessageBox.Show("Yaaay the eventhandlers work! :D table number: " + table.GetTableId());
                 //HENRY:
                 //create your form in here, use the following: YourFormName yourform = new YourFormName(table); then set that to yourform.Show();
                 //You can use the table.TableId that I passed in this eventhandler in your form to make changes to the right table!
@@ -173,6 +167,11 @@ namespace ProjectChapeau
             this.Close();
             LoginForm login = new LoginForm();
             login.Show();
+        }
+
+        public void NotifyWaiter(ChapeauModel.Order notify)
+        {
+            DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table " + notify.tableId, MessageBoxButtons.OK));
         }
 
 

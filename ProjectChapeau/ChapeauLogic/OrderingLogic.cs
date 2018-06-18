@@ -87,6 +87,14 @@ namespace Chapeau_Logic
 
             return comboboxItems;         
         }
+
+        public static int GetWaitingTime(int tableId)
+        {
+            DateTime dtToday = DateTime.Now;
+            TimeSpan passedTime = dtToday.Subtract(DBConnection.DB_GetOrderTime(tableId));
+            int minutes = (int)Math.Round(passedTime.TotalMinutes);
+            return minutes;
+        }
     }
 }
 

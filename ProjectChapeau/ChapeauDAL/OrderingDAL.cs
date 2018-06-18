@@ -95,9 +95,9 @@ namespace Chapeau_DAL
         public void DB_InsertOrder(OrderingModel.Order NewOrder, int tableId)
         {
                 using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [completed]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId, False)", OpenConnectionDB()))
+                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [completed]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId, 0)", OpenConnectionDB()))
                 {
-                    cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now.Date);
+                    cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@TableId", tableId);
                     int rows = cmd.ExecuteNonQuery();
 
@@ -140,11 +140,30 @@ namespace Chapeau_DAL
                 int rows = cmd.ExecuteNonQuery();
             }
 
-            using (SqlCommand command = new SqlCommand("DELETE FROM OrderItems WHERE OrderId = (SELECT OrderId FROM Orders WHERE TableId = " + tableId + ")", OpenConnectionDB()))
+            using (SqlCommand command = new SqlCommand("DELETE FROM OrderItems WHERE OrderId = (SELECT MAX(OrderId) FROM Orders WHERE TableId = " + tableId + ")", OpenConnectionDB()))
             {
                 command.ExecuteNonQuery();
             }
 
+        }
+
+        public DateTime DB_GetOrderTime(int TableId)
+        {
+            SqlConnection connection = OpenConnectionDB();
+            string sqlQuery = "SELECT OrderTime FROM Orders WHERE TableId = " + TableId;
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            DateTime OrderTime = new DateTime();
+
+            while (reader.Read())
+            {
+                OrderTime = (DateTime)reader["OrderTime"];
+            }
+            reader.Close();
+            connection.Close();
+
+            return OrderTime;
         }
 
     }
