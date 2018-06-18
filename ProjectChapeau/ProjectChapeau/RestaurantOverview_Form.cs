@@ -108,8 +108,7 @@ namespace ProjectChapeau
 
             public void TableButton_Click(object sender, EventArgs e, TableTop table, RestaurantOverview_Form form)
             {
-
-                
+                                
 
                 if (table.GetTableStatus() == TableStatus.Available)
                 {
@@ -121,9 +120,6 @@ namespace ProjectChapeau
                     OccupiedTableForm occupied = new OccupiedTableForm(table);
                     occupied.ShowDialog();
                 }
-                //HENRY:
-                //create your form in here, use the following: YourFormName yourform = new YourFormName(table); then set that to yourform.Show();
-                //You can use the table.TableId that I passed in this eventhandler in your form to make changes to the right table!
 
             }
         }
@@ -136,7 +132,7 @@ namespace ProjectChapeau
                 this.Font = new Font("Arial", 8);
                 this.Text = table.GetTableStatus().ToString();
 
-                if (position % 2 != 0)
+                if (position % 2 != 0)// status information (top)
                 {
                     this.Margin = new Padding(0, 25, 0, 0);
 
@@ -146,13 +142,13 @@ namespace ProjectChapeau
                     }
                     else if (table.GetTableStatus() == TableStatus.Occupied)
                     {
-
+                        this.Text = ""; //tablestatus needs to be displayed here 
                     }
                 }
-                else
+                else //sat time information (bottom)
                 {
                     this.Margin = new Padding(0, 0, 0, 0);
-                    this.Text = table.GetTableStatus().ToString();
+                    this.Text = "Sat at: " + (OrderingLogic.GetWaitingTime(table.GetTableId())).ToString();
                 }
 
 
