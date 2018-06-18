@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="ChapeauLogic.cs" />
     <Compile Include="LoginLogic.cs" />
-    <Compile Include="ManagerLogic.cs" />
     <Compile Include="OrderingLogic.cs" />
     <Compile Include="PaymentLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -15,11 +15,14 @@ namespace ProjectChapeau
     public partial class OrderingForm : Form
     {
         private TableTop table;
+        private ChapeauModel.Employee employee;
         
-        public OrderingForm(TableTop table)
+        public OrderingForm(TableTop table, ChapeauModel.Employee employee)
         {
+
             InitializeComponent();
             this.table = table;
+            this.employee = employee;
             FillMenuList();
 
             if(table.GetTableStatus() == TableStatus.Occupied)
@@ -172,13 +175,13 @@ namespace ProjectChapeau
                     }
                     else
                     {
-                        NumericUpDown cellNumeric = new NumericUpDown();
+                      //  NumericUpDown cellNumeric = new NumericUpDown();
                         
                        
                         OrdersCart.Rows.Add("", item.Name, "", 1, item.itemID, item.itemPrice);
-                       cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
-                      cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
-                        this.OrdersCart.Controls.Add(cellNumeric);
+                //       cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
+               //       cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
+                    //    this.OrdersCart.Controls.Add(cellNumeric);
 
                         break;
                     }
@@ -468,9 +471,9 @@ namespace ProjectChapeau
                 DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to place this order?", "Chapeau says", MessageBoxButtons.YesNo);
                 if (ContinueDialog == DialogResult.Yes)
                 {
-                    OrderingLogic.ActionInsertOrdersDB(SettingOrderFromCart(), this.table.GetTableId());
+                    OrderingLogic.ActionInsertOrdersDB(SettingOrderFromCart(), this.table.GetTableId(), this.employee.GetEmployeeId());
                     this.Close();
-                    OccupiedTableForm occupied = new OccupiedTableForm(table);
+                    OccupiedTableForm occupied = new OccupiedTableForm(table, employee);
                     occupied.ShowDialog();
                 }
             }

@@ -15,12 +15,13 @@ namespace ProjectChapeau
     public partial class OccupiedTableForm : Form
     {
         private TableTop table;
+        private ChapeauModel.Employee employee;
 
-        public OccupiedTableForm(TableTop table)
+        public OccupiedTableForm(TableTop table, ChapeauModel.Employee employee)
         {
             InitializeComponent();
             this.table = table;
-            FillTableList();
+            this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
         }
 
@@ -45,6 +46,7 @@ namespace ProjectChapeau
             ListViewItem LvPriceItem = new ListViewItem("Total Price");
             LvPriceItem.SubItems.Add("...................");
             LvPriceItem.SubItems.Add(price.ToString());
+            tableReceiptListView.Items.Add(LvPriceItem);
 
         }
 
@@ -65,7 +67,7 @@ namespace ProjectChapeau
 
         private void addItemButton_Click(object sender, EventArgs e)
         {
-            OrderingForm ordering = new OrderingForm(table);
+            OrderingForm ordering = new OrderingForm(table, employee);
             this.Close();
             ordering.Show();
         }

@@ -36,9 +36,9 @@ namespace Chapeau_Logic
             return MenuItemsList;
         }
 
-        public static void ActionInsertOrdersDB(OrderingModel.Order NewOrder, int tableId)
+        public static void ActionInsertOrdersDB(OrderingModel.Order NewOrder, int tableId, int employeeId)
         {
-            DBConnection.DB_InsertOrder(NewOrder, tableId);
+            DBConnection.DB_InsertOrder(NewOrder, tableId, employeeId);
         }
         public static void ActionDeleteOrdersDB(int tableId)
         {
