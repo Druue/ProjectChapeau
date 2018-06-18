@@ -61,15 +61,19 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.labelDisplayTableID = new System.Windows.Forms.Label();
             this.OrderingSystemPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.MenuDisplayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersCart)).BeginInit();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // OrderingSystemPanel
             // 
+            this.OrderingSystemPanel.Controls.Add(this.panel3);
             this.OrderingSystemPanel.Controls.Add(this.panel2);
             this.OrderingSystemPanel.Controls.Add(this.panel1);
             this.OrderingSystemPanel.Controls.Add(this.CancelOrderButton);
@@ -367,6 +371,19 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.panel3.Controls.Add(this.labelDisplayTableID);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // labelDisplayTableID
+            // 
+            resources.ApplyResources(this.labelDisplayTableID, "labelDisplayTableID");
+            this.labelDisplayTableID.Name = "labelDisplayTableID";
+            // 
             // OrderingForm
             // 
             resources.ApplyResources(this, "$this");
@@ -380,6 +397,8 @@
             this.panel1.ResumeLayout(false);
             this.MenuDisplayPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersCart)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -417,6 +436,8 @@
         private System.Windows.Forms.ComboBox subMenuTypeComboBox;
         private System.Windows.Forms.Label menulabel;
         private System.Windows.Forms.Button ClearCartButton;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label labelDisplayTableID;
     }
 }
 

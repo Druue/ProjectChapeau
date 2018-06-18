@@ -19,17 +19,18 @@ namespace ProjectChapeau
 
         public OccupiedTableForm(TableTop table, ChapeauModel.Employee employee)
         {
-            InitializeComponent();
-            FillTableList();
-            this.table = table;
-            this.employee = employee;
             Timer timer = new Timer();
             timer.Interval = (10 * 1000); // 10 secs
             timer.Enabled = true;
             timer.Tick += new EventHandler((s, e) => timer_Tick(s, e)); ;
             timer.Start();
+
+            InitializeComponent();
+            labelDisplayTableID.Text = "Table " + table.GetTableId();
+            this.table = table;
+            this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
-            if(OrderingLogic.GetOrderStatus(OrderingLogic.GetOrderId(table.GetTableId())) == true)
+            if (OrderingLogic.GetOrderStatus(OrderingLogic.GetOrderId(table.GetTableId())) == true)
             {
                 statusDisplayLabel.Text = "Served";
             }
@@ -37,6 +38,9 @@ namespace ProjectChapeau
             {
                 statusDisplayLabel.Text = "Waiting Order";
             }
+            FillTableList();
+
+
         }
 
         protected void timer_Tick(object sender, EventArgs e)
@@ -85,7 +89,6 @@ namespace ProjectChapeau
         private void startPaymentButton_Click(object sender, EventArgs e)
         {
             Payment_Form payment = new Payment_Form(employee, table.GetTableId());
-            this.Close();
             payment.Show();
         }
 
@@ -109,7 +112,7 @@ namespace ProjectChapeau
                 OrderingLogic.ActionDeleteOrdersDB(table.GetTableId());
                 this.Close();
             }
-            
+
         }
 
         private void OccupiedTableForm_Load(object sender, EventArgs e)

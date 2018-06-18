@@ -29,7 +29,7 @@ namespace ProjectChapeau
                 FillCartPrevItems();
                 AddOrderButton.Text = "Edit Order";
             }
-
+            labelDisplayTableID.Text = "Table " + table.GetTableId();
             MenuTypeComboBox.SelectedIndex = 0;
             subMenuTypeComboBox.SelectedIndex = 0;
 
@@ -46,6 +46,7 @@ namespace ProjectChapeau
             PriceOverviewListView.ColumnWidthChanging += (s, e) => PriceOverviewListView_ColumnWidthChanged(s, e);
             CommentButtonColumn.FlatStyle = FlatStyle.System;
             DeleteButtonColumn.FlatStyle = FlatStyle.System;
+            
 
 
         }
@@ -174,20 +175,8 @@ namespace ProjectChapeau
                     }
                     else
                     {
-                      //  NumericUpDown cellNumeric = new NumericUpDown();
-                        
-                       
+                        NumericUpDown cellNumeric = new NumericUpDown();
                         OrdersCart.Rows.Add("", item.Name, "", 1, item.itemID, item.itemPrice);
-
-                //       cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
-               //       cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
-                    //    this.OrdersCart.Controls.Add(cellNumeric);
-
-                       /*cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
-                      cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
-                        this.OrdersCart.Controls.Add(cellNumeric);*/
-
-
                         break;
                     }
 
@@ -505,6 +494,11 @@ namespace ProjectChapeau
         {
             OrdersCart.Rows.Clear();
             OrdersCart.Refresh();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
