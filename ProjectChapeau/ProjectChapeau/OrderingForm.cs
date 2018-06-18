@@ -19,13 +19,6 @@ namespace ProjectChapeau
         
         public OrderingForm(TableTop table, ChapeauModel.Employee employee)
         {
-            //the timer (made by Machelle)
-            Timer timer = new Timer();
-            timer.Interval = (10 * 1000); // 10 secs
-            timer.Enabled = true;
-            timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this, employee)); ;
-            timer.Start();
-
             InitializeComponent();
             this.table = table;
             this.employee = employee;
@@ -54,12 +47,6 @@ namespace ProjectChapeau
             CommentButtonColumn.FlatStyle = FlatStyle.System;
             DeleteButtonColumn.FlatStyle = FlatStyle.System;
 
-
-        }
-
-        protected void timer_Tick(object sender, EventArgs e, OrderingForm form, ChapeauModel.Employee employee)
-        {
-            this.Controls.Clear();
 
         }
 

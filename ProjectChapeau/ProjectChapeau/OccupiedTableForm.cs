@@ -19,6 +19,12 @@ namespace ProjectChapeau
 
         public OccupiedTableForm(TableTop table, ChapeauModel.Employee employee)
         {
+            Timer timer = new Timer();
+            timer.Interval = (10 * 1000); // 10 secs
+            timer.Enabled = true;
+            timer.Tick += new EventHandler((s, e) => timer_Tick(s, e)); ;
+            timer.Start();
+
             InitializeComponent();
             this.table = table;
             this.employee = employee;
@@ -32,7 +38,23 @@ namespace ProjectChapeau
                 statusDisplayLabel.Text = "Waiting Order";
             }
             FillTableList();
+
+
         }
+
+        protected void timer_Tick(object sender, EventArgs e)
+        {
+            ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
+            if (OrderingLogic.GetOrderStatus(OrderingLogic.GetOrderId(table.GetTableId())) == true)
+            {
+                statusDisplayLabel.Text = "Served";
+            }
+            else
+            {
+                statusDisplayLabel.Text = "Waiting Order";
+            }
+        }
+
 
         private void FillTableList()
         {
@@ -90,6 +112,13 @@ namespace ProjectChapeau
                 this.Close();
             }
             
+        }
+
+        private void OccupiedTableForm_Load(object sender, EventArgs e)
+        {
+            //the timer (made by Machelle)
+
+
         }
     }
 }
