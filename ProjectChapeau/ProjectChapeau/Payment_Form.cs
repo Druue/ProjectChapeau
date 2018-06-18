@@ -77,8 +77,6 @@ namespace ProjectChapeau
                 );
 
                 Close();
-                RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
-                restaurantform.Show();
             }
         }        
 

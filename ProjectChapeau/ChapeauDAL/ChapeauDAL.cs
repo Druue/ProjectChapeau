@@ -39,12 +39,12 @@ namespace Chapeau_DAL
             sqlconn.Close();
         }
 
-        public List<OrderItems> OrderItemsDAO(int orderID) //Sophie - Complete(?)
+        public List<OrderItems> OrderItemsDAO(int orderID) //Sophie - Complete
         {
             SqlConnection conn = OpenConnDB();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT ItemName, Price, Vat, [Orders].[OrderId], [OrderItems].[ItemId], completed " +
+            sb.Append("SELECT ItemName, Price, Vat, [Orders].[OrderId], [OrderItems].[ItemId], completed = 1 " +
                       "FROM Menu, OrderItems, Orders " +
                       "WHERE [Orders].[OrderId] = [OrderItems].[OrderId] AND [Menu].[ItemId] = [OrderItems].[ItemId] " +
                       "AND [Orders].[OrderId] = @orderId");
