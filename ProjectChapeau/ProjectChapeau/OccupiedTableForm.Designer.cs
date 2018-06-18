@@ -87,9 +87,9 @@
             this.dots,
             this.price});
             this.tableReceiptListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.tableReceiptListView.Location = new System.Drawing.Point(60, 191);
+            this.tableReceiptListView.Location = new System.Drawing.Point(60, 222);
             this.tableReceiptListView.Name = "tableReceiptListView";
-            this.tableReceiptListView.Size = new System.Drawing.Size(328, 211);
+            this.tableReceiptListView.Size = new System.Drawing.Size(328, 180);
             this.tableReceiptListView.TabIndex = 5;
             this.tableReceiptListView.UseCompatibleStateImageBehavior = false;
             this.tableReceiptListView.View = System.Windows.Forms.View.Details;
@@ -126,6 +126,7 @@
             this.backButton.TabIndex = 3;
             this.backButton.Text = "Back";
             this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.backButton_Click);
             // 
             // startPaymentButton
             // 
@@ -151,6 +152,7 @@
             this.cancelOrderButton.TabIndex = 1;
             this.cancelOrderButton.Text = "Cancel Order";
             this.cancelOrderButton.UseVisualStyleBackColor = false;
+            this.cancelOrderButton.Click += new System.EventHandler(this.cancelOrderButton_Click);
             // 
             // addItemButton
             // 
@@ -163,6 +165,7 @@
             this.addItemButton.TabIndex = 0;
             this.addItemButton.Text = "Add a new Item";
             this.addItemButton.UseVisualStyleBackColor = false;
+            this.addItemButton.Click += new System.EventHandler(this.addItemButton_Click);
             // 
             // OccupiedTableForm
             // 
@@ -171,6 +174,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(484, 753);
             this.Controls.Add(this.FormPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OccupiedTableForm";
             this.Text = "OccupiedTableForm";
             this.FormPanel.ResumeLayout(false);

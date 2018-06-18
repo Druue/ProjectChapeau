@@ -14,21 +14,26 @@ namespace ProjectChapeau
 {
     public partial class OrderingForm : Form
     {
-        private int tableId;
+        private TableTop table;
         
         public OrderingForm(TableTop table)
         {
             InitializeComponent();
-            this.tableId = table.GetTableId();
+            this.table = table;
             FillMenuList();
 
             if(table.GetTableStatus() == TableStatus.Occupied)
             {
                 FillCartPrevItems();
+                AddOrderButton.Text = "Edit Order";
             }
+
+            MenuTypeComboBox.SelectedIndex = 0;
+            subMenuTypeComboBox.SelectedIndex = 0;
 
             MenuTypeComboBox.SelectedIndexChanged += (s, e) => MenuTypeComboBox_SelectedIndexChanged(s, e);
             MenuListView.SelectedIndexChanged += (s, e) => MenuListView_SelectedIndexChanged(s, e);
+            MenuListView.DoubleClick += (s, e) => MenuListView_DoubleClick(s, e);
             OrdersCart.RowTemplate.Height = 40;
             OrdersCart.CellContentClick += (s, e) => OrderCartButtons_Click(s, e);
             OrdersCart.CellPainting += (s, e) => OrderCartButtonGraphics_CellPainting(s, e);
@@ -37,7 +42,9 @@ namespace ProjectChapeau
             OrdersCart.RowsRemoved += (s, e) => OrdersCart_RowsRemoved(s, e);
             OrdersCart.CellValueChanged += (s, e) => OrdersCart_CellStyleContentChanged(s, e);
             PriceOverviewListView.ColumnWidthChanging += (s, e) => PriceOverviewListView_ColumnWidthChanged(s, e);
-            
+            CommentButtonColumn.FlatStyle = FlatStyle.System;
+            DeleteButtonColumn.FlatStyle = FlatStyle.System;
+
         }
 
         private void FillMenuList()
@@ -53,6 +60,7 @@ namespace ProjectChapeau
                     ListViewItem ListViewMenuItem = new ListViewItem(MenuItem.Name);
                     ListViewMenuItem.ImageIndex = (MenuItem.itemID - 1);
                     ListViewMenuItem.SubItems.Add(MenuItem.itemID.ToString());
+                    
 
                     if (MenuItem.stock < 1)
                     {
@@ -93,9 +101,37 @@ namespace ProjectChapeau
 
         }
 
+        private void FillMenuList(SubMenuType Option)
+        {
+            MenuListView.HideSelection = false;
+            MenuListView.Items.Clear();
+            List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
+            MenuItemsList = OrderingLogic.CallMenuListDB();
+
+            foreach (OrderingModel.Item MenuItem in MenuItemsList)
+            {
+                if (MenuItem.SubMenuType == Option)
+                {
+                    ListViewItem ListViewMenuItem = new ListViewItem(MenuItem.Name);
+                    ListViewMenuItem.ImageIndex = (MenuItem.itemID - 1);
+                    ListViewMenuItem.SubItems.Add(MenuItem.itemID.ToString());
+
+                    if (MenuItem.stock < 1)
+                    {
+                        ListViewMenuItem.ForeColor = Color.Gray;
+                        ListViewMenuItem.ImageIndex = 48;
+                    }
+
+                    MenuListView.Items.Add(ListViewMenuItem);
+                }
+
+            }
+
+        }
+
         private void FillCartPrevItems()
         {
-            List<OrderingModel.Item> TableList = OrderingLogic.CallTableItemsDB(tableId);
+            List<OrderingModel.Item> TableList = OrderingLogic.CallTableItemsDB(table.GetTableId());
 
             int storedItem = 50;
             int storedIndex = 50;
@@ -225,11 +261,7 @@ namespace ProjectChapeau
                     OrderingModel.Item OrderItem = new OrderingModel.Item();
                     OrderItem.itemID = int.Parse(row.Cells["ItemID"].Value.ToString());
 
-                    if (row.Cells["CommentHidden"].Value == null)
-                    {
-                        OrderItem.comment = "-";
-                    }
-                    else
+                    if (row.Cells["CommentHidden"].Value != null)
                     {
                         OrderItem.comment = row.Cells["CommentHidden"].Value.ToString();
                     }
@@ -266,15 +298,68 @@ namespace ProjectChapeau
             {
                 case 0:
                     FillMenuList();
+                    subMenuTypeComboBox.DataSource = OrderingLogic.FillSubComboBox();
                     break;
                 case 1:
                     FillMenuList(MenuType.Lunch);
+                    subMenuTypeComboBox.DataSource = OrderingLogic.FillSubComboBox(MenuType.Lunch);
                     break;
                 case 2:
                     FillMenuList(MenuType.Dinner);
+                    subMenuTypeComboBox.DataSource = OrderingLogic.FillSubComboBox(MenuType.Dinner);
                     break;
                 case 3:
                     FillMenuList(MenuType.Drink);
+                    subMenuTypeComboBox.DataSource = OrderingLogic.FillSubComboBox(MenuType.Drink);
+                    break;
+            }
+        }
+
+        private void subMenuTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (subMenuTypeComboBox.SelectedItem.ToString().Trim())
+            {
+                case "ALL TYPES":
+                    FillMenuList();
+                    break;
+                case "ALL(LUNCH)":
+                    FillMenuList(MenuType.Lunch);
+                    break;
+                case "ALL(DINNER)":
+                    FillMenuList(MenuType.Dinner);
+                    break;
+                case "ALL(DRINKS)":
+                    FillMenuList(MenuType.Drink);
+                    break;
+                case "LUNCH MAIN":
+                    FillMenuList(SubMenuType.LunchMain);
+                    break;
+                case "SPECIALS":
+                    FillMenuList(SubMenuType.Specials);
+                    break;
+                case "BITES":
+                    FillMenuList(SubMenuType.Bites);
+                    break;
+                case "DINNER STARTERS":
+                    FillMenuList(SubMenuType.Starters);
+                    break;
+                case "DINNER MAINS":
+                    FillMenuList(SubMenuType.Mains);
+                    break;
+                case "DESSERTS":
+                    FillMenuList(SubMenuType.Desserts);
+                    break;
+                case "SOFT DRINKS":
+                    FillMenuList(SubMenuType.SoftDrinks);
+                    break;
+                case "HOT DRINKS":
+                    FillMenuList(SubMenuType.HotDrinks);
+                    break;
+                case "BEERS":
+                    FillMenuList(SubMenuType.Beers);
+                    break;
+                case "WINES":
+                    FillMenuList(SubMenuType.Wines);
                     break;
             }
         }
@@ -286,6 +371,17 @@ namespace ProjectChapeau
                 AddToCartButton.Enabled = true;           
             else
                 AddToCartButton.Enabled = false;
+        }
+
+        private void MenuListView_DoubleClick(object sender, EventArgs e)
+
+        {
+            if (MenuListView.SelectedItems.Count == 1)
+            {
+                int MenuItemID = int.Parse(MenuListView.SelectedItems[0].SubItems[1].Text);
+                AddCartItems(MenuItemID);
+            }
+
         }
 
         private void OrdersCart_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -326,11 +422,10 @@ namespace ProjectChapeau
             if (e.RowIndex < 0)
                 return;
 
-            //I supposed your button column is at index 0
             if (e.ColumnIndex == 0)
             {
                
-                using (var imageSource = new Bitmap("C:\\Users\\Henry\\Desktop\\food items resized\\comment_icon.png"))
+                using (var imageSource = new Bitmap(Properties.Resources.comment_icon))
                 {
                     e.PaintContent(e.CellBounds);
                     e.Graphics.DrawImage(imageSource, e.CellBounds.Left + 10, e.CellBounds.Top + 5, 30, 30);
@@ -342,7 +437,7 @@ namespace ProjectChapeau
             if (e.ColumnIndex == 2)
             {
 
-                using (var imageSource = new Bitmap("C:\\Users\\Henry\\Desktop\\food items resized\\delete_icon.png"))
+                using (var imageSource = new Bitmap(Properties.Resources.delete_icon))
                 {
                     e.PaintContent(e.CellBounds);
                     e.Graphics.DrawImage(imageSource, e.CellBounds.Left + 9, e.CellBounds.Top + 10, 20, 20);
@@ -356,11 +451,22 @@ namespace ProjectChapeau
 
         private void AddOrderButton_Click(object sender, EventArgs e)
         {
-            DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to place this order?", "Chapeau says", MessageBoxButtons.YesNo);
-            if (ContinueDialog == DialogResult.Yes)
+            if (OrdersCart.Rows.Count == 0)
             {
-                OrderingLogic.ActionInsertOrdersDB(SettingOrderFromCart());
+                MessageBox.Show("Orders cart is empty", "Chapeau says");
             }
+            else
+            {
+                DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to place this order?", "Chapeau says", MessageBoxButtons.YesNo);
+                if (ContinueDialog == DialogResult.Yes)
+                {
+                    OrderingLogic.ActionInsertOrdersDB(SettingOrderFromCart(), this.table.GetTableId());
+                    this.Close();
+                    OccupiedTableForm occupied = new OccupiedTableForm(table);
+                    occupied.ShowDialog();
+                }
+            }
+
         }
 
         private void PriceOverviewListView_ColumnWidthChanged(object sender, ColumnWidthChangingEventArgs e)
@@ -372,6 +478,17 @@ namespace ProjectChapeau
         private void OrderingSystemPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void CancelOrderButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ClearCartButton_Click(object sender, EventArgs e)
+        {
+            OrdersCart.Rows.Clear();
+            OrdersCart.Refresh();
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Chapeau_DAL
         {
             SqlConnection connection = OpenConnectionDB();
             List<OrderingModel.Item> MenuItemsList = new List<OrderingModel.Item>();
-            string sqlQuery = "SELECT ItemId, ItemName, Price, stock, MenuType FROM Menu";
+            string sqlQuery = "SELECT ItemId, ItemName, Price, stock, MenuType, subMenuType FROM Menu";
             SqlCommand command = new SqlCommand(sqlQuery, connection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -54,29 +54,12 @@ namespace Chapeau_DAL
                 Item.Name = (string)reader["ItemName"];
                 Item.itemPrice = (decimal)reader["Price"];
                 Item.MenuType = (MenuType)reader["MenuType"];
+                Item.SubMenuType = (SubMenuType)reader["SubMenuType"];
                 MenuItemsList.Add(Item);
             }
             reader.Close();
             connection.Close();
             return MenuItemsList;
-        }
-
-        public TableStatus DB_getTableData(int tableId)
-        {
-            SqlConnection connection = OpenConnectionDB();
-            string sqlQuery = "SELECT TableStatus FROM TableTop WHERE TableId =" + tableId;
-            SqlCommand command = new SqlCommand(sqlQuery, connection);
-            SqlDataReader reader = command.ExecuteReader();
-
-            TableStatus table_status = TableStatus.Available;
-
-            while (reader.Read())
-            {
-                table_status = (TableStatus)reader["TableStatus"];
-            }
-            reader.Close();
-            connection.Close();
-            return table_status;
         }
 
 
@@ -109,38 +92,37 @@ namespace Chapeau_DAL
             return TableItemsList;
         }
 
-        public void DB_InsertOrder(OrderingModel.Order NewOrder)
+        public void DB_InsertOrder(OrderingModel.Order NewOrder, int tableId)
         {
                 using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId)", OpenConnectionDB()))
+                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [completed]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId, False)", OpenConnectionDB()))
                 {
                     cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now.Date);
-                    cmd.Parameters.AddWithValue("@TableId", 9);
-
+                    cmd.Parameters.AddWithValue("@TableId", tableId);
                     int rows = cmd.ExecuteNonQuery();
 
                 }
 
-                foreach (OrderingModel.Item item in NewOrder.OrderItems)
+            using (SqlCommand cmd =
+                     new SqlCommand("UPDATE TableTop SET TableStatus = 1 WHERE TableId = " + tableId, OpenConnectionDB()))
+            {
+                int rows = cmd.ExecuteNonQuery();
+            }
+
+
+            foreach (OrderingModel.Item item in NewOrder.OrderItems)
                 {
                     using (SqlCommand cmd =
                         new SqlCommand("INSERT INTO OrderItems ([OrderId], [ItemId], [Comment]) VALUES((SELECT MAX(OrderId) FROM Orders), @ItemId, @Comment)", OpenConnectionDB()))
                     {
-
-
                         cmd.Parameters.AddWithValue("@ItemId", item.itemID);
                         cmd.Parameters.AddWithValue("@Comment", item.comment);
                         int rows = cmd.ExecuteNonQuery();
-
                     }
-
-
-
                 }
 
                 foreach (OrderingModel.Item item in NewOrder.OrderItems)
                 {
-
                     using (SqlCommand cmd =
                            new SqlCommand("UPDATE Menu SET stock = (SELECT (stock - " + item.quantity + ")) WHERE stock = " + item.itemID, OpenConnectionDB()))
                     {
@@ -150,6 +132,20 @@ namespace Chapeau_DAL
 
             }
 
+        public void DB_DeleteOrder(int tableId)
+        {
+            using (SqlCommand cmd =
+                           new SqlCommand("UPDATE TableTop SET TableStatus = 0 WHERE TableId = " + tableId, OpenConnectionDB()))
+            {
+                int rows = cmd.ExecuteNonQuery();
+            }
+
+            using (SqlCommand command = new SqlCommand("DELETE FROM OrderItems WHERE OrderId = (SELECT OrderId FROM Orders WHERE TableId = " + tableId + ")", OpenConnectionDB()))
+            {
+                command.ExecuteNonQuery();
+            }
+
         }
 
     }
+}

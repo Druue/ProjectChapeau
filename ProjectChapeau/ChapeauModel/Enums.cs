@@ -11,6 +11,11 @@ namespace Chapeau_Model
         Lunch = 1, Dinner, Drink
     }
 
+    public enum SubMenuType
+    {
+        LunchMain=1, Specials, Bites, Starters, Mains, Desserts, SoftDrinks, HotDrinks, Beers, Wines
+    }
+
     public enum PaymentMethod
     {
         Cash, Debit, Credit
@@ -30,4 +35,5 @@ namespace Chapeau_Model
     {
         Available, Occupied, Reserved
     }
+
 }

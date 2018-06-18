@@ -32,14 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderingForm));
             this.OrderingSystemPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.menulabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ClearCartButton = new System.Windows.Forms.Button();
             this.CancelOrderButton = new System.Windows.Forms.Button();
             this.AddOrderButton = new System.Windows.Forms.Button();
             this.PriceOverviewListView = new System.Windows.Forms.ListView();
             this.ItemNamePriceOverview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dotsPriceOverview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ItemPriceOverview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantityOverview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.MenuDisplayPanel = new System.Windows.Forms.Panel();
+            this.subMenuTypeComboBox = new System.Windows.Forms.ComboBox();
             this.MenuTypeComboBox = new System.Windows.Forms.ComboBox();
             this.AddToCartButton = new System.Windows.Forms.Button();
             this.MenuListView = new System.Windows.Forms.ListView();
@@ -57,8 +61,9 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityOverview = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.OrderingSystemPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.MenuDisplayPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OrdersCart)).BeginInit();
             this.SuspendLayout();
@@ -79,22 +84,41 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Orange;
+            this.panel2.Controls.Add(this.menulabel);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
+            // 
+            // menulabel
+            // 
+            resources.ApplyResources(this.menulabel, "menulabel");
+            this.menulabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menulabel.Name = "menulabel";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.Controls.Add(this.ClearCartButton);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // ClearCartButton
+            // 
+            this.ClearCartButton.BackColor = System.Drawing.Color.DarkOrange;
+            this.ClearCartButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.ClearCartButton, "ClearCartButton");
+            this.ClearCartButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ClearCartButton.Name = "ClearCartButton";
+            this.ClearCartButton.UseVisualStyleBackColor = false;
+            this.ClearCartButton.Click += new System.EventHandler(this.ClearCartButton_Click);
             // 
             // CancelOrderButton
             // 
             this.CancelOrderButton.BackColor = System.Drawing.Color.Silver;
-            this.CancelOrderButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CancelOrderButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             resources.ApplyResources(this.CancelOrderButton, "CancelOrderButton");
             this.CancelOrderButton.Name = "CancelOrderButton";
             this.CancelOrderButton.UseVisualStyleBackColor = false;
+            this.CancelOrderButton.Click += new System.EventHandler(this.CancelOrderButton_Click);
             // 
             // AddOrderButton
             // 
@@ -132,17 +156,44 @@
             // 
             resources.ApplyResources(this.ItemPriceOverview, "ItemPriceOverview");
             // 
+            // quantityOverview
+            // 
+            resources.ApplyResources(this.quantityOverview, "quantityOverview");
+            // 
             // MenuDisplayPanel
             // 
             this.MenuDisplayPanel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MenuDisplayPanel.Controls.Add(this.subMenuTypeComboBox);
             this.MenuDisplayPanel.Controls.Add(this.MenuTypeComboBox);
             this.MenuDisplayPanel.Controls.Add(this.AddToCartButton);
             this.MenuDisplayPanel.Controls.Add(this.MenuListView);
             resources.ApplyResources(this.MenuDisplayPanel, "MenuDisplayPanel");
             this.MenuDisplayPanel.Name = "MenuDisplayPanel";
             // 
+            // subMenuTypeComboBox
+            // 
+            this.subMenuTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subMenuTypeComboBox.FormattingEnabled = true;
+            this.subMenuTypeComboBox.Items.AddRange(new object[] {
+            resources.GetString("subMenuTypeComboBox.Items"),
+            resources.GetString("subMenuTypeComboBox.Items1"),
+            resources.GetString("subMenuTypeComboBox.Items2"),
+            resources.GetString("subMenuTypeComboBox.Items3"),
+            resources.GetString("subMenuTypeComboBox.Items4"),
+            resources.GetString("subMenuTypeComboBox.Items5"),
+            resources.GetString("subMenuTypeComboBox.Items6"),
+            resources.GetString("subMenuTypeComboBox.Items7"),
+            resources.GetString("subMenuTypeComboBox.Items8"),
+            resources.GetString("subMenuTypeComboBox.Items9"),
+            resources.GetString("subMenuTypeComboBox.Items10")});
+            resources.ApplyResources(this.subMenuTypeComboBox, "subMenuTypeComboBox");
+            this.subMenuTypeComboBox.Name = "subMenuTypeComboBox";
+            this.subMenuTypeComboBox.SelectedIndexChanged += new System.EventHandler(this.subMenuTypeComboBox_SelectedIndexChanged);
+            // 
             // MenuTypeComboBox
             // 
+            this.MenuTypeComboBox.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.MenuTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MenuTypeComboBox.FormattingEnabled = true;
             this.MenuTypeComboBox.Items.AddRange(new object[] {
             resources.GetString("MenuTypeComboBox.Items"),
@@ -324,6 +375,9 @@
             this.Controls.Add(this.OrderingSystemPanel);
             this.Name = "OrderingForm";
             this.OrderingSystemPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.MenuDisplayPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.OrdersCart)).EndInit();
             this.ResumeLayout(false);
@@ -360,6 +414,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ColumnHeader quantityOverview;
+        private System.Windows.Forms.ComboBox subMenuTypeComboBox;
+        private System.Windows.Forms.Label menulabel;
+        private System.Windows.Forms.Button ClearCartButton;
     }
 }
 

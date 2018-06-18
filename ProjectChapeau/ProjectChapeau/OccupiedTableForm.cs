@@ -14,12 +14,12 @@ namespace ProjectChapeau
 {
     public partial class OccupiedTableForm : Form
     {
-        private int tableId;
+        private TableTop table;
 
-        public OccupiedTableForm(int tableId)
+        public OccupiedTableForm(TableTop table)
         {
             InitializeComponent();
-            this.tableId = tableId;
+            this.table = table;
             FillTableList();
         }
 
@@ -28,7 +28,8 @@ namespace ProjectChapeau
             tableReceiptListView.HideSelection = false;
             tableReceiptListView.Items.Clear();
             List<OrderingModel.Item> TableItemsList = new List<OrderingModel.Item>();
-            TableItemsList = OrderingLogic.CallTableItemsDB(this.tableId);
+            TableItemsList = OrderingLogic.CallTableItemsDB(this.table.GetTableId());
+            decimal price = 0;
 
             foreach (OrderingModel.Item TableItem in TableItemsList)
             {
@@ -37,7 +38,12 @@ namespace ProjectChapeau
                 LvTableItem.SubItems.Add("...................");
                 LvTableItem.SubItems.Add(TableItem.itemPrice.ToString());
                 tableReceiptListView.Items.Add(LvTableItem);
+                price = TableItem.itemPrice + price;
             }
+
+            ListViewItem LvPriceItem = new ListViewItem("Total Price");
+            LvPriceItem.SubItems.Add("...................");
+            LvPriceItem.SubItems.Add(price.ToString());
 
         }
 
@@ -55,5 +61,26 @@ namespace ProjectChapeau
             statusDisplayLabel.Text = statusComboBox.Text;
         }
 
+        private void addItemButton_Click(object sender, EventArgs e)
+        {
+            OrderingForm ordering = new OrderingForm(table);
+            ordering.ShowDialog();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cancelOrderButton_Click(object sender, EventArgs e)
+        {
+            DialogResult ContinueDialog = MessageBox.Show("Are you sure you want to cancel this order?", "Chapeau says", MessageBoxButtons.YesNo);
+            if (ContinueDialog == DialogResult.Yes)
+            {
+                OrderingLogic.ActionDeleteOrdersDB(table.GetTableId());
+                this.Close();
+            }
+            
+        }
     }
 }

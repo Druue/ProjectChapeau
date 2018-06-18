@@ -28,11 +28,6 @@ namespace Chapeau_Logic
             return TableItemsList;
         }
 
-        public static TableStatus GetTableData(int tableId)
-        {
-            return DBConnection.DB_getTableData(tableId);
-        }
-
         public static List<OrderingModel.Item> CallTableReceipt()
         {
             List<OrderingModel.Item> MenuItemsList;
@@ -41,20 +36,57 @@ namespace Chapeau_Logic
             return MenuItemsList;
         }
 
-        public static void ActionInsertOrdersDB(OrderingModel.Order NewOrder)
+        public static void ActionInsertOrdersDB(OrderingModel.Order NewOrder, int tableId)
         {
-            DBConnection.DB_InsertOrder(NewOrder);
+            DBConnection.DB_InsertOrder(NewOrder, tableId);
         }
+        public static void ActionDeleteOrdersDB(int tableId)
+        {
+            DBConnection.DB_DeleteOrder(tableId);
+        }
+       
 
-        public static string RepairName(string objectName)
+        public static void RepairName(string objectName)
         {
             objectName = objectName.Replace("_", " ");
-            return objectName;
         }
 
         public static double ColumnMultiplier(double valueX, double valueY)
         {
             return valueX * valueY;
         }
+
+        public static List<string> FillSubComboBox()
+        {
+            List<string> comboboxItems = new List<string>
+                { "ALL TYPES","LUNCH MAIN","SPECIALS", "BITES","DINNER STARTERS","DINNER MAINS", "DESSERTS","SOFT DRINKS","HOT DRINKS", "BEERS","WINES"};
+            return comboboxItems;
+        }
+
+        public static List<string> FillSubComboBox(MenuType type)
+        {
+            List<string> comboboxItems = new List<string>();
+            if (type == MenuType.Lunch)
+            {
+                comboboxItems = new List<string>
+                { "ALL(LUNCH)","LUNCH MAIN","SPECIALS", "BITES"};
+                return comboboxItems;
+            }
+            else if (type == MenuType.Dinner)
+            {
+                comboboxItems = new List<string>
+                { "ALL(DINNER)","DINNER STARTERS","DINNER MAINS", "DESSERTS"};
+                return comboboxItems;
+            }
+            else if (type == MenuType.Drink)
+            {
+                comboboxItems = new List<string>
+                { "ALL(DRINKS)","SOFT DRINKS","HOT DRINKS", "BEERS","WINES"};
+                return comboboxItems;
+            }
+
+            return comboboxItems;         
+        }
     }
 }
+
