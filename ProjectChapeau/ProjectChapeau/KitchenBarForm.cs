@@ -115,15 +115,17 @@ namespace ProjectChapeau
             foreach(ListViewItem o in selectedOrders)
             {
                 ListViewItem.ListViewSubItemCollection order = o.SubItems;
-                selectedOrder.item = order[0].Text;
-                selectedOrder.comments = order[1].Text;
-                selectedOrder.PlacedBy = order[2].Text;
-                selectedOrder.orderTime = DateTime.Parse(order[3].Text);
-                selectedOrder.completed = Int32.Parse(order[4].Text);
+                selectedOrder.orderId = Int32.Parse(order[0].Text);
+                selectedOrder.item = order[1].Text;
+                selectedOrder.comments = order[2].Text;
+                selectedOrder.PlacedBy = order[3].Text;
+                selectedOrder.orderTime = DateTime.Parse(order[4].Text.ToString());
+                selectedOrder.completed = Int32.Parse(order[5].Text);
 
                 logic.FlipCompleteStatus(selectedOrder);
 
                 orderTable.Items[0].Remove();
+
             }
         }
 
