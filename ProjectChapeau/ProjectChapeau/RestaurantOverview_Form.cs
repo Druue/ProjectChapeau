@@ -16,6 +16,7 @@ namespace ProjectChapeau
 {
     public partial class RestaurantOverview_Form : Form
     {
+
         public RestaurantOverview_Form(ChapeauModel.Employee employee) //Machelle
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace ProjectChapeau
             Timer timer = new Timer();
             timer.Interval = (10 * 1000); // 10 secs
             timer.Enabled = true;
-            timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this)); ;
+            timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this, employee)); ;
             timer.Start();
 
             //the controls that will not be reloaded each time and are therefore created here.
@@ -34,12 +35,12 @@ namespace ProjectChapeau
             pnl_topbar.Controls.Add(lbl_loggedinEmployee);
 
             //everything that will be reloaded using the timer each 10 seconds
-            Load_RestaurantOverview(this);
+            Load_RestaurantOverview(this, employee);
 
         }
 
 
-        protected void timer_Tick(object sender, EventArgs e, RestaurantOverview_Form form)
+        protected void timer_Tick(object sender, EventArgs e, RestaurantOverview_Form form, ChapeauModel.Employee employee)
         {
             //clearing the even flow panels since these panels won't be re-added
             form.flowlaypnl_statusEven.Controls.Clear();
@@ -49,18 +50,18 @@ namespace ProjectChapeau
             form.flowlaypnl_statusUneven.Controls.Clear();
             form.flowlaypnl_table_overview_uneven.Controls.Clear();
 
-            Load_RestaurantOverview(form);
+            Load_RestaurantOverview(form, employee);
             
         }
 
-        public void Load_RestaurantOverview(RestaurantOverview_Form form)
+        public void Load_RestaurantOverview(RestaurantOverview_Form form, ChapeauModel.Employee employee)
         {
             TableTopLogic tablelogic = new TableTopLogic();
             List<TableTop> AllTables = tablelogic.tableTopListLogic();
 
             foreach (TableTop table in AllTables)
             {
-                TableButton tablebutton = new TableButton(table, this);
+                TableButton tablebutton = new TableButton(table, this, employee);
                 StatusButton statusButton = new StatusButton(table, 1);
                 StatusButton satTimeButton = new StatusButton(table, 2);
 
@@ -82,12 +83,12 @@ namespace ProjectChapeau
         public class TableButton : Button //Machelle
         {
 
-            public TableButton(TableTop table, RestaurantOverview_Form form)
+            public TableButton(TableTop table, RestaurantOverview_Form form, ChapeauModel.Employee employee)
             {
                 this.Size = new Size(60, 60);
                 this.Font = new Font("Arial", 12, FontStyle.Bold);
                 this.Text = table.GetTableId().ToString();
-                this.Click += new EventHandler((s, ev) => TableButton_Click(s, ev, table, form));
+                this.Click += new EventHandler((s, ev) => TableButton_Click(s, ev, table, form, employee));
                 this.Margin = new Padding(0, 25, 0, 0);
 
                 if (table.GetTableStatus() == TableStatus.Available)
@@ -106,18 +107,18 @@ namespace ProjectChapeau
 
             }
 
-            public void TableButton_Click(object sender, EventArgs e, TableTop table, RestaurantOverview_Form form)
+            public void TableButton_Click(object sender, EventArgs e, TableTop table, RestaurantOverview_Form form, ChapeauModel.Employee employee)
             {
                                 
 
                 if (table.GetTableStatus() == TableStatus.Available)
                 {
-                    OrderingForm ordering = new OrderingForm(table);
+                    OrderingForm ordering = new OrderingForm(table, employee);
                     ordering.ShowDialog();
                 }
                 else
                 {
-                    OccupiedTableForm occupied = new OccupiedTableForm(table);
+                    OccupiedTableForm occupied = new OccupiedTableForm(table, employee);
                     occupied.ShowDialog();
                 }
 
