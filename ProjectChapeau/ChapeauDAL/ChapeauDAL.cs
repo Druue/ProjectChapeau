@@ -46,7 +46,7 @@ namespace Chapeau_DAL
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT ItemName, Price, Vat, [Orders].[OrderId], [OrderItems].[ItemId], completed " +
                       "FROM Menu, OrderItems, Orders " +
-                      "WHERE [Orders].[OrderId] = [OrderItems].[OrderId] AND [Menu].[ItemId] = [OrderItems].[ItemId] AND completed = 1 " +
+                      "WHERE [Orders].[OrderId] = [OrderItems].[OrderId] AND [Menu].[ItemId] = [OrderItems].[ItemId] " +
                       "AND [Orders].[OrderId] = @orderId");
             String sql = sb.ToString();
 
@@ -58,24 +58,10 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
             while (reader.Read())
             {
-                item = new OrderItems(reader["ItemName"].ToString(), 1, double.Parse(reader["Price"].ToString()),
+                item = new OrderItems(reader["ItemName"].ToString(), 0, double.Parse(reader["Price"].ToString()),
                                                  double.Parse(reader["Vat"].ToString()));
 
-                if (!orderItems.Contains(item))
-                {
-                    orderItems.Add(item);
-                }
-
-                else
-                {
-                    for (int i = 0; i < orderItems.Count; i++)
-                    {
-                        if (orderItems[i].ItemName == item.ItemName)
-                        {
-                            orderItems[i].Quantity++;
-                        }
-                    }
-                }
+                orderItems.Add(item);                               
             }
 
             CloseConnDB(conn);

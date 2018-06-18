@@ -21,37 +21,55 @@ namespace ProjectChapeau
 
         private void Payment_Form_Load(object sender, EventArgs e)
         {
-            orderId = 4; //Elizabeth + Henry
+            orderId = 49; //Elizabeth + Henry
             employeeId = 1; //Machelle
 
-            payMethod1.Appearance = Appearance.Button;
+            payMethod1.Appearance = Appearance.Button; //Payment Method Buttons
+            payMethod1.BackgroundImageLayout = ImageLayout.Stretch;
             payMethod2.Appearance = Appearance.Button;
+            payMethod2.BackgroundImageLayout = ImageLayout.Stretch;
             payMethod3.Appearance = Appearance.Button;
+            payMethod3.BackgroundImageLayout = ImageLayout.Stretch;
 
-            orderItemsPaymentlv.View = View.Details;
-            orderItemsPaymentlv.Columns.Add("Menu Items", 170, HorizontalAlignment.Left);
-            orderItemsPaymentlv.Columns.Add("Quantity", 67, HorizontalAlignment.Left);
-            orderItemsPaymentlv.Columns.Add("Price", 60, HorizontalAlignment.Left);
+            TipInputnum.Value = 0; //NumericUpDown -> TipInput
+            TipInputnum.Minimum = 0;
+            TipInputnum.DecimalPlaces = 2;
 
-            orderDetailsPaymentlv.View = View.SmallIcon;
+            orderItemsPaymentlv.View = View.Details;  //Items that have been ordered
+            orderItemsPaymentlv.Columns.Add("Menu Items", 180, HorizontalAlignment.Left);
+            orderItemsPaymentlv.Columns.Add("Quantity", 70, HorizontalAlignment.Left);
+            orderItemsPaymentlv.Columns.Add("Price", 65, HorizontalAlignment.Left);
+
+            orderDetailsPaymentlv.View = View.Details; //Final Payment Values
+            orderDetailsPaymentlv.Columns.Add("Vat", 310/3, HorizontalAlignment.Center);
+            orderDetailsPaymentlv.Columns.Add("Vat-Free Price", 310/3, HorizontalAlignment.Center);
+            orderDetailsPaymentlv.Columns.Add("Final Price", 310/3, HorizontalAlignment.Center);
 
             PaymentLogic pl = new PaymentLogic();
             List<OrderItems> orderItems = pl.GetOrderItems(orderId);
+            Payment finalValues = pl.GetTotalPayments(orderId);
             
             try
             {
                 if (orderItems.Count == 0)
                 {
-                    throw new Exception("Nothing has been ordered yet!");
+                    throw new Exception("Either nothing has been ordered yet, or it hasn't been completed!");
                 }
 
                 for (int i = 0; i < orderItems.Count; i++)
                 {
                     orderItemsPaymentlv.Items.Add(orderItems[i].ItemName);
                     orderItemsPaymentlv.Items[i].SubItems.Add(orderItems[i].Quantity.ToString());
-                    orderItemsPaymentlv.Items[i].SubItems.Add(orderItems[i].ItemPrice.ToString());
+                    orderItemsPaymentlv.Items[i].SubItems.Add(orderItems[i].ItemPrice.ToString("0.00"));
+
+                    if (i < 1)
+                    {
+                        orderDetailsPaymentlv.Items.Add(finalValues.Vat.ToString("0.00"));
+                        orderDetailsPaymentlv.Items[i].SubItems.Add(finalValues.InitialPrice.ToString("0.00"));
+                        orderDetailsPaymentlv.Items[i].SubItems.Add(finalValues.TotalPrice.ToString("0.00"));
+                    }                    
                 }
-            }
+            }            
 
             catch (Exception ex)
             {
@@ -65,17 +83,26 @@ namespace ProjectChapeau
                 /*Hide();
                 RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
                 restaurantform.Show();*/
-            }            
-        }
+            }
+        }        
 
         private void FinishedPaymentBttn_Click(object sender, EventArgs e)
         {            
             PaymentMethod paymentMethod = (PaymentMethod)1; //user input
-            double tip = 0.2; //user input
-
-
+            double tip = double.Parse(TipInputnum.Value.ToString()); //user input
+            
             PaymentLogic pl = new PaymentLogic();
             pl.InsertPayment(employeeId, orderId, tip, paymentMethod, CommentsTxt.Text);
+        }
+
+        private void CancelPaymentbttn_Click(object sender, EventArgs e)
+        {
+            //open previous form
+        }
+
+        private void TipInputnum_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

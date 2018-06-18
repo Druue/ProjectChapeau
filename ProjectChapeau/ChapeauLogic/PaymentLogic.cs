@@ -31,12 +31,10 @@ namespace Chapeau_Logic
         public Payment GetTotalPayments(int orderId)
         {
             Payment payment = new Payment();
-            List<double> paymentDetails = new List<double>();
-
             List<OrderItems> orderItems = GetOrderItems(orderId);
 
             foreach (OrderItems item in orderItems)
-            {
+            {                
                 payment.Vat += item.Vat * item.ItemPrice;
                 payment.InitialPrice += item.ItemPrice;
             }
@@ -49,8 +47,26 @@ namespace Chapeau_Logic
         public List<OrderItems> GetOrderItems(int orderId)
         {
             ChapeauDAL dal = new ChapeauDAL();
-            List<OrderItems> orderItems = dal.OrderItemsDAO(orderId);
+            List<OrderItems> itemsDAL = dal.OrderItemsDAO(orderId);
+            //List<OrderItems> orderItems = itemsDAL.Distinct().ToList();
+            List<OrderItems> orderItems = itemsDAL.GroupBy(p => p.ItemName).Select(s => s.FirstOrDefault()).Distinct().ToList();
 
+            for (int i = 0; i < orderItems.Count; i++)
+            {
+                for (int j = 0; j < itemsDAL.Count; j++)
+                {
+                    if (orderItems[i].ItemName != itemsDAL[j].ItemName)
+                        continue;
+
+                    else
+                    {                        
+                        orderItems[i].Quantity++;                        
+                    }
+                }
+
+                orderItems[i].ItemPrice *= orderItems[i].Quantity;
+            }
+                                    
             return orderItems;
         }
     }
