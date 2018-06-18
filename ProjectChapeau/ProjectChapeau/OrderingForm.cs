@@ -179,9 +179,15 @@ namespace ProjectChapeau
                         
                        
                         OrdersCart.Rows.Add("", item.Name, "", 1, item.itemID, item.itemPrice);
+
                 //       cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
                //       cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
                     //    this.OrdersCart.Controls.Add(cellNumeric);
+
+                       /*cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(0, 3, true).Location;
+                      cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(0, 3, true).Size;
+                        this.OrdersCart.Controls.Add(cellNumeric);*/
+
 
                         break;
                     }

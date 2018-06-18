@@ -23,6 +23,7 @@ namespace ProjectChapeau
             this.table = table;
             this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
+            FillTableList();
         }
 
         private void FillTableList()
