@@ -95,7 +95,7 @@ namespace Chapeau_DAL
         public void DB_InsertOrder(OrderingModel.Order NewOrder, int tableId, int employeeId)
         {
                 using (SqlCommand cmd =
-                    new SqlCommand("INSERT INTO Orders ([OrderId], [OrderTime], [TableId], [EmployeeId], [completed]) VALUES((SELECT (MAX(OrderId)+1) FROM Orders), @OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
+                    new SqlCommand("INSERT INTO Orders ([OrderTime], [TableId], [EmployeeId], [completed]) VALUES(@OrderTime, @TableId, @EmployeeId, 0)", OpenConnectionDB()))
                 {
                     cmd.Parameters.AddWithValue("@OrderTime", DateTime.Now);
                     cmd.Parameters.AddWithValue("@TableId", tableId);
@@ -114,7 +114,7 @@ namespace Chapeau_DAL
             foreach (OrderingModel.Item item in NewOrder.OrderItems)
                 {
                     using (SqlCommand cmd =
-                        new SqlCommand("INSERT INTO OrderItems ([OrderId], [ItemId], [Comment]) VALUES((SELECT MAX(OrderId) FROM Orders), @ItemId, @Comment)", OpenConnectionDB()))
+                        new SqlCommand("INSERT INTO OrderItems ([ItemId], [Comment]) VALUES(@ItemId, @Comment)", OpenConnectionDB()))
                     {
                         cmd.Parameters.AddWithValue("@ItemId", item.itemID);
                         cmd.Parameters.AddWithValue("@Comment", item.comment);
@@ -178,7 +178,7 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                completed += (int)reader["completed"];
+                completed = (int)reader["completed"];
             }
             reader.Close();
             connection.Close();
