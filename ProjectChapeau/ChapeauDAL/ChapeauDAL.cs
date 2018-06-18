@@ -127,9 +127,7 @@ namespace Chapeau_DAL
         }
 
         public ChapeauModel.Employee LoginDAO(string username, string password) //Made by Machelle
-        {
-            ChapeauModel.Employee loginTry = null;
-
+        {            
             SqlConnection conn = OpenConnDB();
 
             string query = $"SELECT EmployeeId, Username, Password, JobRole, Firstname, Lastname " +
