@@ -75,7 +75,7 @@ namespace Chapeau_Model
             public string comments { get; set; }
             public string PlacedBy { get; set; }
             public DateTime orderTime;
-            //public bool paidStatus;
+            public int completed { get; set; }
 
             public Order() //Elizabeth's constructor
             {
@@ -85,7 +85,7 @@ namespace Chapeau_Model
                 comments = "";
                 PlacedBy = "";
                 orderTime = DateTime.Now;
-               // this.paidStatus = false;
+                completed = 0;
             }
 
             public Order(int orderid, int tableid, DateTime ordertime, int orderstatus) //Machelle's constructor

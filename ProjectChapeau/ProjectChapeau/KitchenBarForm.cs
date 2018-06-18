@@ -39,6 +39,8 @@ namespace ProjectChapeau
             orderTable.Font = new Font("Arial", 20, FontStyle.Regular);
             orderTable.Scrollable = true;
             orderTable.GridLines = false;
+
+            //Make selectable
             orderTable.FullRowSelect = true;
             orderTable.MultiSelect = true;
             orderTable.HideSelection = false;
@@ -47,32 +49,39 @@ namespace ProjectChapeau
            //orderId.BackColor = Color.Orange;
             orderId.Text = "Order Id";
             orderId.Name = "col1";
-            orderId.Width = panelKitchen.Width/5;
+            orderId.Width = panelKitchen.Width/6;
             orderTable.Columns.Add(orderId);
 
             ColumnHeader itemName = new ColumnHeader();
             itemName.Text = "Item Name";
             itemName.Name = "col2";
-            itemName.Width = panelKitchen.Width/5;
+            itemName.Width = panelKitchen.Width/6;
             orderTable.Columns.Add(itemName);
 
             ColumnHeader comments = new ColumnHeader();
             comments.Text = "Comments";
             comments.Name = "col4";
-            comments.Width = panelKitchen.Width/5;
+            comments.Width = panelKitchen.Width/6;
             orderTable.Columns.Add(comments);
 
             ColumnHeader placedBy = new ColumnHeader();
             placedBy.Text = "PlacedBy";
             placedBy.Name = "col5";
-            placedBy.Width = panelKitchen.Width/5;
+            placedBy.Width = panelKitchen.Width/6;
             orderTable.Columns.Add(placedBy);
 
             ColumnHeader orderTime = new ColumnHeader();
             orderTime.Text = "Order Time";
             orderTime.Name = "col6";
-            orderTime.Width = panelKitchen.Width/5;
+            orderTime.Width = panelKitchen.Width/6;
             orderTable.Columns.Add(orderTime);
+
+            ColumnHeader orderStatus = new ColumnHeader();
+            orderTime.Text = "order Status";
+            orderTime.Name = "col7";
+            orderTime.Width = panelKitchen.Width / 6;
+            orderTable.Columns.Add(orderStatus);
+
 
             foreach (var o in orderList)
             {
@@ -83,10 +92,11 @@ namespace ProjectChapeau
 
                 ListViewItem orders = new ListViewItem(o.orderId.ToString());
 
-                orders.SubItems.Add(o.item);
                 orders.SubItems.Add(orderItem);
+                orders.SubItems.Add(o.comments);
                 orders.SubItems.Add(o.PlacedBy);
                 orders.SubItems.Add(placedTime);
+                orders.SubItems.Add(o.completed.ToString());
 
                 orderTable.Items.Add(orders);
             }
@@ -96,7 +106,27 @@ namespace ProjectChapeau
 
         private void btnKitchen_Click(object sender, EventArgs e)
         {
+            ListView orderTable = panelKitchen.Controls.Find("orderTable", true).First() as ListView;
+            ListView.SelectedListViewItemCollection selectedOrders = orderTable.SelectedItems;
 
+            ChapeauModel.Order selectedOrder = new ChapeauModel.Order();
+            ChapeauLogic logic = new ChapeauLogic();
+
+            foreach(ListViewItem o in selectedOrders)
+            {
+                ListViewItem.ListViewSubItemCollection order = o.SubItems;
+                selectedOrder.orderId = Int32.Parse(order[0].Text);
+                selectedOrder.item = order[1].Text;
+                selectedOrder.comments = order[2].Text;
+                selectedOrder.PlacedBy = order[3].Text;
+                selectedOrder.orderTime = DateTime.Parse(order[4].Text.ToString());
+                selectedOrder.completed = Int32.Parse(order[5].Text);
+
+                logic.FlipCompleteStatus(selectedOrder);
+
+                orderTable.Items[0].Remove();
+
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

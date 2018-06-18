@@ -238,7 +238,7 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Orders.OrderTime, ItemName, Employee.Firstname, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
 
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
@@ -269,5 +269,17 @@ namespace Chapeau_DAL
             return orderList;
         }
 
+        public void UpdateOrderDAO(ChapeauModel.Order selectedOrder)
+        {
+            SqlConnection conn = OpenConnDB();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Orders SET completed = @complete WHERE OrderId = @orderId");
+
+            String sql = sb.ToString();
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@complete", selectedOrder.completed);
+            command.Parameters.AddWithValue("@orderId", selectedOrder.orderId);
+            SqlDataReader reader = command.ExecuteReader();
+        }
     }
 }
