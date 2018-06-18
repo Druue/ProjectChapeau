@@ -121,12 +121,6 @@ namespace ProjectChapeau
                     OccupiedTableForm occupied = new OccupiedTableForm(table);
                     occupied.ShowDialog();
                 }
-
-
-
-
-
-                MessageBox.Show("Yaaay the eventhandlers work! :D table number: " + table.GetTableId());
                 //HENRY:
                 //create your form in here, use the following: YourFormName yourform = new YourFormName(table); then set that to yourform.Show();
                 //You can use the table.TableId that I passed in this eventhandler in your form to make changes to the right table!

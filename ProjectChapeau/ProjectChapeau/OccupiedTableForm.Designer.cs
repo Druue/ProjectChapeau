@@ -41,11 +41,13 @@
             this.startPaymentButton = new System.Windows.Forms.Button();
             this.cancelOrderButton = new System.Windows.Forms.Button();
             this.addItemButton = new System.Windows.Forms.Button();
+            this.ordertimeLabel = new System.Windows.Forms.Label();
             this.FormPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // FormPanel
             // 
+            this.FormPanel.Controls.Add(this.ordertimeLabel);
             this.FormPanel.Controls.Add(this.statusDisplayLabel);
             this.FormPanel.Controls.Add(this.textStatusLabel);
             this.FormPanel.Controls.Add(this.tableReceiptListView);
@@ -167,6 +169,16 @@
             this.addItemButton.UseVisualStyleBackColor = false;
             this.addItemButton.Click += new System.EventHandler(this.addItemButton_Click);
             // 
+            // ordertimeLabel
+            // 
+            this.ordertimeLabel.AutoSize = true;
+            this.ordertimeLabel.Location = new System.Drawing.Point(57, 184);
+            this.ordertimeLabel.Name = "ordertimeLabel";
+            this.ordertimeLabel.Size = new System.Drawing.Size(13, 17);
+            this.ordertimeLabel.TabIndex = 8;
+            this.ordertimeLabel.Text = "-";
+            this.ordertimeLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // OccupiedTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -197,5 +209,6 @@
         private System.Windows.Forms.ColumnHeader name;
         private System.Windows.Forms.ColumnHeader dots;
         private System.Windows.Forms.ColumnHeader price;
+        private System.Windows.Forms.Label ordertimeLabel;
     }
 }
