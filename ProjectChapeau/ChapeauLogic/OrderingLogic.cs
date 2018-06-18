@@ -95,6 +95,25 @@ namespace Chapeau_Logic
             int minutes = (int)Math.Round(passedTime.TotalMinutes);
             return minutes;
         }
+
+        public static bool GetOrderStatus(int OrderId)
+        {
+            int completed = DBConnection.DB_GetOrderStatus(OrderId);
+            if (completed == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static int GetOrderId(int tableId)
+        {
+            return DBConnection.DB_GetOrderId(tableId);
+
+        }
     }
 }
 

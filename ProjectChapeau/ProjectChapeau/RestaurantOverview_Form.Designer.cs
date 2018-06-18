@@ -35,9 +35,9 @@
             this.lbl_loggedinEmployee = new System.Windows.Forms.Label();
             this.pnl_topbar = new System.Windows.Forms.Panel();
             this.pnl_tableoverview_container = new System.Windows.Forms.Panel();
+            this.lbl_title_table_overview = new System.Windows.Forms.Label();
             this.flowlaypnl_statusUneven = new System.Windows.Forms.FlowLayoutPanel();
             this.flowlaypnl_statusEven = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbl_title_table_overview = new System.Windows.Forms.Label();
             this.pnl_topbar.SuspendLayout();
             this.pnl_tableoverview_container.SuspendLayout();
             this.SuspendLayout();
@@ -45,18 +45,19 @@
             // flowlaypnl_table_overview_uneven
             // 
             this.flowlaypnl_table_overview_uneven.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(16, 29);
+            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(13, 29);
             this.flowlaypnl_table_overview_uneven.Name = "flowlaypnl_table_overview_uneven";
-            this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(85, 608);
+            this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(90, 608);
             this.flowlaypnl_table_overview_uneven.TabIndex = 0;
             // 
             // flowlaypnl_table_overview_even
             // 
             this.flowlaypnl_table_overview_even.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(234, 29);
+            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(229, 29);
             this.flowlaypnl_table_overview_even.Name = "flowlaypnl_table_overview_even";
-            this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(85, 608);
+            this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(90, 608);
             this.flowlaypnl_table_overview_even.TabIndex = 1;
+            this.flowlaypnl_table_overview_even.Paint += new System.Windows.Forms.PaintEventHandler(this.flowlaypnl_table_overview_even_Paint);
             // 
             // btn_logoff
             // 
@@ -106,20 +107,6 @@
             this.pnl_tableoverview_container.Size = new System.Drawing.Size(436, 656);
             this.pnl_tableoverview_container.TabIndex = 5;
             // 
-            // flowlaypnl_statusUneven
-            // 
-            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(325, 29);
-            this.flowlaypnl_statusUneven.Name = "flowlaypnl_statusUneven";
-            this.flowlaypnl_statusUneven.Size = new System.Drawing.Size(108, 608);
-            this.flowlaypnl_statusUneven.TabIndex = 3;
-            // 
-            // flowlaypnl_statusEven
-            // 
-            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(107, 29);
-            this.flowlaypnl_statusEven.Name = "flowlaypnl_statusEven";
-            this.flowlaypnl_statusEven.Size = new System.Drawing.Size(109, 608);
-            this.flowlaypnl_statusEven.TabIndex = 2;
-            // 
             // lbl_title_table_overview
             // 
             this.lbl_title_table_overview.AutoSize = true;
@@ -129,6 +116,20 @@
             this.lbl_title_table_overview.Size = new System.Drawing.Size(170, 25);
             this.lbl_title_table_overview.TabIndex = 4;
             this.lbl_title_table_overview.Text = "Table: Overview";
+            // 
+            // flowlaypnl_statusUneven
+            // 
+            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(325, 29);
+            this.flowlaypnl_statusUneven.Name = "flowlaypnl_statusUneven";
+            this.flowlaypnl_statusUneven.Size = new System.Drawing.Size(100, 608);
+            this.flowlaypnl_statusUneven.TabIndex = 3;
+            // 
+            // flowlaypnl_statusEven
+            // 
+            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(109, 29);
+            this.flowlaypnl_statusEven.Name = "flowlaypnl_statusEven";
+            this.flowlaypnl_statusEven.Size = new System.Drawing.Size(100, 608);
+            this.flowlaypnl_statusEven.TabIndex = 2;
             // 
             // RestaurantOverview_Form
             // 

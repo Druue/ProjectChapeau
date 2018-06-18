@@ -85,7 +85,7 @@ namespace ProjectChapeau
 
             public TableButton(TableTop table, RestaurantOverview_Form form, ChapeauModel.Employee employee)
             {
-                this.Size = new Size(60, 60);
+                this.Size = new Size(70, 70);
                 this.Font = new Font("Arial", 12, FontStyle.Bold);
                 this.Text = table.GetTableId().ToString();
                 this.Click += new EventHandler((s, ev) => TableButton_Click(s, ev, table, form, employee));
@@ -109,8 +109,7 @@ namespace ProjectChapeau
 
             public void TableButton_Click(object sender, EventArgs e, TableTop table, RestaurantOverview_Form form, ChapeauModel.Employee employee)
             {
-
-                
+                                
 
                 if (table.GetTableStatus() == TableStatus.Available)
                 {
@@ -122,9 +121,6 @@ namespace ProjectChapeau
                     OccupiedTableForm occupied = new OccupiedTableForm(table, employee);
                     occupied.ShowDialog();
                 }
-                //HENRY:
-                //create your form in here, use the following: YourFormName yourform = new YourFormName(table); then set that to yourform.Show();
-                //You can use the table.TableId that I passed in this eventhandler in your form to make changes to the right table!
 
             }
         }
@@ -133,11 +129,14 @@ namespace ProjectChapeau
         {
             public StatusButton(TableTop table, int position)
             {
-                this.Size = new Size(70, 30);
-                this.Font = new Font("Arial", 8);
+                this.Size = new Size(70, 35);
+                this.Font = new Font("Arial", 7);
                 this.Text = table.GetTableStatus().ToString();
 
-                if (position % 2 != 0)
+                bool orderCompleted = OrderingLogic.GetOrderStatus(table.GetTableId());
+
+
+                if (position % 2 != 0)// status information (top)
                 {
                     this.Margin = new Padding(0, 25, 0, 0);
 
@@ -147,13 +146,29 @@ namespace ProjectChapeau
                     }
                     else if (table.GetTableStatus() == TableStatus.Occupied)
                     {
-
+                        
+                        if(!orderCompleted)
+                        {
+                            this.Text = "Waiting for order";
+                        }
+                        else
+                        {
+                            this.Text = "No pending orders";
+                        }
                     }
                 }
-                else
+                else //sat time information (bottom)
                 {
                     this.Margin = new Padding(0, 0, 0, 0);
-                    this.Text = table.GetTableStatus().ToString();
+
+                    if (!orderCompleted && table.GetTableStatus() == TableStatus.Occupied)
+                    {
+                        this.Text = "Wait time : " + (OrderingLogic.GetWaitingTime(table.GetTableId())).ToString() + " min";
+                    }
+                    else
+                    {
+                        this.Text = " - ";
+                    }
                 }
 
 
@@ -175,7 +190,10 @@ namespace ProjectChapeau
             DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table " + notify.tableId, MessageBoxButtons.OK));
         }
 
+        private void flowlaypnl_table_overview_even_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 
 

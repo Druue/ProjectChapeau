@@ -19,7 +19,6 @@ namespace ProjectChapeau
         
         public OrderingForm(TableTop table, ChapeauModel.Employee employee)
         {
-
             InitializeComponent();
             this.table = table;
             this.employee = employee;
@@ -51,7 +50,7 @@ namespace ProjectChapeau
 
         }
 
-        private void FillMenuList()
+            private void FillMenuList()
         {
             MenuListView.HideSelection = false;
             MenuListView.Items.Clear();
