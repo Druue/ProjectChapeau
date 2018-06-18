@@ -15,7 +15,7 @@ namespace ProjectChapeau
         {
             InitializeComponent();
             this.employee = employee;
-            this.orderId = OrderingLogic.GetOrderId(tableId);
+            orderId = OrderingLogic.GetOrderId(tableId);
         }
 
         private void Payment_Form_Load(object sender, EventArgs e)
@@ -76,9 +76,7 @@ namespace ProjectChapeau
                 MessageBoxIcon.Exclamation //For triangle Warning 
                 );
 
-                /*Hide();
-                RestaurantOverview_Form restaurantform = new RestaurantOverview_Form(employee);
-                restaurantform.Show();*/
+                Close();
             }
         }        
 
@@ -112,7 +110,7 @@ namespace ProjectChapeau
 
                 if (finalisePayment == DialogResult.OK)
                 {
-                    this.Close();
+                    Close();
                 }
             }                                 
         }
@@ -120,7 +118,7 @@ namespace ProjectChapeau
         private void CancelPaymentbttn_Click(object sender, EventArgs e)
         {
             //RestaurantOverview_Form restaurantOverview = new RestaurantOverview_Form(employee);
-            this.Close();
+            Close();
             //restaurantOverview.Show();
         }        
     }
