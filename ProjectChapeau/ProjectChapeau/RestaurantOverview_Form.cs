@@ -169,6 +169,11 @@ namespace ProjectChapeau
             login.Show();
         }
 
+        public void NotifyWaiter(ChapeauModel.Order notify)
+        {
+            DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table " + notify.tableId, MessageBoxButtons.OK));
+        }
+
 
     }
 

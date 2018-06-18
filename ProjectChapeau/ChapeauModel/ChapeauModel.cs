@@ -105,9 +105,6 @@ namespace Chapeau_Model
 
             public Order GetOrder()
             {
-                //ChapeauDAL DB = new ChapeauDAL();
-
-                //= DB.OrderDAO();
                 return this;
             }
         }

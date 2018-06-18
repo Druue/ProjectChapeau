@@ -36,6 +36,8 @@
             this.btnGetWait = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.logOffBtn = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelKitchen
@@ -95,6 +97,7 @@
             this.btnGetWait.TabIndex = 2;
             this.btnGetWait.Text = "Call Waiter";
             this.btnGetWait.UseVisualStyleBackColor = false;
+            this.btnGetWait.Click += new System.EventHandler(this.btnGetWait_Click);
             // 
             // timer1
             // 
@@ -104,11 +107,29 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.logOffBtn);
             this.panel1.Location = new System.Drawing.Point(-6, -6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1150, 41);
             this.panel1.TabIndex = 3;
+            // 
+            // logOffBtn
+            // 
+            this.logOffBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.logOffBtn.FlatAppearance.BorderSize = 0;
+            this.logOffBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logOffBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.logOffBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.logOffBtn.Location = new System.Drawing.Point(1049, 3);
+            this.logOffBtn.Name = "logOffBtn";
+            this.logOffBtn.Size = new System.Drawing.Size(101, 41);
+            this.logOffBtn.TabIndex = 0;
+            this.logOffBtn.Text = "LogOff";
+            this.logOffBtn.UseVisualStyleBackColor = true;
+            this.logOffBtn.Click += new System.EventHandler(this.logOffBtn_Click);
             // 
             // KitchenBarForm
             // 
@@ -123,9 +144,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKitchen);
             this.Controls.Add(this.panelKitchen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "KitchenBarForm";
             this.Text = "Kitchen Orders";
             this.Load += new System.EventHandler(this.KitchenBarForm_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +162,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button logOffBtn;
     }
 }
