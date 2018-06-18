@@ -117,14 +117,44 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="menulabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="menulabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10.2pt, style=Bold</value>
+  </data>
+  <data name="menulabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 6</value>
+  </data>
+  <data name="menulabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="menulabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="menulabel.Text" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="&gt;&gt;menulabel.Name" xml:space="preserve">
+    <value>menulabel</value>
+  </data>
+  <data name="&gt;&gt;menulabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menulabel.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;menulabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 45</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>460, 35</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
@@ -138,6 +168,33 @@
     <value>OrderingSystemPanel</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ClearCartButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 6pt, style=Bold</value>
+  </data>
+  <data name="ClearCartButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>299, 2</value>
+  </data>
+  <data name="ClearCartButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 23</value>
+  </data>
+  <data name="ClearCartButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="ClearCartButton.Text" xml:space="preserve">
+    <value>CLEAR CART</value>
+  </data>
+  <data name="&gt;&gt;ClearCartButton.Name" xml:space="preserve">
+    <value>ClearCartButton</value>
+  </data>
+  <data name="&gt;&gt;ClearCartButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ClearCartButton.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;ClearCartButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
@@ -234,6 +291,9 @@
   <data name="ItemPriceOverview.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
+  <data name="quantityOverview.Text" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
   <data name="PriceOverviewListView.LabelWrap" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -258,6 +318,60 @@
   <data name="&gt;&gt;PriceOverviewListView.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="subMenuTypeComboBox.Items" xml:space="preserve">
+    <value>ALL TYPES</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items1" xml:space="preserve">
+    <value>LUNCH MAIN	</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items2" xml:space="preserve">
+    <value>SPECIALS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items3" xml:space="preserve">
+    <value>BITES</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items4" xml:space="preserve">
+    <value>DINNER STARTERS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items5" xml:space="preserve">
+    <value>DINNER MAINS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items6" xml:space="preserve">
+    <value>DESSERTS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items7" xml:space="preserve">
+    <value>SOFT DRINKS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items8" xml:space="preserve">
+    <value>HOT DRINKS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items9" xml:space="preserve">
+    <value>BEERS</value>
+  </data>
+  <data name="subMenuTypeComboBox.Items10" xml:space="preserve">
+    <value>WINES</value>
+  </data>
+  <data name="subMenuTypeComboBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 11</value>
+  </data>
+  <data name="subMenuTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 24</value>
+  </data>
+  <data name="subMenuTypeComboBox.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;subMenuTypeComboBox.Name" xml:space="preserve">
+    <value>subMenuTypeComboBox</value>
+  </data>
+  <data name="&gt;&gt;subMenuTypeComboBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;subMenuTypeComboBox.Parent" xml:space="preserve">
+    <value>MenuDisplayPanel</value>
+  </data>
+  <data name="&gt;&gt;subMenuTypeComboBox.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="MenuTypeComboBox.Items" xml:space="preserve">
     <value>ALL(*)</value>
   </data>
@@ -274,13 +388,10 @@
     <value>0, 11</value>
   </data>
   <data name="MenuTypeComboBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 24</value>
+    <value>261, 24</value>
   </data>
   <data name="MenuTypeComboBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="MenuTypeComboBox.Text" xml:space="preserve">
-    <value>ALL(*)</value>
   </data>
   <data name="&gt;&gt;MenuTypeComboBox.Name" xml:space="preserve">
     <value>MenuTypeComboBox</value>
@@ -292,7 +403,7 @@
     <value>MenuDisplayPanel</value>
   </data>
   <data name="&gt;&gt;MenuTypeComboBox.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="AddToCartButton.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -322,7 +433,7 @@
     <value>MenuDisplayPanel</value>
   </data>
   <data name="&gt;&gt;AddToCartButton.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <metadata name="MenuListImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -332,7 +443,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABC
-        qwMAAk1TRnQBSQFMAgEBMAEAAWABAAEgAQABUgEAAVIBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        qwMAAk1TRnQBSQFMAgEBMAEAATgBAAE4AQABUgEAAVIBAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABSAEBAgABKgEEAgABAQEAAQgFAAHQAVUBBRcAAYACAAGAAwACgAEAAYADAAGAAQABgAEAAoACAAPA
         AQABwAHcAcABAAHwAcoBpgEAATMFAAEzAQABMwEAATMBAAIzAgADFgEAAxwBAAMiAQADKQEAA1UBAANN
         AQADQgEAAzkBAAGAAXwB/wEAAlAB/wEAAZMBAAHWAQAB/wHsAcwBAAHGAdYB7wEAAdYC5wEAAZABqQGt
@@ -4361,7 +4472,7 @@
     <value>MenuDisplayPanel</value>
   </data>
   <data name="&gt;&gt;MenuListView.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="MenuDisplayPanel.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 86</value>
@@ -33915,6 +34026,12 @@
   <data name="&gt;&gt;ItemPriceOverview.Type" xml:space="preserve">
     <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;quantityOverview.Name" xml:space="preserve">
+    <value>quantityOverview</value>
+  </data>
+  <data name="&gt;&gt;quantityOverview.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;MenuListImageList.Name" xml:space="preserve">
     <value>MenuListImageList</value>
   </data>
@@ -33992,12 +34109,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;quantityOverview.Name" xml:space="preserve">
-    <value>quantityOverview</value>
-  </data>
-  <data name="&gt;&gt;quantityOverview.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ColumnHeader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>OrderingForm</value>

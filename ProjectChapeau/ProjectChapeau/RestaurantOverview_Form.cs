@@ -118,7 +118,7 @@ namespace ProjectChapeau
                 }
                 else
                 {
-                    OccupiedTableForm occupied = new OccupiedTableForm(table.GetTableId());
+                    OccupiedTableForm occupied = new OccupiedTableForm(table);
                     occupied.ShowDialog();
                 }
 

@@ -40,14 +40,14 @@ namespace Chapeau_Model
             public int stock;
             public int quantity;
             protected MenuType menuType;
+            protected SubMenuType subMenuType;
 
             public string Name
             {
                 get { return name; }
                 set
                 {
-                    name = value;
-                    name.Replace("_", " ");
+                    name = value.Replace("_", " ");
                 }
             }
 
@@ -57,6 +57,15 @@ namespace Chapeau_Model
                 set
                 {
                     menuType = value;
+                }
+            }
+
+            public SubMenuType SubMenuType
+            {
+                get { return this.subMenuType; }
+                set
+                {
+                    subMenuType = value;
                 }
             }
 
