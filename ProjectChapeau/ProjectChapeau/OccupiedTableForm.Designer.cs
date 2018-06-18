@@ -87,7 +87,7 @@
             this.dots,
             this.price});
             this.tableReceiptListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.tableReceiptListView.Location = new System.Drawing.Point(60, 195);
+            this.tableReceiptListView.Location = new System.Drawing.Point(60, 199);
             this.tableReceiptListView.Name = "tableReceiptListView";
             this.tableReceiptListView.Size = new System.Drawing.Size(328, 256);
             this.tableReceiptListView.TabIndex = 5;
@@ -155,7 +155,7 @@
             // ordertimeLabel
             // 
             this.ordertimeLabel.AutoSize = true;
-            this.ordertimeLabel.Location = new System.Drawing.Point(57, 184);
+            this.ordertimeLabel.Location = new System.Drawing.Point(57, 155);
             this.ordertimeLabel.Name = "ordertimeLabel";
             this.ordertimeLabel.Size = new System.Drawing.Size(13, 17);
             this.ordertimeLabel.TabIndex = 8;
@@ -172,6 +172,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OccupiedTableForm";
             this.Text = "OccupiedTableForm";
+            this.Load += new System.EventHandler(this.OccupiedTableForm_Load);
             this.FormPanel.ResumeLayout(false);
             this.FormPanel.PerformLayout();
             this.ResumeLayout(false);
