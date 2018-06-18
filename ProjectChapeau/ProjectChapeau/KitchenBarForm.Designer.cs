@@ -35,6 +35,7 @@
             this.btnKitchen = new System.Windows.Forms.Button();
             this.btnGetWait = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // panelKitchen
@@ -44,7 +45,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelKitchen.BackColor = System.Drawing.Color.White;
             this.panelKitchen.ForeColor = System.Drawing.SystemColors.Window;
-            this.panelKitchen.Location = new System.Drawing.Point(175, 52);
+            this.panelKitchen.Location = new System.Drawing.Point(182, 77);
             this.panelKitchen.Name = "panelKitchen";
             this.panelKitchen.Size = new System.Drawing.Size(786, 361);
             this.panelKitchen.TabIndex = 0;
@@ -58,7 +59,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.label1.Location = new System.Drawing.Point(178, 25);
+            this.label1.Location = new System.Drawing.Point(178, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 24);
             this.label1.TabIndex = 0;
@@ -72,7 +73,7 @@
             this.btnKitchen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnKitchen.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKitchen.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnKitchen.Location = new System.Drawing.Point(770, 452);
+            this.btnKitchen.Location = new System.Drawing.Point(769, 479);
             this.btnKitchen.Name = "btnKitchen";
             this.btnKitchen.Size = new System.Drawing.Size(207, 53);
             this.btnKitchen.TabIndex = 1;
@@ -88,7 +89,7 @@
             this.btnGetWait.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGetWait.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGetWait.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnGetWait.Location = new System.Drawing.Point(480, 452);
+            this.btnGetWait.Location = new System.Drawing.Point(504, 479);
             this.btnGetWait.Name = "btnGetWait";
             this.btnGetWait.Size = new System.Drawing.Size(207, 53);
             this.btnGetWait.TabIndex = 2;
@@ -101,6 +102,14 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.panel1.Location = new System.Drawing.Point(-6, -6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1150, 41);
+            this.panel1.TabIndex = 3;
+            // 
             // KitchenBarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +118,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1142, 594);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnGetWait);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnKitchen);
@@ -128,5 +138,6 @@
         private System.Windows.Forms.Button btnGetWait;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

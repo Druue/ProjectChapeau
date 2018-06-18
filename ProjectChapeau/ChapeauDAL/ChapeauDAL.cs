@@ -140,7 +140,7 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginDAO(string username, string password)
+        public ChapeauModel.Employee LoginDAO(string username, string password) //Made by Machelle
         {
             ChapeauModel.Employee loginTry = null;
 
@@ -200,11 +200,45 @@ namespace Chapeau_DAL
             return employee_list;
         }
 
+        public List<ChapeauModel.Order> orderListPerTableOrderedRecent(int tableId) //Made by Machelle (for displaying the status of the most recent order)
+        {
+            SqlConnection conn = OpenConnDB();
+
+            string query = $"SELECT Orders.OrderId, Orders.TableId, Orders.OrderTime, Orders.OrderStatus " +
+            $"FROM Orders " +
+            $"WHERE Orders.TableId = @tableId" + 
+            $"ORDER BY Orders.OrderTime ASC";
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<ChapeauModel.Order> orderListRecent = null;
+            ChapeauModel.Order order;
+
+
+            if (reader.Read())
+            {
+                // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
+                int orderid = reader.GetInt32(0);
+                int tableid = reader.GetInt32(1);
+                DateTime ordertime = reader.GetDateTime(2);
+                int orderstatus = reader.GetInt32(3);
+
+
+               order = new ChapeauModel.Order(orderid, tableid, ordertime, orderstatus);
+                orderListRecent.Add(order);
+            }
+
+            conn.Close();
+            return orderListRecent;
+        }
+
         public List<ChapeauModel.Order> OrderDAO()
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Orders.OrderTime, ItemName, Employee.Firstname, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
 
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
@@ -235,5 +269,17 @@ namespace Chapeau_DAL
             return orderList;
         }
 
+        public void UpdateOrderDAO(ChapeauModel.Order selectedOrder)
+        {
+            SqlConnection conn = OpenConnDB();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE Orders SET completed = @complete WHERE OrderId = @orderId");
+
+            String sql = sb.ToString();
+            SqlCommand command = new SqlCommand(sql, conn);
+            command.Parameters.AddWithValue("@complete", selectedOrder.completed);
+            command.Parameters.AddWithValue("@orderId", selectedOrder.orderId);
+            SqlDataReader reader = command.ExecuteReader();
+        }
     }
 }
