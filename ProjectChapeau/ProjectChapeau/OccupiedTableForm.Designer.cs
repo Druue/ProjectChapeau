@@ -36,7 +36,6 @@
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dots = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.backButton = new System.Windows.Forms.Button();
             this.startPaymentButton = new System.Windows.Forms.Button();
             this.cancelOrderButton = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.FormPanel.Controls.Add(this.statusDisplayLabel);
             this.FormPanel.Controls.Add(this.textStatusLabel);
             this.FormPanel.Controls.Add(this.tableReceiptListView);
-            this.FormPanel.Controls.Add(this.statusComboBox);
             this.FormPanel.Controls.Add(this.backButton);
             this.FormPanel.Controls.Add(this.startPaymentButton);
             this.FormPanel.Controls.Add(this.cancelOrderButton);
@@ -65,7 +63,7 @@
             // 
             this.statusDisplayLabel.AutoSize = true;
             this.statusDisplayLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusDisplayLabel.Location = new System.Drawing.Point(153, 141);
+            this.statusDisplayLabel.Location = new System.Drawing.Point(147, 112);
             this.statusDisplayLabel.Name = "statusDisplayLabel";
             this.statusDisplayLabel.Size = new System.Drawing.Size(146, 25);
             this.statusDisplayLabel.TabIndex = 7;
@@ -76,7 +74,7 @@
             // 
             this.textStatusLabel.AutoSize = true;
             this.textStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textStatusLabel.Location = new System.Drawing.Point(175, 105);
+            this.textStatusLabel.Location = new System.Drawing.Point(175, 87);
             this.textStatusLabel.Name = "textStatusLabel";
             this.textStatusLabel.Size = new System.Drawing.Size(100, 25);
             this.textStatusLabel.TabIndex = 6;
@@ -89,9 +87,9 @@
             this.dots,
             this.price});
             this.tableReceiptListView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.tableReceiptListView.Location = new System.Drawing.Point(60, 222);
+            this.tableReceiptListView.Location = new System.Drawing.Point(60, 195);
             this.tableReceiptListView.Name = "tableReceiptListView";
-            this.tableReceiptListView.Size = new System.Drawing.Size(328, 180);
+            this.tableReceiptListView.Size = new System.Drawing.Size(328, 256);
             this.tableReceiptListView.TabIndex = 5;
             this.tableReceiptListView.UseCompatibleStateImageBehavior = false;
             this.tableReceiptListView.View = System.Windows.Forms.View.Details;
@@ -104,21 +102,6 @@
             // dots
             // 
             this.dots.Width = 90;
-            // 
-            // statusComboBox
-            // 
-            this.statusComboBox.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statusComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Items.AddRange(new object[] {
-            "Waiting Order",
-            "Served"});
-            this.statusComboBox.Location = new System.Drawing.Point(60, 437);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(328, 24);
-            this.statusComboBox.TabIndex = 4;
-            this.statusComboBox.SelectedIndexChanged += new System.EventHandler(this.statusComboBox_SelectedIndexChanged);
             // 
             // backButton
             // 
@@ -201,7 +184,6 @@
         private System.Windows.Forms.Label statusDisplayLabel;
         private System.Windows.Forms.Label textStatusLabel;
         private System.Windows.Forms.ListView tableReceiptListView;
-        private System.Windows.Forms.ComboBox statusComboBox;
         private System.Windows.Forms.Button backButton;
         private System.Windows.Forms.Button startPaymentButton;
         private System.Windows.Forms.Button cancelOrderButton;

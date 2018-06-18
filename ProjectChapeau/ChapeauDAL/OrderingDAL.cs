@@ -167,5 +167,47 @@ namespace Chapeau_DAL
             return OrderTime;
         }
 
+        public int DB_GetOrderStatus(int OrderId)
+        {
+            SqlConnection connection = OpenConnectionDB();
+            string sqlQuery = "SELECT completed FROM Orders WHERE OrderId = " + OrderId;
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            int completed = 0;
+
+            while (reader.Read())
+            {
+                completed += (int)reader["completed"];
+            }
+            reader.Close();
+            connection.Close();
+
+            return completed;
+
+        }
+
+
+        public int DB_GetOrderId(int TableId)
+        {
+            SqlConnection connection = OpenConnectionDB();
+            string sqlQuery = "SELECT OrderId FROM Orders WHERE TableId = " + TableId;
+            SqlCommand command = new SqlCommand(sqlQuery, connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            int OrderId = 0;
+
+            while (reader.Read())
+            {
+                OrderId += (int)reader["OrderId"];
+            }
+            reader.Close();
+            connection.Close();
+
+            return OrderId;
+
+        }
+
+
     }
 }

@@ -23,6 +23,14 @@ namespace ProjectChapeau
             this.table = table;
             this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
+            if(OrderingLogic.GetOrderStatus(OrderingLogic.GetOrderId(table.GetTableId())) == true)
+            {
+                statusDisplayLabel.Text = "Served";
+            }
+            else
+            {
+                statusDisplayLabel.Text = "Waiting Order";
+            }
             FillTableList();
         }
 
@@ -59,11 +67,6 @@ namespace ProjectChapeau
         {
             Payment_Form payment = new Payment_Form();
             payment.Show();
-        }
-
-        private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            statusDisplayLabel.Text = statusComboBox.Text;
         }
 
         private void addItemButton_Click(object sender, EventArgs e)
