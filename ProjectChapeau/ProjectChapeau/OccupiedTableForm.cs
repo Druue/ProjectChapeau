@@ -21,6 +21,7 @@ namespace ProjectChapeau
             InitializeComponent();
             this.table = table;
             FillTableList();
+            ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");
         }
 
         private void FillTableList()
@@ -65,7 +66,8 @@ namespace ProjectChapeau
         private void addItemButton_Click(object sender, EventArgs e)
         {
             OrderingForm ordering = new OrderingForm(table);
-            ordering.ShowDialog();
+            this.Close();
+            ordering.Show();
         }
 
         private void backButton_Click(object sender, EventArgs e)

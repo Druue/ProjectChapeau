@@ -14,6 +14,7 @@ namespace Chapeau_Model
             public int orderID, tableID, employeeID;
             public double orderPrice;
             public bool orderPaidStatus;
+            public DateTime orderTime;
 
             public Order()
             {
@@ -28,7 +29,7 @@ namespace Chapeau_Model
                 this.orderPrice = orderPrice;
             }
 
-            public List<Item> OrderItems;
+            public List<Item> OrderItems = new List<Item>();
         }
 
         public class Item
