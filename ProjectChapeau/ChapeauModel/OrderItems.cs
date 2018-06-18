@@ -10,10 +10,10 @@ namespace Chapeau_Model
     {
         public string ItemName;
         public int Quantity;
-        public float ItemPrice;
-        public float Vat;
+        public double ItemPrice;
+        public double Vat;
 
-        public OrderItems(string itemName, int quantity, float itemPrice, float vat)
+        public OrderItems(string itemName, int quantity, double itemPrice, double vat)
         {
             ItemName = itemName;
             Quantity = quantity;

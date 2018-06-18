@@ -53,7 +53,7 @@ namespace Chapeau_Model
 
             public MenuType MenuType
             {
-                get { return this.menuType; }
+                get { return menuType; }
                 set
                 {
                     menuType = value;
@@ -71,9 +71,8 @@ namespace Chapeau_Model
 
             public Item()
             {
-                this.comment = "";
+                comment = "";
             }
-
         }
     }
 

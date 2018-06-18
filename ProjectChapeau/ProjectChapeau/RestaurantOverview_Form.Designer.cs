@@ -35,8 +35,9 @@
             this.lbl_loggedinEmployee = new System.Windows.Forms.Label();
             this.pnl_topbar = new System.Windows.Forms.Panel();
             this.pnl_tableoverview_container = new System.Windows.Forms.Panel();
-            this.flowlaypnl_statusEven = new System.Windows.Forms.FlowLayoutPanel();
             this.flowlaypnl_statusUneven = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowlaypnl_statusEven = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbl_title_table_overview = new System.Windows.Forms.Label();
             this.pnl_topbar.SuspendLayout();
             this.pnl_tableoverview_container.SuspendLayout();
             this.SuspendLayout();
@@ -44,7 +45,7 @@
             // flowlaypnl_table_overview_uneven
             // 
             this.flowlaypnl_table_overview_uneven.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(16, 13);
+            this.flowlaypnl_table_overview_uneven.Location = new System.Drawing.Point(16, 29);
             this.flowlaypnl_table_overview_uneven.Name = "flowlaypnl_table_overview_uneven";
             this.flowlaypnl_table_overview_uneven.Size = new System.Drawing.Size(85, 608);
             this.flowlaypnl_table_overview_uneven.TabIndex = 0;
@@ -52,7 +53,7 @@
             // flowlaypnl_table_overview_even
             // 
             this.flowlaypnl_table_overview_even.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(234, 13);
+            this.flowlaypnl_table_overview_even.Location = new System.Drawing.Point(234, 29);
             this.flowlaypnl_table_overview_even.Name = "flowlaypnl_table_overview_even";
             this.flowlaypnl_table_overview_even.Size = new System.Drawing.Size(85, 608);
             this.flowlaypnl_table_overview_even.TabIndex = 1;
@@ -66,7 +67,7 @@
             this.btn_logoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_logoff.Location = new System.Drawing.Point(404, 0);
             this.btn_logoff.Name = "btn_logoff";
-            this.btn_logoff.Size = new System.Drawing.Size(79, 35);
+            this.btn_logoff.Size = new System.Drawing.Size(79, 50);
             this.btn_logoff.TabIndex = 2;
             this.btn_logoff.Text = "Log off";
             this.btn_logoff.UseVisualStyleBackColor = false;
@@ -75,7 +76,7 @@
             // lbl_loggedinEmployee
             // 
             this.lbl_loggedinEmployee.AutoSize = true;
-            this.lbl_loggedinEmployee.Location = new System.Drawing.Point(127, 9);
+            this.lbl_loggedinEmployee.Location = new System.Drawing.Point(114, 16);
             this.lbl_loggedinEmployee.Name = "lbl_loggedinEmployee";
             this.lbl_loggedinEmployee.Size = new System.Drawing.Size(28, 18);
             this.lbl_loggedinEmployee.TabIndex = 3;
@@ -90,33 +91,44 @@
             this.pnl_topbar.ForeColor = System.Drawing.Color.White;
             this.pnl_topbar.Location = new System.Drawing.Point(-1, 0);
             this.pnl_topbar.Name = "pnl_topbar";
-            this.pnl_topbar.Size = new System.Drawing.Size(486, 37);
+            this.pnl_topbar.Size = new System.Drawing.Size(486, 50);
             this.pnl_topbar.TabIndex = 4;
             // 
             // pnl_tableoverview_container
             // 
+            this.pnl_tableoverview_container.Controls.Add(this.lbl_title_table_overview);
             this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_statusUneven);
             this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_statusEven);
             this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_table_overview_even);
             this.pnl_tableoverview_container.Controls.Add(this.flowlaypnl_table_overview_uneven);
-            this.pnl_tableoverview_container.Location = new System.Drawing.Point(22, 43);
+            this.pnl_tableoverview_container.Location = new System.Drawing.Point(25, 56);
             this.pnl_tableoverview_container.Name = "pnl_tableoverview_container";
             this.pnl_tableoverview_container.Size = new System.Drawing.Size(436, 656);
             this.pnl_tableoverview_container.TabIndex = 5;
             // 
+            // flowlaypnl_statusUneven
+            // 
+            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(325, 29);
+            this.flowlaypnl_statusUneven.Name = "flowlaypnl_statusUneven";
+            this.flowlaypnl_statusUneven.Size = new System.Drawing.Size(108, 608);
+            this.flowlaypnl_statusUneven.TabIndex = 3;
+            // 
             // flowlaypnl_statusEven
             // 
-            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(107, 13);
+            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(107, 29);
             this.flowlaypnl_statusEven.Name = "flowlaypnl_statusEven";
             this.flowlaypnl_statusEven.Size = new System.Drawing.Size(109, 608);
             this.flowlaypnl_statusEven.TabIndex = 2;
             // 
-            // flowlaypnl_statusUneven
+            // lbl_title_table_overview
             // 
-            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(325, 13);
-            this.flowlaypnl_statusUneven.Name = "flowlaypnl_statusUneven";
-            this.flowlaypnl_statusUneven.Size = new System.Drawing.Size(108, 608);
-            this.flowlaypnl_statusUneven.TabIndex = 3;
+            this.lbl_title_table_overview.AutoSize = true;
+            this.lbl_title_table_overview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_title_table_overview.Location = new System.Drawing.Point(126, 6);
+            this.lbl_title_table_overview.Name = "lbl_title_table_overview";
+            this.lbl_title_table_overview.Size = new System.Drawing.Size(170, 25);
+            this.lbl_title_table_overview.TabIndex = 4;
+            this.lbl_title_table_overview.Text = "Table: Overview";
             // 
             // RestaurantOverview_Form
             // 
@@ -132,6 +144,7 @@
             this.pnl_topbar.ResumeLayout(false);
             this.pnl_topbar.PerformLayout();
             this.pnl_tableoverview_container.ResumeLayout(false);
+            this.pnl_tableoverview_container.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Panel pnl_tableoverview_container;
         private System.Windows.Forms.FlowLayoutPanel flowlaypnl_statusUneven;
         private System.Windows.Forms.FlowLayoutPanel flowlaypnl_statusEven;
+        private System.Windows.Forms.Label lbl_title_table_overview;
     }
 }

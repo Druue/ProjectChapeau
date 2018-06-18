@@ -9,23 +9,31 @@ using Chapeau_DAL;
 namespace Chapeau_Logic
 {
     public class PaymentLogic
-    {   
-        public void InsertPayment(int employeeId, int orderId, int tableId, double tip, PaymentMethod paymentMethod, string comments)
+    {
+        public void InsertPayment(int employeeId, int orderId, double tip, PaymentMethod paymentMethod, string comments)
         {
             Payment payment = new Payment
             {
                 EmployeeId = employeeId, //gotten from machelle's part
                 OrderId = orderId, //elizabeth's part?
-                TableId = tableId, //machelle
                 Tip = tip, //tip = user input from form
-                Vat = 0,
-                InitialPrice = 0,
                 PaymentMethod = paymentMethod, //user input from form
-                Comments = comments //user input from form
+                Comments = comments, //user input from form
+                TimePayed = DateTime.Now
             };
 
             ChapeauDAL dal = new ChapeauDAL();
-            List<OrderItems> orderItems = GetOrderItems(payment.OrderId, payment.TableId);
+            List<OrderItems> orderItems = GetOrderItems(payment.OrderId);      
+
+            dal.PaymentDAO(payment);
+        }
+
+        public Payment GetTotalPayments(int orderId)
+        {
+            Payment payment = new Payment();
+            List<double> paymentDetails = new List<double>();
+
+            List<OrderItems> orderItems = GetOrderItems(orderId);
 
             foreach (OrderItems item in orderItems)
             {
@@ -35,15 +43,15 @@ namespace Chapeau_Logic
 
             payment.TotalPrice = payment.Vat + payment.InitialPrice;
 
-            dal.PaymentDAO(payment);
+            return payment;
         }
 
-        public List<OrderItems> GetOrderItems(int orderId, int tableId)
+        public List<OrderItems> GetOrderItems(int orderId)
         {
             ChapeauDAL dal = new ChapeauDAL();
-            List<OrderItems> orderItems = dal.OrderItemsDAO(orderId, tableId);
+            List<OrderItems> orderItems = dal.OrderItemsDAO(orderId);
 
             return orderItems;
-        }        
+        }
     }
 }

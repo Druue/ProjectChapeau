@@ -53,7 +53,8 @@ namespace ProjectChapeau
 
         private void startPaymentButton_Click(object sender, EventArgs e)
         {
-
+            Payment_Form payment = new Payment_Form();
+            payment.Show();
         }
 
         private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -20,8 +20,8 @@ namespace Chapeau_DAL
                                                             User ID=Chapeau_1718_grp01;
                                                             Password=PTR6gURrRx");
 
-                //Data Source = 194.171.20.101; Initial Catalog = Chapeau_1718_DB01; Persist Security Info = True; User ID = Chapeau_1718_grp01; Password = ***********
-                          sqlconn.Open();
+
+                sqlconn.Open();
 
                 return sqlconn;
 
@@ -39,26 +39,27 @@ namespace Chapeau_DAL
             sqlconn.Close();
         }
 
-        public List<OrderItems> OrderItemsDAO(int orderID, int tableID) //Sophie - Complete(?)
+        public List<OrderItems> OrderItemsDAO(int orderID) //Sophie - Complete(?)
         {
             SqlConnection conn = OpenConnDB();
-            List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT ItemName, ItemId, Price, Vat FROM Menu " +
-                      "OrderId = @orderId AND TableId = @tableId FROM OrderItems");
+            sb.Append("SELECT ItemName, Price, Vat, [Orders].[OrderId], [OrderItems].[ItemId], completed " +
+                      "FROM Menu, OrderItems, Orders " +
+                      "WHERE [Orders].[OrderId] = [OrderItems].[OrderId] AND [Menu].[ItemId] = [OrderItems].[ItemId] AND completed = 1 " +
+                      "AND [Orders].[OrderId] = @orderId");
             String sql = sb.ToString();
 
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@orderId", orderID); //prevents sql injection
-            command.Parameters.AddWithValue("@tableId", tableID); //prevents sql injection
             SqlDataReader reader = command.ExecuteReader();
-            OrderItems item;
 
+            OrderItems item;
+            List<OrderItems> orderItems = new List<OrderItems>();
             while (reader.Read())
             {
-                item = new OrderItems(reader["ItemName"].ToString(), 1, Int32.Parse(reader["Price"].ToString()),
-                                                 float.Parse(reader["Vat"].ToString()));
+                item = new OrderItems(reader["ItemName"].ToString(), 1, double.Parse(reader["Price"].ToString()),
+                                                 double.Parse(reader["Vat"].ToString()));
 
                 if (!orderItems.Contains(item))
                 {
@@ -88,14 +89,12 @@ namespace Chapeau_DAL
             List<OrderItems> orderItems = new List<OrderItems>();
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT into Payment (TableId, EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
-                      "VALUES (@EmployeeId, @TableId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
+            sb.Append("INSERT into Payment (EmployeedId,  VATPrice, Tip, BasePrice, TotalPrice, Comments, PaymentMethod, TimePayed)" +
+                      "VALUES (@EmployeeId, @Vat, @Tip, @InitialPrice, @TotalPrice, @Comments, @PaymentMethod, @TimePayed)");
             String sql = sb.ToString();
-                       
 
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@EmployeeId", payment.EmployeeId);
-            command.Parameters.AddWithValue("@TableId", payment.TableId);
             command.Parameters.AddWithValue("@Vat", payment.Vat);
             command.Parameters.AddWithValue("@Tip", payment.Tip);
             command.Parameters.AddWithValue("@InitialPrice", payment.InitialPrice);
@@ -146,7 +145,7 @@ namespace Chapeau_DAL
             ChapeauModel.Employee loginTry = null;
 
             SqlConnection conn = OpenConnDB();
-            
+
             string query = $"SELECT EmployeeId, Username, Password, JobRole, Firstname, Lastname " +
               $"FROM Employee " +
               $"WHERE Username = @username AND Password = @password";
@@ -159,7 +158,7 @@ namespace Chapeau_DAL
 
             ChapeauModel.Employee LoginEmployee = null;
 
-            
+
             if (reader.Read())
             {
                 // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
@@ -206,13 +205,13 @@ namespace Chapeau_DAL
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Orders.OrderTime, ItemName, Employee.Firstname, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
-            
+
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
             SqlDataReader reader = command.ExecuteReader();
 
             List<ChapeauModel.Order> orderList = new List<ChapeauModel.Order>();
-            
+
 
             while (reader.Read())
             {
@@ -226,7 +225,7 @@ namespace Chapeau_DAL
                     order.orderTime = (DateTime)reader["OrderTime"];
                     order.item = reader["ItemName"].ToString();
                     order.PlacedBy = reader["Firstname"].ToString();
-                    
+
 
                     orderList.Add(order);
                 }

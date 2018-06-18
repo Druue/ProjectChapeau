@@ -34,7 +34,7 @@
             this.orderItemsPaymentlv = new System.Windows.Forms.ListView();
             this.CommentsTxt = new System.Windows.Forms.TextBox();
             this.FinishedPaymentBttn = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.orderDetailsPaymentlv = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // payMethod1
@@ -72,9 +72,9 @@
             // 
             // orderItemsPaymentlv
             // 
-            this.orderItemsPaymentlv.Location = new System.Drawing.Point(157, 100);
+            this.orderItemsPaymentlv.Location = new System.Drawing.Point(75, 101);
             this.orderItemsPaymentlv.Name = "orderItemsPaymentlv";
-            this.orderItemsPaymentlv.Size = new System.Drawing.Size(220, 269);
+            this.orderItemsPaymentlv.Size = new System.Drawing.Size(400, 194);
             this.orderItemsPaymentlv.TabIndex = 3;
             this.orderItemsPaymentlv.UseCompatibleStateImageBehavior = false;
             // 
@@ -95,21 +95,20 @@
             this.FinishedPaymentBttn.UseVisualStyleBackColor = true;
             this.FinishedPaymentBttn.Click += new System.EventHandler(this.FinishedPaymentBttn_Click);
             // 
-            // groupBox1
+            // orderDetailsPaymentlv
             // 
-            this.groupBox1.Location = new System.Drawing.Point(325, 191);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.orderDetailsPaymentlv.Location = new System.Drawing.Point(75, 301);
+            this.orderDetailsPaymentlv.Name = "orderDetailsPaymentlv";
+            this.orderDetailsPaymentlv.Size = new System.Drawing.Size(400, 97);
+            this.orderDetailsPaymentlv.TabIndex = 6;
+            this.orderDetailsPaymentlv.UseCompatibleStateImageBehavior = false;
             // 
             // Payment_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 554);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.orderDetailsPaymentlv);
             this.Controls.Add(this.FinishedPaymentBttn);
             this.Controls.Add(this.CommentsTxt);
             this.Controls.Add(this.orderItemsPaymentlv);
@@ -133,6 +132,6 @@
         private System.Windows.Forms.ListView orderItemsPaymentlv;
         private System.Windows.Forms.TextBox CommentsTxt;
         private System.Windows.Forms.Button FinishedPaymentBttn;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView orderDetailsPaymentlv;
     }
 }
