@@ -23,7 +23,7 @@ namespace ProjectChapeau
 
             //the timer (made by Machelle)
             Timer timer = new Timer();
-            timer.Interval = (10 * 1000); // 10 secs
+            timer.Interval = (20 * 1000); // 10 secs
             timer.Enabled = true;
             timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this, employee)); ;
             timer.Start();
