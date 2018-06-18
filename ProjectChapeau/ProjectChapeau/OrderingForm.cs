@@ -57,9 +57,9 @@ namespace ProjectChapeau
 
         }
 
-        protected void timer_Tick(object sender, EventArgs e, RestaurantOverview_Form form, ChapeauModel.Employee employee)
+        protected void timer_Tick(object sender, EventArgs e, OrderingForm form, ChapeauModel.Employee employee)
         {
-           this.Controls.cleat
+            this.Controls.Clear();
 
         }
 
