@@ -55,7 +55,7 @@ namespace ProjectChapeau
 
         private void FillTableList()
         {
-            tableReceiptListView.HideSelection = false;
+          /*  tableReceiptListView.HideSelection = false;
             tableReceiptListView.Items.Clear();
             List<OrderingModel.Item> TableItemsList = new List<OrderingModel.Item>();
             TableItemsList = OrderingLogic.CallTableItemsDB(this.table.GetTableId());
@@ -74,7 +74,7 @@ namespace ProjectChapeau
             ListViewItem LvPriceItem = new ListViewItem("Total Price");
             LvPriceItem.SubItems.Add("...................");
             LvPriceItem.SubItems.Add(price.ToString());
-            tableReceiptListView.Items.Add(LvPriceItem);
+            tableReceiptListView.Items.Add(LvPriceItem);8*/
 
         }
 
