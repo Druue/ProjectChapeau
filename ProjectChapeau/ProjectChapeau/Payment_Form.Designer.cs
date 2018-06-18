@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Payment_Form));
-            this.payMethod1 = new System.Windows.Forms.RadioButton();
-            this.payMethod2 = new System.Windows.Forms.RadioButton();
-            this.payMethod3 = new System.Windows.Forms.RadioButton();
+            this.payCashbttn = new System.Windows.Forms.RadioButton();
+            this.payDebitbttn = new System.Windows.Forms.RadioButton();
+            this.payCreditbttn = new System.Windows.Forms.RadioButton();
             this.orderItemsPaymentlv = new System.Windows.Forms.ListView();
             this.CommentsTxt = new System.Windows.Forms.TextBox();
             this.FinishedPaymentBttn = new System.Windows.Forms.Button();
@@ -41,39 +41,39 @@
             ((System.ComponentModel.ISupportInitialize)(this.TipInputnum)).BeginInit();
             this.SuspendLayout();
             // 
-            // payMethod1
+            // payCashbttn
             // 
-            this.payMethod1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payMethod1.BackgroundImage")));
-            this.payMethod1.Location = new System.Drawing.Point(32, 516);
-            this.payMethod1.Name = "payMethod1";
-            this.payMethod1.Size = new System.Drawing.Size(90, 70);
-            this.payMethod1.TabIndex = 0;
-            this.payMethod1.TabStop = true;
-            this.payMethod1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.payMethod1.UseMnemonic = false;
-            this.payMethod1.UseVisualStyleBackColor = true;
+            this.payCashbttn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payCashbttn.BackgroundImage")));
+            this.payCashbttn.Location = new System.Drawing.Point(32, 516);
+            this.payCashbttn.Name = "payCashbttn";
+            this.payCashbttn.Size = new System.Drawing.Size(90, 70);
+            this.payCashbttn.TabIndex = 0;
+            this.payCashbttn.TabStop = true;
+            this.payCashbttn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.payCashbttn.UseMnemonic = false;
+            this.payCashbttn.UseVisualStyleBackColor = true;
             // 
-            // payMethod2
+            // payDebitbttn
             // 
-            this.payMethod2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payMethod2.BackgroundImage")));
-            this.payMethod2.Location = new System.Drawing.Point(204, 516);
-            this.payMethod2.Name = "payMethod2";
-            this.payMethod2.Size = new System.Drawing.Size(90, 70);
-            this.payMethod2.TabIndex = 1;
-            this.payMethod2.TabStop = true;
-            this.payMethod2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.payMethod2.UseVisualStyleBackColor = true;
+            this.payDebitbttn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payDebitbttn.BackgroundImage")));
+            this.payDebitbttn.Location = new System.Drawing.Point(204, 516);
+            this.payDebitbttn.Name = "payDebitbttn";
+            this.payDebitbttn.Size = new System.Drawing.Size(90, 70);
+            this.payDebitbttn.TabIndex = 1;
+            this.payDebitbttn.TabStop = true;
+            this.payDebitbttn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.payDebitbttn.UseVisualStyleBackColor = true;
             // 
-            // payMethod3
+            // payCreditbttn
             // 
-            this.payMethod3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payMethod3.BackgroundImage")));
-            this.payMethod3.Location = new System.Drawing.Point(360, 516);
-            this.payMethod3.Name = "payMethod3";
-            this.payMethod3.Size = new System.Drawing.Size(90, 70);
-            this.payMethod3.TabIndex = 2;
-            this.payMethod3.TabStop = true;
-            this.payMethod3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.payMethod3.UseVisualStyleBackColor = true;
+            this.payCreditbttn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("payCreditbttn.BackgroundImage")));
+            this.payCreditbttn.Location = new System.Drawing.Point(360, 516);
+            this.payCreditbttn.Name = "payCreditbttn";
+            this.payCreditbttn.Size = new System.Drawing.Size(90, 70);
+            this.payCreditbttn.TabIndex = 2;
+            this.payCreditbttn.TabStop = true;
+            this.payCreditbttn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.payCreditbttn.UseVisualStyleBackColor = true;
             // 
             // orderItemsPaymentlv
             // 
@@ -115,7 +115,6 @@
             this.TipInputnum.Name = "TipInputnum";
             this.TipInputnum.Size = new System.Drawing.Size(120, 22);
             this.TipInputnum.TabIndex = 7;
-            this.TipInputnum.ValueChanged += new System.EventHandler(this.TipInputnum_ValueChanged);
             // 
             // CancelPaymentbttn
             // 
@@ -139,9 +138,9 @@
             this.Controls.Add(this.FinishedPaymentBttn);
             this.Controls.Add(this.CommentsTxt);
             this.Controls.Add(this.orderItemsPaymentlv);
-            this.Controls.Add(this.payMethod3);
-            this.Controls.Add(this.payMethod2);
-            this.Controls.Add(this.payMethod1);
+            this.Controls.Add(this.payCreditbttn);
+            this.Controls.Add(this.payDebitbttn);
+            this.Controls.Add(this.payCashbttn);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Payment_Form";
             this.Text = "Payment_Form";
@@ -154,9 +153,9 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton payMethod1;
-        private System.Windows.Forms.RadioButton payMethod2;
-        private System.Windows.Forms.RadioButton payMethod3;
+        private System.Windows.Forms.RadioButton payCashbttn;
+        private System.Windows.Forms.RadioButton payDebitbttn;
+        private System.Windows.Forms.RadioButton payCreditbttn;
         private System.Windows.Forms.ListView orderItemsPaymentlv;
         private System.Windows.Forms.TextBox CommentsTxt;
         private System.Windows.Forms.Button FinishedPaymentBttn;
