@@ -84,7 +84,7 @@ namespace ProjectChapeau
 
         private void startPaymentButton_Click(object sender, EventArgs e)
         {
-            Payment_Form payment = new Payment_Form(employee);
+            Payment_Form payment = new Payment_Form(employee, table.GetTableId());
             this.Close();
             payment.Show();
         }

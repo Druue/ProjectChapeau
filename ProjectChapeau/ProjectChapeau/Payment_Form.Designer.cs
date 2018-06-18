@@ -38,6 +38,7 @@
             this.orderDetailsPaymentlv = new System.Windows.Forms.ListView();
             this.TipInputnum = new System.Windows.Forms.NumericUpDown();
             this.CancelPaymentbttn = new System.Windows.Forms.Button();
+            this.tiplbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TipInputnum)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,12 +94,13 @@
             // 
             // FinishedPaymentBttn
             // 
-            this.FinishedPaymentBttn.Location = new System.Drawing.Point(267, 639);
+            this.FinishedPaymentBttn.BackColor = System.Drawing.Color.DarkOrange;
+            this.FinishedPaymentBttn.Location = new System.Drawing.Point(149, 619);
             this.FinishedPaymentBttn.Name = "FinishedPaymentBttn";
-            this.FinishedPaymentBttn.Size = new System.Drawing.Size(183, 40);
+            this.FinishedPaymentBttn.Size = new System.Drawing.Size(201, 50);
             this.FinishedPaymentBttn.TabIndex = 5;
             this.FinishedPaymentBttn.Text = "Finalise Payment";
-            this.FinishedPaymentBttn.UseVisualStyleBackColor = true;
+            this.FinishedPaymentBttn.UseVisualStyleBackColor = false;
             this.FinishedPaymentBttn.Click += new System.EventHandler(this.FinishedPaymentBttn_Click);
             // 
             // orderDetailsPaymentlv
@@ -118,13 +120,22 @@
             // 
             // CancelPaymentbttn
             // 
-            this.CancelPaymentbttn.Location = new System.Drawing.Point(32, 639);
+            this.CancelPaymentbttn.Location = new System.Drawing.Point(32, 691);
             this.CancelPaymentbttn.Name = "CancelPaymentbttn";
-            this.CancelPaymentbttn.Size = new System.Drawing.Size(183, 40);
+            this.CancelPaymentbttn.Size = new System.Drawing.Size(124, 40);
             this.CancelPaymentbttn.TabIndex = 8;
             this.CancelPaymentbttn.Text = "Cancel Payment";
             this.CancelPaymentbttn.UseVisualStyleBackColor = true;
             this.CancelPaymentbttn.Click += new System.EventHandler(this.CancelPaymentbttn_Click);
+            // 
+            // tiplbl
+            // 
+            this.tiplbl.AutoSize = true;
+            this.tiplbl.Location = new System.Drawing.Point(133, 434);
+            this.tiplbl.Name = "tiplbl";
+            this.tiplbl.Size = new System.Drawing.Size(36, 17);
+            this.tiplbl.TabIndex = 9;
+            this.tiplbl.Text = "Tip: ";
             // 
             // Payment_Form
             // 
@@ -132,6 +143,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(484, 753);
+            this.Controls.Add(this.tiplbl);
             this.Controls.Add(this.CancelPaymentbttn);
             this.Controls.Add(this.TipInputnum);
             this.Controls.Add(this.orderDetailsPaymentlv);
@@ -162,5 +174,6 @@
         private System.Windows.Forms.ListView orderDetailsPaymentlv;
         private System.Windows.Forms.NumericUpDown TipInputnum;
         private System.Windows.Forms.Button CancelPaymentbttn;
+        private System.Windows.Forms.Label tiplbl;
     }
 }

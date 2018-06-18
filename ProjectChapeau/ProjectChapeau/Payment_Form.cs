@@ -11,11 +11,11 @@ namespace ProjectChapeau
         private int orderId;
         private ChapeauModel.Employee employee;
 
-        public Payment_Form(ChapeauModel.Employee employee)
+        public Payment_Form(ChapeauModel.Employee employee, int tableId)
         {
             InitializeComponent();
             this.employee = employee;
-            this.orderId = 49;
+            this.orderId = OrderingLogic.GetOrderId(tableId);
         }
 
         private void Payment_Form_Load(object sender, EventArgs e)
@@ -122,6 +122,6 @@ namespace ProjectChapeau
             //RestaurantOverview_Form restaurantOverview = new RestaurantOverview_Form(employee);
             this.Close();
             //restaurantOverview.Show();
-        }
+        }        
     }
 }
