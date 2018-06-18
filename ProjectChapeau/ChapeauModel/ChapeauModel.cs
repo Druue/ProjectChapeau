@@ -64,6 +64,7 @@ namespace Chapeau_Model
             }
         }
         
+
         /* ORDER SECTION - ELIZABETH*/
 
         public class Order
@@ -76,7 +77,7 @@ namespace Chapeau_Model
             public DateTime orderTime;
             //public bool paidStatus;
 
-            public Order()
+            public Order() //Elizabeth's constructor
             {
                 //constructor
                 item = "";
@@ -85,6 +86,14 @@ namespace Chapeau_Model
                 PlacedBy = "";
                 orderTime = DateTime.Now;
                // this.paidStatus = false;
+            }
+
+            public Order(int orderid, int tableid, DateTime ordertime, int orderstatus) //Machelle's constructor
+            {
+                this.orderId = orderid;
+                this.tableId = tableid;
+                this.orderTime = ordertime;
+                //this.orderStatus = orderstatus;
             }
 
             public bool PlaceOrder()
