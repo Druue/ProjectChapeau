@@ -88,14 +88,6 @@ namespace Chapeau_Model
                 completed = 0;
             }
 
-            public Order(int orderid, int tableid, DateTime ordertime, int orderstatus) //Machelle's constructor
-            {
-                this.orderId = orderid;
-                this.tableId = tableid;
-                this.orderTime = ordertime;
-                //this.orderStatus = orderstatus;
-            }
-
             public bool PlaceOrder()
             {
                 return false;
@@ -113,9 +105,6 @@ namespace Chapeau_Model
 
             public Order GetOrder()
             {
-                //ChapeauDAL DB = new ChapeauDAL();
-
-                //= DB.OrderDAO();
                 return this;
             }
         }

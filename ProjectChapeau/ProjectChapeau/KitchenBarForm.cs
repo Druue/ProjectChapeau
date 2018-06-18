@@ -46,49 +46,52 @@ namespace ProjectChapeau
             orderTable.HideSelection = false;
 
             ColumnHeader orderId = new ColumnHeader();
-           //orderId.BackColor = Color.Orange;
             orderId.Text = "Order Id";
             orderId.Name = "col1";
-            orderId.Width = panelKitchen.Width/6;
+            orderId.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(orderId);
 
             ColumnHeader itemName = new ColumnHeader();
             itemName.Text = "Item Name";
             itemName.Name = "col2";
-            itemName.Width = panelKitchen.Width/6;
+            itemName.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(itemName);
 
             ColumnHeader comments = new ColumnHeader();
             comments.Text = "Comments";
             comments.Name = "col4";
-            comments.Width = panelKitchen.Width/6;
+            comments.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(comments);
 
             ColumnHeader placedBy = new ColumnHeader();
             placedBy.Text = "PlacedBy";
             placedBy.Name = "col5";
-            placedBy.Width = panelKitchen.Width/6;
+            placedBy.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(placedBy);
 
             ColumnHeader orderTime = new ColumnHeader();
             orderTime.Text = "Order Time";
             orderTime.Name = "col6";
-            orderTime.Width = panelKitchen.Width/6;
+            orderTime.Width = panelKitchen.Width/5;
             orderTable.Columns.Add(orderTime);
 
-            ColumnHeader orderStatus = new ColumnHeader();
+            /*ColumnHeader orderStatus = new ColumnHeader();
             orderTime.Text = "order Status";
             orderTime.Name = "col7";
-            orderTime.Width = panelKitchen.Width / 6;
+            orderTime.Width = 1;
             orderTable.Columns.Add(orderStatus);
+
+            ColumnHeader tableNum = new ColumnHeader();
+            tableNum.Text = "table number";
+            tableNum.Name = "col8";
+            tableNum.Width = 1;
+            orderTable.Columns.Add(tableNum);*/
 
 
             foreach (var o in orderList)
             {
                 string orderItem = o.item.Replace('_', ' ');
                 string placedTime = o.orderTime.ToString("HH:mm");
-
-                //orderTable.Add(o.orderId, orderItem, o.comments,o.PlacedBy, orderTime);
 
                 ListViewItem orders = new ListViewItem(o.orderId.ToString());
 
@@ -97,6 +100,7 @@ namespace ProjectChapeau
                 orders.SubItems.Add(o.PlacedBy);
                 orders.SubItems.Add(placedTime);
                 orders.SubItems.Add(o.completed.ToString());
+                orders.SubItems.Add(o.tableId.ToString());
 
                 orderTable.Items.Add(orders);
             }
@@ -137,6 +141,39 @@ namespace ProjectChapeau
         private void timer1_Tick(object sender, EventArgs e)
         {
             KitchenBarForm_Load(sender, e);
+        }
+
+        private void logOffBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnGetWait_Click(object sender, EventArgs e)
+        {
+            /*ListView orderTable = panelKitchen.Controls.Find("orderTable", true).First() as ListView;
+            ListView.SelectedListViewItemCollection selectedOrders = orderTable.SelectedItems;
+
+            ChapeauModel.Order callWaiter = new ChapeauModel.Order();
+            ChapeauLogic logic = new ChapeauLogic();
+
+            foreach (ListViewItem o in selectedOrders)
+            {
+                ListViewItem.ListViewSubItemCollection order = o.SubItems;
+                callWaiter.orderId = Int32.Parse(order[0].Text);
+                callWaiter.item = order[1].Text;
+                callWaiter.comments = order[2].Text;
+                callWaiter.PlacedBy = order[3].Text;
+                callWaiter.orderTime = DateTime.Parse(order[4].Text.ToString());
+                callWaiter.completed = Int32.Parse(order[5].Text);
+                callWaiter.tableId = Int32.Parse(order[6].Text);
+
+                //RestaurantOverview_Form.NotifyWaiter(callWaiter);
+
+                orderTable.Items[0].Remove();
+
+            }*/
+
+            DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table 4", MessageBoxButtons.OK));
         }
     }
 }
