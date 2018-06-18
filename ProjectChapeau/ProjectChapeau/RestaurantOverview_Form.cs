@@ -142,7 +142,7 @@ namespace ProjectChapeau
 
                     if (table.GetTableStatus() == TableStatus.Available)
                     {
-                        this.Text = " - ";
+                        this.Text = "Table Available";
                     }
                     else if (table.GetTableStatus() == TableStatus.Occupied)
                     {
@@ -157,6 +157,7 @@ namespace ProjectChapeau
                         }
                     }
                 }
+
                 else //sat time information (bottom)
                 {
                     this.Margin = new Padding(0, 0, 0, 0);

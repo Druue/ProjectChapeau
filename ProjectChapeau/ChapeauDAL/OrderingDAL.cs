@@ -167,18 +167,18 @@ namespace Chapeau_DAL
             return OrderTime;
         }
 
-        public int DB_GetOrderStatus(int OrderId)
+        public bool DB_GetOrderStatus(int OrderId)
         {
             SqlConnection connection = OpenConnectionDB();
             string sqlQuery = "SELECT completed FROM Orders WHERE OrderId = " + OrderId;
             SqlCommand command = new SqlCommand(sqlQuery, connection);
             SqlDataReader reader = command.ExecuteReader();
 
-            int completed = 0;
+            bool completed = false;
 
             while (reader.Read())
             {
-                completed += (int)reader["completed"];
+                completed = (bool)reader["completed"];
             }
             reader.Close();
             connection.Close();

@@ -119,14 +119,14 @@
             // 
             // flowlaypnl_statusUneven
             // 
-            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(325, 29);
+            this.flowlaypnl_statusUneven.Location = new System.Drawing.Point(109, 29);
             this.flowlaypnl_statusUneven.Name = "flowlaypnl_statusUneven";
             this.flowlaypnl_statusUneven.Size = new System.Drawing.Size(100, 608);
             this.flowlaypnl_statusUneven.TabIndex = 3;
             // 
             // flowlaypnl_statusEven
             // 
-            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(109, 29);
+            this.flowlaypnl_statusEven.Location = new System.Drawing.Point(325, 29);
             this.flowlaypnl_statusEven.Name = "flowlaypnl_statusEven";
             this.flowlaypnl_statusEven.Size = new System.Drawing.Size(100, 608);
             this.flowlaypnl_statusEven.TabIndex = 2;

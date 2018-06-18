@@ -11,7 +11,7 @@ namespace Chapeau_DAL
 {
     public class ChapeauDAL
     {
-        private SqlConnection OpenConnDB() //Made by Machelle
+        private SqlConnection OpenConnDB() //Machelle
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Chapeau_DAL
             }
         }
 
-        private void CloseConnDB(SqlConnection sqlconn) //Made by Machelle
+        private void CloseConnDB(SqlConnection sqlconn) //Machelle
         {
             sqlconn.Close();
         }
@@ -69,7 +69,7 @@ namespace Chapeau_DAL
             return orderItems;
         }
 
-        public void PaymentDAO(Payment payment)
+        public void PaymentDAO(Payment payment) //Sophie
         {
             SqlConnection conn = OpenConnDB();
             List<OrderItems> orderItems = new List<OrderItems>();
@@ -102,7 +102,7 @@ namespace Chapeau_DAL
             CloseConnDB(conn);
         }
 
-        public List<TableTop> TableTopDAO()
+        public List<TableTop> TableTopDAO() //Machelle (?)
         {
             SqlConnection conn = OpenConnDB();
             List<TableTop> table_list = new List<TableTop>();
@@ -126,7 +126,7 @@ namespace Chapeau_DAL
             return table_list;
         }
 
-        public ChapeauModel.Employee LoginDAO(string username, string password) //Made by Machelle
+        public ChapeauModel.Employee LoginDAO(string username, string password) //Machelle
         {            
             SqlConnection conn = OpenConnDB();
 
@@ -145,7 +145,6 @@ namespace Chapeau_DAL
 
             if (reader.Read())
             {
-                // dit zou je in een methode kunnen stoppen om weer opnieuw te gebruiken (geef reader mee als parameter), voor bijvoorbeeld het ophalen van een lijst.
                 int employeeId = reader.GetInt32(0);
                 string loginUsername = reader.GetString(1);
                 string loginPassword = reader.GetString(2);
@@ -160,7 +159,7 @@ namespace Chapeau_DAL
             return LoginEmployee;
         }
 
-        public List<ChapeauModel.Employee> EmployeeDAO() //Made by Machelle
+        public List<ChapeauModel.Employee> EmployeeDAO() //Machelle
         {
 
             SqlConnection conn = OpenConnDB();
@@ -185,7 +184,7 @@ namespace Chapeau_DAL
         }
 
         
-        public List<ChapeauModel.Order> OrderDAO()
+        public List<ChapeauModel.Order> OrderDAO() //Elizabeth
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
@@ -220,7 +219,7 @@ namespace Chapeau_DAL
             return orderList;
         }
 
-        public void UpdateOrderDAO(ChapeauModel.Order selectedOrder)
+        public void UpdateOrderDAO(ChapeauModel.Order selectedOrder) //Elizabeth
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
