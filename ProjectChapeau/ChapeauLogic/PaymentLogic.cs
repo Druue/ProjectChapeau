@@ -12,18 +12,16 @@ namespace Chapeau_Logic
     {
         public void InsertPayment(int employeeId, int orderId, double tip, PaymentMethod paymentMethod, string comments)
         {
-            Payment payment = new Payment
-            {
-                EmployeeId = employeeId, //gotten from machelle's part
-                OrderId = orderId, //elizabeth's part?
-                Tip = tip, //tip = user input from form
-                PaymentMethod = paymentMethod, //user input from form
-                Comments = comments, //user input from form
-                TimePayed = DateTime.Now
-            };
+            Payment payment = GetTotalPayments(orderId);
+            payment.EmployeeId = employeeId;
+            payment.OrderId = orderId; //elizabeth's part?
+            payment.Tip = tip;
+            payment.PaymentMethod = paymentMethod;
+            payment.Comments = comments;
+            payment.TimePayed = DateTime.Now;
 
             ChapeauDAL dal = new ChapeauDAL();
-            List<OrderItems> orderItems = GetOrderItems(payment.OrderId);      
+            List<OrderItems> orderItems = GetOrderItems(payment.OrderId);
 
             dal.PaymentDAO(payment);
         }
@@ -48,7 +46,6 @@ namespace Chapeau_Logic
         {
             ChapeauDAL dal = new ChapeauDAL();
             List<OrderItems> itemsDAL = dal.OrderItemsDAO(orderId);
-            //List<OrderItems> orderItems = itemsDAL.Distinct().ToList();
             List<OrderItems> orderItems = itemsDAL.GroupBy(p => p.ItemName).Select(s => s.FirstOrDefault()).Distinct().ToList();
 
             for (int i = 0; i < orderItems.Count; i++)
