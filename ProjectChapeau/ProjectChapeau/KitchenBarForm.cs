@@ -59,7 +59,7 @@ namespace ProjectChapeau
 
             //timer
             Timer timerKitchenBar = new Timer();
-            timerKitchenBar.Interval = 3000;
+            timerKitchenBar.Interval = 5000;
             timerKitchenBar.Enabled = true;
             timerKitchenBar.Tick += new EventHandler((s, ev) => timer1_Tick(s, ev, orderTable)); ;
             timerKitchenBar.Start();

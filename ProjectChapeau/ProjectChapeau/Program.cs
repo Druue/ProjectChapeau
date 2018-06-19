@@ -14,9 +14,10 @@ namespace ProjectChapeau
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           TableTop table = new TableTop();
-            ChapeauModel.Employee emp = new ChapeauModel.Employee();
-            Application.Run(new OrderingForm(table, emp));
+            /*TableTop table = new TableTop();
+             ChapeauModel.Employee emp = new ChapeauModel.Employee();
+             Application.Run(new OrderingForm(table, emp));*/
+            Application.Run(new LoginForm());
         }
     }
 }
