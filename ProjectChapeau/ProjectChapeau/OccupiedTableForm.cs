@@ -26,7 +26,7 @@ namespace ProjectChapeau
             timer.Start();
 
             InitializeComponent();
-            labelDisplayTableID.Text = "Table " + table.GetTableId();
+            //labelDisplayTableID.Text = "Table " + table.GetTableId();
             this.table = table;
             this.employee = employee;
             ordertimeLabel.Text = ("Waiting time since order was placed: " + OrderingLogic.GetWaitingTime(table.GetTableId()) + " minutes");

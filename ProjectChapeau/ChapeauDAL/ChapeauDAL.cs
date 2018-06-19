@@ -94,7 +94,7 @@ namespace Chapeau_DAL
             CloseConnDB(conn);
         }
 
-        public List<TableTop> TableTopDAO() //Machelle (?)
+        public List<TableTop> TableTopDAO() //Machelle
         {
             SqlConnection conn = OpenConnDB();
             List<TableTop> table_list = new List<TableTop>();

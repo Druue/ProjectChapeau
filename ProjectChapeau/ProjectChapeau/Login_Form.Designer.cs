@@ -115,7 +115,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LoginForm";
             this.Text = "Chapeau";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
+           // this.Load += new System.EventHandler(this.LoginForm_Load);
             this.login_panel.ResumeLayout(false);
             this.login_panel.PerformLayout();
             this.ResumeLayout(false);

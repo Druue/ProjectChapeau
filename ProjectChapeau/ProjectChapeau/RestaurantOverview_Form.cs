@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Chapeau_Logic;
-using Chapeau_UI;
 using Chapeau_Model;
 
 
@@ -23,7 +22,7 @@ namespace ProjectChapeau
 
             //the timer (made by Machelle)
             Timer timer = new Timer();
-            timer.Interval = (20 * 1000); // 10 secs
+            timer.Interval = (20 * 1000); // 20 secs
             timer.Enabled = true;
             timer.Tick += new EventHandler((s, ev) => timer_Tick(s, ev, this, employee)); ;
             timer.Start();
