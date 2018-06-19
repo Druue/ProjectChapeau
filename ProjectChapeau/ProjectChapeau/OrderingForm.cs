@@ -46,9 +46,6 @@ namespace ProjectChapeau
             PriceOverviewListView.ColumnWidthChanging += (s, e) => PriceOverviewListView_ColumnWidthChanged(s, e);
             CommentButtonColumn.FlatStyle = FlatStyle.System;
             DeleteButtonColumn.FlatStyle = FlatStyle.System;
-            
-
-
         }
 
             private void FillMenuList()
@@ -177,6 +174,12 @@ namespace ProjectChapeau
                     {
                         NumericUpDown cellNumeric = new NumericUpDown();
                         OrdersCart.Rows.Add("", item.Name, "", 1, item.itemID, item.itemPrice);
+                        
+                        cellNumeric.Location = OrdersCart.GetCellDisplayRectangle(3, (OrdersCart.Rows.Count-1), false).Location;
+                        cellNumeric.Size = OrdersCart.GetCellDisplayRectangle(3, (OrdersCart.Rows.Count - 1), false).Size;
+                        OrdersCart.Controls.Add(cellNumeric);
+                        
+                  
                         break;
                     }
 
@@ -497,6 +500,11 @@ namespace ProjectChapeau
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void OrdersCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

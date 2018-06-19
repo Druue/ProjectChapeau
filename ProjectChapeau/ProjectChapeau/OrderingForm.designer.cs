@@ -298,6 +298,7 @@
             this.OrdersCart.ReadOnly = true;
             this.OrdersCart.RowHeadersVisible = false;
             this.OrdersCart.RowTemplate.Height = 24;
+            this.OrdersCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrdersCart_CellContentClick);
             // 
             // CommentButtonColumn
             // 
