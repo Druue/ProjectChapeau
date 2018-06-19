@@ -180,7 +180,7 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenutType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
 
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
@@ -192,7 +192,9 @@ namespace Chapeau_DAL
             while (reader.Read())
             {
                 bool completed = (bool)reader["completed"];
-                if (completed == false)
+                int type = (int)reader["MenuType"];
+
+                if (completed == false && type == 1 || type == 2)
                 {
                     ChapeauModel.Order order = new ChapeauModel.Order();
                     order.orderId = (int)reader["OrderId"];
@@ -209,6 +211,42 @@ namespace Chapeau_DAL
             }
 
             return orderList;
+        }
+
+        public List<ChapeauModel.Order> DrinkOrderDAO() //Elizabeth
+        {
+            SqlConnection conn = OpenConnDB();
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenuType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+
+            String sql = sb.ToString();
+            SqlCommand command = new SqlCommand(sql, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            List<ChapeauModel.Order> drinkList = new List<ChapeauModel.Order>();
+
+
+            while (reader.Read())
+            {
+                bool completed = (bool)reader["completed"];
+                int type = (int)reader["MenuType"];
+                if (completed == false && type == 3)
+                {
+                    ChapeauModel.Order order = new ChapeauModel.Order();
+                    order.orderId = (int)reader["OrderId"];
+                    order.comments = reader["Comment"].ToString();
+                    order.tableId = (int)reader["TableId"];
+                    order.orderTime = (DateTime)reader["OrderTime"];
+                    order.item = reader["ItemName"].ToString();
+                    order.PlacedBy = reader["Firstname"].ToString();
+
+
+                    drinkList.Add(order);
+                }
+
+            }
+
+            return drinkList;
         }
 
         public void UpdateOrderDAO(ChapeauModel.Order selectedOrder) //Elizabeth

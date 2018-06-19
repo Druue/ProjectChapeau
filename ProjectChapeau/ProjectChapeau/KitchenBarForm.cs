@@ -14,23 +14,33 @@ namespace ProjectChapeau
 {
     public partial class KitchenBarForm : Form
     {
-        
 
-        public KitchenBarForm()
+        private JobRole jobrole;
+        public KitchenBarForm(JobRole job)
         {
             InitializeComponent();
+
+            jobrole = job;
         }
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
             BackgroundImageLayout = ImageLayout.Stretch;
             WindowState = FormWindowState.Maximized;
-
-            ChapeauLogic logic = new ChapeauLogic();
-            List<ChapeauModel.Order> orderList = logic.showOrders();
-
             panelKitchen.BackColor = Color.FromArgb(230, Color.White);
 
+            if (jobrole == JobRole.Kitchen)
+            {
+                lblOrder.Text = "Orders";
+                this.Text = "Kitchen Orders";
+            }
+            else
+            {
+                lblOrder.Text = "Drink Orders";
+                this.Text = "Bar Orders";
+            }
+
+            // Init table
             ListView orderTable = new ListView();
             orderTable.Name = "orderTable";
             orderTable.Height = panelKitchen.Width; //671, 294
@@ -39,40 +49,96 @@ namespace ProjectChapeau
             orderTable.Font = new Font("Arial", 20, FontStyle.Regular);
             orderTable.Scrollable = true;
             orderTable.GridLines = false;
-
-            //Make selectable
             orderTable.FullRowSelect = true;
             orderTable.MultiSelect = true;
             orderTable.HideSelection = false;
 
+            panelKitchen.Controls.Add(orderTable);
+
+
+            // Init timer
+            Timer timerKitchenBar = new Timer();
+            timerKitchenBar.Interval = 3000;
+            timerKitchenBar.Enabled = true;
+            timerKitchenBar.Tick += new EventHandler((s, ev) => timer1_Tick(s, ev, orderTable)); ;
+            timerKitchenBar.Start();
+        }
+
+
+        private void btnKitchen_Click(object sender, EventArgs e)
+        {
+            ListView orderTable = panelKitchen.Controls.Find("orderTable", true).First() as ListView;
+            ListView.SelectedListViewItemCollection selectedOrders = orderTable.SelectedItems;
+
+            ChapeauModel.Order selectedOrder = new ChapeauModel.Order();
+            ChapeauLogic logic = new ChapeauLogic();
+
+            foreach(ListViewItem o in selectedOrders)
+            {
+                ListViewItem.ListViewSubItemCollection order = o.SubItems;
+                selectedOrder.orderId = Int32.Parse(order[0].Text);
+                selectedOrder.item = order[1].Text;
+                selectedOrder.comments = order[2].Text;
+                selectedOrder.PlacedBy = order[3].Text;
+                selectedOrder.orderTime = DateTime.Parse(order[4].Text.ToString());
+                selectedOrder.completed = Int32.Parse(order[5].Text);
+
+                logic.FlipCompleteStatus(selectedOrder);
+
+                o.Remove();
+
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        
+        private void fillOrderTable(ListView orderTable)
+        {
+            ChapeauLogic logic = new ChapeauLogic();
+            List<ChapeauModel.Order> orderList;
+
+            if (jobrole == JobRole.Kitchen)
+            {   
+                orderList = logic.showOrders();
+            }
+            else
+            {
+                orderList = logic.showDrinkOrders();
+            }
+
+
             ColumnHeader orderId = new ColumnHeader();
             orderId.Text = "Order Id";
             orderId.Name = "col1";
-            orderId.Width = panelKitchen.Width/5;
+            orderId.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(orderId);
 
             ColumnHeader itemName = new ColumnHeader();
             itemName.Text = "Item Name";
             itemName.Name = "col2";
-            itemName.Width = panelKitchen.Width/5;
+            itemName.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(itemName);
 
             ColumnHeader comments = new ColumnHeader();
             comments.Text = "Comments";
             comments.Name = "col4";
-            comments.Width = panelKitchen.Width/5;
+            comments.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(comments);
 
             ColumnHeader placedBy = new ColumnHeader();
             placedBy.Text = "PlacedBy";
             placedBy.Name = "col5";
-            placedBy.Width = panelKitchen.Width/5;
+            placedBy.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(placedBy);
 
             ColumnHeader orderTime = new ColumnHeader();
             orderTime.Text = "Order Time";
             orderTime.Name = "col6";
-            orderTime.Width = panelKitchen.Width/5;
+            orderTime.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(orderTime);
 
             /*ColumnHeader orderStatus = new ColumnHeader();
@@ -104,44 +170,15 @@ namespace ProjectChapeau
 
                 orderTable.Items.Add(orders);
             }
-            panelKitchen.Controls.Add(orderTable);
         }
 
 
-        private void btnKitchen_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e, ListView orderTable)
         {
-            ListView orderTable = panelKitchen.Controls.Find("orderTable", true).First() as ListView;
-            ListView.SelectedListViewItemCollection selectedOrders = orderTable.SelectedItems;
-
-            ChapeauModel.Order selectedOrder = new ChapeauModel.Order();
-            ChapeauLogic logic = new ChapeauLogic();
-
-            foreach(ListViewItem o in selectedOrders)
-            {
-                ListViewItem.ListViewSubItemCollection order = o.SubItems;
-                selectedOrder.orderId = Int32.Parse(order[0].Text);
-                selectedOrder.item = order[1].Text;
-                selectedOrder.comments = order[2].Text;
-                selectedOrder.PlacedBy = order[3].Text;
-                selectedOrder.orderTime = DateTime.Parse(order[4].Text.ToString());
-                selectedOrder.completed = Int32.Parse(order[5].Text);
-
-                logic.FlipCompleteStatus(selectedOrder);
-
-                orderTable.Items[0].Remove();
-
-            }
+            orderTable.Clear();
+            this.fillOrderTable(orderTable);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            KitchenBarForm_Load(sender, e);
-        }
 
         private void logOffBtn_Click(object sender, EventArgs e)
         {
@@ -150,28 +187,6 @@ namespace ProjectChapeau
 
         private void btnGetWait_Click(object sender, EventArgs e)
         {
-            /*ListView orderTable = panelKitchen.Controls.Find("orderTable", true).First() as ListView;
-            ListView.SelectedListViewItemCollection selectedOrders = orderTable.SelectedItems;
-
-            ChapeauModel.Order callWaiter = new ChapeauModel.Order();
-            ChapeauLogic logic = new ChapeauLogic();
-
-            foreach (ListViewItem o in selectedOrders)
-            {
-                ListViewItem.ListViewSubItemCollection order = o.SubItems;
-                callWaiter.orderId = Int32.Parse(order[0].Text);
-                callWaiter.item = order[1].Text;
-                callWaiter.comments = order[2].Text;
-                callWaiter.PlacedBy = order[3].Text;
-                callWaiter.orderTime = DateTime.Parse(order[4].Text.ToString());
-                callWaiter.completed = Int32.Parse(order[5].Text);
-                callWaiter.tableId = Int32.Parse(order[6].Text);
-
-                //RestaurantOverview_Form.NotifyWaiter(callWaiter);
-
-                orderTable.Items[0].Remove();
-
-            }*/
 
             DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table 4", MessageBoxButtons.OK));
         }

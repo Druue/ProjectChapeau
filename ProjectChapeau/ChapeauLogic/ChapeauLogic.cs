@@ -19,6 +19,12 @@ namespace Chapeau_Logic
             List<ChapeauModel.Order> orderList = DAL.OrderDAO();
             return orderList;
         }
+        public List<ChapeauModel.Order> showDrinkOrders()
+        {
+            ChapeauDAL DAL = new ChapeauDAL();
+            List<ChapeauModel.Order> orderList = DAL.DrinkOrderDAO();
+            return orderList;
+        }
 
         public void FlipCompleteStatus(ChapeauModel.Order selectedOrder)
         {

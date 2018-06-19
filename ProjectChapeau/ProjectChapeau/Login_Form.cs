@@ -48,13 +48,13 @@ namespace ProjectChapeau
                 {
                     case JobRole.Bar:
 
-                        KitchenBarForm BarForm = new KitchenBarForm();
+                        KitchenBarForm BarForm = new KitchenBarForm(JobRole.Bar);
                         BarForm.Show();
                         break;
 
                     case JobRole.Kitchen:
 
-                        KitchenBarForm kitchenForm = new KitchenBarForm();
+                        KitchenBarForm kitchenForm = new KitchenBarForm(JobRole.Kitchen);
                         kitchenForm.Show();
                         break;
 
