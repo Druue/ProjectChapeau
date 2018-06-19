@@ -180,7 +180,7 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenuType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenuType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId AND Orders.completed = 0");
 
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
@@ -191,18 +191,19 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                bool completed = (bool)reader["completed"];
+                ChapeauModel.Order order = new ChapeauModel.Order();
+
                 int type = (int)reader["MenuType"];
 
-                if (completed == false && type == 1 || type == 2)
+                if (type == 1 || type == 2)
                 {
-                    ChapeauModel.Order order = new ChapeauModel.Order();
                     order.orderId = (int)reader["OrderId"];
                     order.comments = reader["Comment"].ToString();
                     order.tableId = (int)reader["TableId"];
                     order.orderTime = (DateTime)reader["OrderTime"];
                     order.item = reader["ItemName"].ToString();
                     order.PlacedBy = reader["Firstname"].ToString();
+                    order.completed = (int)reader["completed"];
 
 
                     orderList.Add(order);
@@ -217,7 +218,7 @@ namespace Chapeau_DAL
         {
             SqlConnection conn = OpenConnDB();
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenuType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId");
+            sb.Append("SELECT Orders.OrderId, OrderItems.Comment, Orders.TableId, Employee.Firstname, Orders.OrderTime, ItemName, completed, MenuType FROM  Orders, OrderItems, Menu, Employee WHERE  Orders.OrderId = OrderItems.OrderId AND menu.ItemId = OrderItems.ItemId AND Employee.EmployeeId=Orders.EmployeeId AND Orders.completed = 0");
 
             String sql = sb.ToString();
             SqlCommand command = new SqlCommand(sql, conn);
@@ -228,18 +229,19 @@ namespace Chapeau_DAL
 
             while (reader.Read())
             {
-                bool completed = (bool)reader["completed"];
+                ChapeauModel.Order order = new ChapeauModel.Order();
+
+
                 int type = (int)reader["MenuType"];
-                if (completed == false && type == 3)
+                if (type == 3)
                 {
-                    ChapeauModel.Order order = new ChapeauModel.Order();
                     order.orderId = (int)reader["OrderId"];
                     order.comments = reader["Comment"].ToString();
                     order.tableId = (int)reader["TableId"];
                     order.orderTime = (DateTime)reader["OrderTime"];
                     order.item = reader["ItemName"].ToString();
                     order.PlacedBy = reader["Firstname"].ToString();
-
+                    int completed = (int)reader["completed"];
 
                     drinkList.Add(order);
                 }
@@ -259,7 +261,7 @@ namespace Chapeau_DAL
             SqlCommand command = new SqlCommand(sql, conn);
             command.Parameters.AddWithValue("@complete", selectedOrder.completed);
             command.Parameters.AddWithValue("@orderId", selectedOrder.orderId);
-            SqlDataReader reader = command.ExecuteReader();
+            command.ExecuteNonQuery();
         }
     }
 }
