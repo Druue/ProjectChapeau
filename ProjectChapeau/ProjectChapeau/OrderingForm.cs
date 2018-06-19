@@ -29,7 +29,7 @@ namespace ProjectChapeau
                 FillCartPrevItems();
                 AddOrderButton.Text = "Edit Order";
             }
-            labelDisplayTableID.Text = "Table " + table.GetTableId();
+            //labelDisplayTableID.Text = "Table " + table.GetTableId();
             MenuTypeComboBox.SelectedIndex = 0;
             subMenuTypeComboBox.SelectedIndex = 0;
 

@@ -133,10 +133,6 @@
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChapeauUI\ChapeauUI.csproj">
-      <Project>{b7db8c99-e57e-4830-b032-a83aa333c7df}</Project>
-      <Name>ChapeauUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ChapeauModel\ChapeauModel.csproj">
       <Project>{70a08509-0e0e-478a-a8b7-5d68af3b973a}</Project>
       <Name>ChapeauModel</Name>

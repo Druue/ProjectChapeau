@@ -13,14 +13,14 @@ namespace Chapeau_Model
         {
            public int EmployeeId;
            public  string Firstname;
-           public string Lastname;   //set these to public
+           public string Lastname;   
            public string Password;
            public JobRole Role;
            public  string Username;
 
             public Employee()
             {
-                //an empty constructor is nessecary to use an empty object (NULL)
+              
             }
 
             public Employee(int id, string firstname, string lastname, string password, JobRole role, string username)
@@ -77,7 +77,7 @@ namespace Chapeau_Model
             public DateTime orderTime;
             public int completed { get; set; }
 
-            public Order() //Elizabeth's constructor
+            public Order() 
             {
                 //constructor
                 item = "";
