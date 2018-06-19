@@ -87,26 +87,6 @@ namespace Chapeau_Model
                 orderTime = DateTime.Now;
                 completed = 0;
             }
-
-            public bool PlaceOrder()
-            {
-                return false;
-            }
-
-            public bool ModifyOrder()
-            {
-                return false;
-            }
-
-            public bool RemoveOrder()
-            {
-                return false;
-            }
-
-            public Order GetOrder()
-            {
-                return this;
-            }
         }
 
     }

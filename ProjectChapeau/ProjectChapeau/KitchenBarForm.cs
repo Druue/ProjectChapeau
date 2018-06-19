@@ -16,6 +16,7 @@ namespace ProjectChapeau
     {
 
         private JobRole jobrole;
+
         public KitchenBarForm(JobRole job)
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace ProjectChapeau
 
         private void KitchenBarForm_Load(object sender, EventArgs e)
         {
+
             BackgroundImageLayout = ImageLayout.Stretch;
             WindowState = FormWindowState.Maximized;
             panelKitchen.BackColor = Color.FromArgb(230, Color.White);
@@ -40,10 +42,10 @@ namespace ProjectChapeau
                 this.Text = "Bar Orders";
             }
 
-            // Init table
+            //listview
             ListView orderTable = new ListView();
             orderTable.Name = "orderTable";
-            orderTable.Height = panelKitchen.Width; //671, 294
+            orderTable.Height = panelKitchen.Width; 
             orderTable.Width = panelKitchen.Width;
             orderTable.View = View.Details;
             orderTable.Font = new Font("Arial", 20, FontStyle.Regular);
@@ -55,8 +57,7 @@ namespace ProjectChapeau
 
             panelKitchen.Controls.Add(orderTable);
 
-
-            // Init timer
+            //timer
             Timer timerKitchenBar = new Timer();
             timerKitchenBar.Interval = 3000;
             timerKitchenBar.Enabled = true;
@@ -141,19 +142,6 @@ namespace ProjectChapeau
             orderTime.Width = panelKitchen.Width / 5;
             orderTable.Columns.Add(orderTime);
 
-            /*ColumnHeader orderStatus = new ColumnHeader();
-            orderTime.Text = "order Status";
-            orderTime.Name = "col7";
-            orderTime.Width = 1;
-            orderTable.Columns.Add(orderStatus);
-
-            ColumnHeader tableNum = new ColumnHeader();
-            tableNum.Text = "table number";
-            tableNum.Name = "col8";
-            tableNum.Width = 1;
-            orderTable.Columns.Add(tableNum);*/
-
-
             foreach (var o in orderList)
             {
                 string orderItem = o.item.Replace('_', ' ');
@@ -188,7 +176,7 @@ namespace ProjectChapeau
         private void btnGetWait_Click(object sender, EventArgs e)
         {
 
-            DialogResult dialog = (MessageBox.Show("Kitchen needs you!", "For table 4", MessageBoxButtons.OK));
+            DialogResult dialog = (MessageBox.Show("Waitstaff is notified!", "Notification Sent", MessageBoxButtons.OK));
         }
     }
 }
